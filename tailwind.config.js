@@ -9,6 +9,10 @@ module.exports = {
   ],
   
   theme: {
+    fontFamily: {
+      serif: ["SF Pro Display", "sans-serif"]
+    },
+    
     extend: {},
   },
   plugins: [],
