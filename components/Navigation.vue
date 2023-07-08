@@ -97,7 +97,7 @@ export default {
 
 <style lang="postcss" scoped>
 nav {
-	@apply p-5 lg:p-[2.78vw] bg-white;
+	@apply p-5 lg:p-[2.78vw] md:pb-10 lg:pb-20 xl:pb-24 bg-white;
 
 	.NavContainer {
 		.MobileView {
