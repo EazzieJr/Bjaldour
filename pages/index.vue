@@ -1,5 +1,7 @@
 <template>
-
+  <div class="Index">
+    <IndexMobile />
+  </div>
 </template>
 
 <script>
