@@ -31,6 +31,10 @@ export default {
 				this.setIsMobile(false)
 			}
 		}, 
+	},
+
+	mounted() {
+		this.getCurrentScreen()
 	}
 }
 </script>
