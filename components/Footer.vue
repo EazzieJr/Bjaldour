@@ -19,12 +19,88 @@
 				<img src="/svg/arrow-right.svg" alt="">
 			</div>
 		</div>
+
+		<div class="BottomFooter">
+			<div class="Container">
+				<div class="Tag start">
+					<img src="/svg/tiny-star.svg" alt="">
+							
+					<span>
+						Let’s work together
+					</span>
+				</div>
+
+				<div class="Content">
+					<ul v-for="(footerLink, index) in footerLinks.slice(0, 2)" :key="index">
+						<li v-for="link in footerLink.links" :key="link">
+							<nuxt-link :to="link.toLocaleLowerCase().split(' ').join('-')">
+								{{ link }}
+							</nuxt-link>
+						</li>
+					</ul>
+
+					<ul>
+						<li v-for="link in footerLinks[2].links" :key="link.title">
+							<a class="start" :href="link.route" target="blank">
+								<span>
+									{{ link.title }}
+								</span>
+
+								<img src="/svg/up-right-arrow.svg" alt="">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</footer>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			footerLinks: [
+				{
+					links: [
+						"Home",
+						"About us",
+						"Works",
+						"Products",
+						"Clients",
+						"Contacts"
+					],
+				},
 
+				{
+					links: [
+						"Term & Conditions",
+						"Cookies policy",
+						"Privacy",
+					],
+				},
+
+				{
+					links: [
+						{
+							title: "Twitter",
+							route: ""
+						},
+
+						{
+							title: "Instagram",
+							route: ""
+						},
+
+						{
+							title: "LinkedIn",
+							route: ""
+						}
+					],
+				},
+			]
+		}
+	}
 }
 </script>
 
@@ -62,5 +138,41 @@ footer {
 		}
 	}
 
+
+	.BottomFooter {
+		@apply bg-[#F1F1F1] pt-20 md:pt-[8.33vw] pb-24 md:pb-[11.67vw] px-5 lg:px-[2.78vw];
+		
+		.Container {
+			@apply md:flex justify-between items-start space-y-10 md:space-y-0;
+			
+			.Tag {
+				@apply space-x-2.5 lg:space-x-3;
+
+				span {
+					@apply underline underline-offset-4 lg:text-lg xl:text-2xl !leading-[140%]
+				}
+			}
+
+			.Content {
+				@apply md:w-[60vw] lg:w-[54.58vw] grid grid-cols-2 gap-y-8 md:flex md:space-x-[5.76vw];
+
+				ul {
+					@apply w-fit space-y-4 lg:space-y-5 xl:space-y-6;
+
+					li {
+						@apply font-medium !leading-[130%] w-fit text-xl xl:text-[32px] tracking-[-0.015em];
+
+						a {
+							@apply space-x-2.5;
+
+							img {
+								@apply w-7 lg:w-8 xl:w-10
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 </style>
