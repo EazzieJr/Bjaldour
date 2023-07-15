@@ -35,7 +35,7 @@ export default {
 		}, 
 
 		initLenis() {
-			const lenis = new Lenis()
+			const lenis = new Lenis({duration: 2})
 
 			lenis.on('scroll', (e) => {
 				// console.log(e)
@@ -52,6 +52,7 @@ export default {
 
 	mounted() {
 		this.getCurrentScreen()
+		this.initLenis()
 	}
 }
 </script>
