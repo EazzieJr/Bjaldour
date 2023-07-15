@@ -108,10 +108,25 @@ export default {
 
 	methods: {
 		animateFooter() {
-			gsap.fromTo(
-				
-			)
+			const topFooter = document.querySelector('.TopFooter')
+			const bottomFooter = document.querySelector('.BottomFooter')
+			
+			gsap.fromTo(bottomFooter.firstChild, {
+				y: "-100%"
+			}, {
+				scrollTrigger: {
+					trigger: topFooter,
+					start: "bottom bottom",
+					endTrigger: bottomFooter,
+					end: "bottom bottom",
+					scrub: true,
+				}, y: 0, ease: 'none'
+			})
 		}
+	},
+
+	mounted() {
+		this.animateFooter()
 	}
 }
 </script>
@@ -151,7 +166,7 @@ footer {
 	}
 
 	.BottomFooter {
-		@apply bg-[#F1F1F1] pt-20 md:pt-[8.33vw] pb-24 md:pb-[11.67vw] px-5 lg:px-[2.78vw];
+		@apply bg-[#F1F1F1] pt-20 md:pt-[8.33vw] pb-24 md:pb-[11.67vw] px-5 lg:px-[2.78vw] overflow-hidden;
 		
 		.Container {
 			@apply md:flex justify-between items-start space-y-10 md:space-y-0;
