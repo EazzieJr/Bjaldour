@@ -153,11 +153,11 @@ export default {
 					@apply space-y-5 lg:space-y-7 xl:space-y-10;
 
 					span {
-						@apply text-2xl lg:text-3xl xl:text-4xl !leading-[140%] tracking-[-2.5%]
+						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-medium;
 					}
 
 					p {
-						@apply lg:text-lg xl:text-2xl !leading-[140%]
+						@apply block lg:text-[1.66vw] !leading-[140%]
 					}
 				}
 
@@ -165,14 +165,14 @@ export default {
 					@apply space-y-5;
 
 					li {
-						@apply flex justify-start items-center space-x-2.5 lg:space-x-3;
+						@apply flex justify-start items-center space-x-2.5 lg:space-x-[0.83vw];
 
 						img {
-							@apply w-3.5 lg:w-[1.11vw];
+							@apply w-3.5 lg:w-[1.11vw]
 						}
 
 						span {
-							@apply underline underline-offset-4 lg:text-lg xl:text-2xl !leading-[140%]
+							@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
 						}
 					}
 				}
