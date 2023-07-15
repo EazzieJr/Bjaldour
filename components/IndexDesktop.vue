@@ -18,15 +18,7 @@
 
 		<section class="About">
 			<div class="Container">
-				<div class="Tag start">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="12" cy="12" r="11.5" stroke="black"/>
-					</svg>
-
-					<span>
-						About
-					</span>
-				</div>
+				<Tag text="About" />
 
 				<div class="Content">
 					<div class="Texts">
@@ -154,18 +146,6 @@ export default {
 		.Container {
 			@apply flex justify-between items-start;
 
-			.Tag {
-				@apply space-x-3 lg:space-x-[15px];
-
-				svg {
-					@apply w-5 lg:w-6
-				}
-
-				span {
-					@apply lg:text-lg xl:text-xl tracking-[-2.5%]
-				}
-			}
-
 			.Content {
 				@apply space-y-10 lg:space-y-16 xl:space-y-20 w-[62.5vw] mt-2;
 
@@ -205,18 +185,6 @@ export default {
 
 		.Container {
 			@apply space-y-10 lg:space-y-[5.55vw];
-
-			.Tag {
-				@apply space-x-3 lg:space-x-[15px];
-
-				svg {
-					@apply w-5 lg:w-6
-				}
-
-				span {
-					@apply lg:text-lg xl:text-xl tracking-[-2.5%]
-				}
-			}
 
 			.Content {
 				@apply pl-8 lg:pl-[2.70vw] space-y-20 lg:space-y-[11.38vw];

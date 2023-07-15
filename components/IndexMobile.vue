@@ -18,15 +18,7 @@
 
 		<section class="About">
 			<div class="Container">
-				<div class="Tag start">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="12" cy="12" r="11.5" stroke="black"/>
-					</svg>
-
-					<span>
-						About
-					</span>
-				</div>
+				<Tag text="About" />
 
 				<div class="Content">
 					<div class="Texts">
@@ -70,15 +62,7 @@
 
 		<section class="Testimonials">
 			<div class="Container">
-				<div class="Tag start">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="12" cy="12" r="11.5" stroke="black"/>
-					</svg>
-
-					<span>
-						Testimonials
-					</span>
-				</div>
+				<Tag text="Testimonials" />
 
 				<div class="Content">
 					<div v-for="(testimony, index) in testimonials" :key="index" class="Testimony">
@@ -164,18 +148,6 @@ export default {
 		.Container {
 			@apply space-y-5 sm:space-y-0 sm:flex justify-between items-start;
 
-			.Tag {
-				@apply space-x-3;
-
-				svg {
-					@apply w-5
-				}
-
-				span {
-					@apply tracking-[-2.5%]
-				}
-			}
-
 			.Content {
 				@apply pl-8 space-y-10 sm:w-[62.5vw];
 
@@ -215,18 +187,6 @@ export default {
 
 		.Container {
 			@apply space-y-10;
-
-			.Tag {
-				@apply space-x-3;
-
-				svg {
-					@apply w-5
-				}
-
-				span {
-					@apply tracking-[-0.025em]
-				}
-			}	
 
 			.Content {
 				@apply pl-8 space-y-20;
