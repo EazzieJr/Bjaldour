@@ -211,7 +211,7 @@ export default {
 	}
 
 	.Testimonials {
-		@apply pt-10 px-5;
+		@apply pt-10 px-5 pb-16;
 
 		.Container {
 			@apply space-y-10;
