@@ -125,7 +125,7 @@ export default {
 			}
 
 			.Content {
-				@apply space-y-10 sm:w-[62.5vw];
+				@apply pl-8 space-y-10 sm:w-[62.5vw];
 
 				.Texts {
 					@apply space-y-5;

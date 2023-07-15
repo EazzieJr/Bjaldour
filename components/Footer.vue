@@ -138,7 +138,6 @@ footer {
 		}
 	}
 
-
 	.BottomFooter {
 		@apply bg-[#F1F1F1] pt-20 md:pt-[8.33vw] pb-24 md:pb-[11.67vw] px-5 lg:px-[2.78vw];
 		
@@ -146,10 +145,14 @@ footer {
 			@apply md:flex justify-between items-start space-y-10 md:space-y-0;
 			
 			.Tag {
-				@apply space-x-2.5 lg:space-x-3;
+				@apply space-x-2.5 lg:space-x-[0.83vw];
+
+				img {
+					@apply w-3.5 lg:w-[1.11vw]
+				}
 
 				span {
-					@apply underline underline-offset-4 lg:text-lg xl:text-2xl !leading-[140%]
+					@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
 				}
 			}
 
@@ -157,16 +160,16 @@ footer {
 				@apply md:w-[60vw] lg:w-[54.58vw] grid grid-cols-2 gap-y-8 md:flex md:space-x-[5.76vw];
 
 				ul {
-					@apply w-fit space-y-4 lg:space-y-5 xl:space-y-6;
+					@apply w-fit space-y-4 lg:space-y-[1.67vw];
 
 					li {
-						@apply font-medium !leading-[130%] w-fit text-xl xl:text-[32px] tracking-[-0.015em];
+						@apply font-medium !leading-[130%] w-fit text-xl lg:text-[2.22vw] tracking-[-0.015em];
 
 						a {
-							@apply space-x-2.5;
+							@apply space-x-2.5 lg:space-x-[0.69vw];
 
 							img {
-								@apply w-7 lg:w-8 xl:w-10
+								@apply w-7 lg:w-[2.78vw]
 							}
 						}
 					}
