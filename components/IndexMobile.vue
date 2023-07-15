@@ -60,6 +60,32 @@
 			</div>
 		</section>
 
+		<section class="Insights">
+			<div class="Container">
+				<div class="Texts">
+					<h4>
+						We have helped over 500+ businesses generate over $500m revenue using our AI/ML models
+					</h4>
+
+					<p>
+						From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. 
+					</p>
+
+					<div class="Action start">
+						<img src="/svg/tiny-star-white.svg" alt="">
+							
+						<span>
+							See our yearly insights
+						</span>
+					</div>
+				</div>
+
+				<div class="Image">
+					<img src="/images/insights-image.png" alt="">
+				</div>
+			</div>
+		</section>
+
 		<section class="Testimonials">
 			<div class="Container">
 				<Tag text="Testimonials" />
@@ -177,6 +203,48 @@ export default {
 							@apply underline underline-offset-4 leading-[140%]
 						}
 					}
+				}
+			}
+		}
+	}
+
+	.Insights {
+		@apply pt-60 bg-[#121212];
+
+		.Container {
+			.Texts {
+				@apply px-5;
+
+				h4 {
+					@apply text-white font-semibold text-6xl leading-[100%] tracking-[-0.025em];
+				}
+				
+				p, .Action {
+					@apply pl-10 text-white;
+				}
+
+				p {
+					@apply mt-10 leading-[120%] tracking-[-0.025em]
+				}
+
+				.Action {
+					@apply space-x-2.5 lg:space-x-[0.83vw] mt-20;
+
+					img {
+						@apply w-3.5 lg:w-[1.11vw]
+					}
+
+					span {
+						@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
+					}
+				}
+			}
+
+			.Image {
+				@apply h-[500px] overflow-hidden;
+
+				img {
+					@apply object-cover h-full w-full object-center
 				}
 			}
 		}
