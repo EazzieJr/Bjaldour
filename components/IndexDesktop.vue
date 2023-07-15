@@ -143,6 +143,10 @@ export default {
 					li {
 						@apply flex justify-start items-center space-x-2.5 lg:space-x-3;
 
+						img {
+							@apply w-3.5 lg:w-[1.11vw];
+						}
+
 						span {
 							@apply underline underline-offset-4 lg:text-lg xl:text-2xl !leading-[140%]
 						}

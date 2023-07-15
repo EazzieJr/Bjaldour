@@ -145,6 +145,10 @@ export default {
 					li {
 						@apply flex justify-start items-center space-x-2.5;
 
+						img {
+							@apply w-3.5;
+						}
+
 						span {
 							@apply underline underline-offset-4 leading-[140%]
 						}
