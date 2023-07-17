@@ -60,6 +60,32 @@
 			</div>
 		</section>
 
+		<section class="Insights">
+			<div class="Container">
+				<div class="Texts">
+					<h4>
+						We have helped over 500+ businesses generate over $500m revenue using our AI/ML models
+					</h4>
+
+					<p>
+						From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. 
+					</p>
+
+					<div class="Action start">
+						<img src="/svg/tiny-star-white.svg" alt="">
+							
+						<span>
+							See our yearly insights
+						</span>
+					</div>
+				</div>
+
+				<div class="Image">
+					<img src="/images/insights-image.png" alt="">
+				</div>
+			</div>
+		</section>
+
 		<section class="Testimonials">
 			<div class="Container">
 				<Tag text="Testimonials" />
@@ -87,6 +113,11 @@
 </template>
 
 <script>
+import { gsap } from 'gsap/dist/gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
 	data() {
 		return {
@@ -108,6 +139,42 @@ export default {
 				},
 			]
 		}
+	},
+
+	methods: {
+		animateInsights() {
+			const image = document.querySelector(".Insights .Image img")
+
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: ".Insights .Texts",
+					start: "bottom bottom",
+					endTrigger: image.parentNode,
+					end: "center center",
+					// markers: true,
+					scrub: true,
+					invalidateOnRefresh: true
+					// pin: image
+				}
+			})
+
+			tl.fromTo(image, {
+				y: "-18.19vw",
+				x: "79.73vw"
+			}, {
+				x: "70vw", y: 0, ease: "none"
+			})
+
+			tl.to(image, {
+				x: "0", y: "18.19vw", scale: 1, ease: "none"
+			})
+		}
+
+		
+	},
+
+	mounted() {
+		this.animateInsights()
 	}
 }
 </script>
@@ -175,6 +242,48 @@ export default {
 							@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
 						}
 					}
+				}
+			}
+		}
+	}
+
+	.Insights {
+		@apply pt-60 bg-[#121212] overflow-hidden;
+
+		.Container {
+			.Texts {
+				@apply px-5 lg:px-[2.78vw] w-[88.33vw];
+
+				h4 {
+					@apply text-white font-semibold text-[8.33vw] leading-[80%] tracking-[-0.025em];
+				}
+				
+				p, .Action {
+					@apply ml-[6.94vw] text-white;
+				}
+
+				p {
+					@apply lg:text-[1.66vw] mt-[5.55vw] leading-[120%] tracking-[-0.025em] max-w-[30vw]
+				}
+
+				.Action {
+					@apply space-x-2.5 lg:space-x-[0.83vw] mt-[14.30vw];
+
+					img {
+						@apply w-3.5 lg:w-[1.11vw]
+					}
+
+					span {
+						@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
+					}
+				}
+			}
+
+			.Image {
+				@apply h-[79.37vw] mt-[5.90vw];
+
+				img {
+					@apply w-full scale-[0.5] origin-top-left;
 				}
 			}
 		}
