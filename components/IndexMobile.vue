@@ -60,6 +60,72 @@
 			</div>
 		</section>
 
+		<section class="Solutions">
+			<div class="Container">
+				<div class="Top">
+					<div class="top">
+						<h3>
+							Solutions
+						</h3>
+					</div>
+					
+					<div class="mid">
+						<span>
+							Revolutionize Your Business with Our AI Solutions
+						</span>
+					</div>
+
+					<div class="bottom">
+						<p>
+							Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries. From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. <br>
+
+							<span>
+								Discover how our solutions can help you unlock new opportunities and achieve unparalleled success.
+							</span>
+						</p>
+
+						<ul>
+							<li>
+								<img src="/svg/tiny-star-white.svg" alt="">
+							
+								<span>
+									Explore Our Solutions
+								</span>
+							</li>
+
+							<li>
+								<img src="/svg/tiny-star-white.svg" alt="">
+							
+								<span>
+									Research and development team
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="Projects">
+					<div v-for="project in projects" :key="project.title" class="Project">
+						<img :src="`/images/projects/${project.src}.png`" :alt="`An Image for ${project.title}`">
+
+						<span>
+							{{ project.title }}
+						</span>
+					</div>
+				</div>
+
+				<div class="Bottom">
+					<span>
+						Clients using our solutions
+					</span>
+
+					<div class="Clients start">
+						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section class="Insights">
 			<div class="Container">
 				<div class="Texts">
@@ -132,6 +198,51 @@ export default {
 					name: "John Doe",
 					title: "CEO of ABC Corporation"
 				},
+			],
+
+			projects: [
+				{
+					title: "Scant.AI",
+					src: "casper"
+				},
+
+				{
+					title: "Luna.AI",
+					src: "luna"
+				},
+
+				{
+					title: "Casper.AI",
+					src: "casper"
+				}
+			],
+
+			clients: [
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
 			]
 		}
 	}
@@ -202,6 +313,91 @@ export default {
 						span {
 							@apply underline underline-offset-4 leading-[140%]
 						}
+					}
+				}
+			}
+		}
+	}
+
+	.Solutions {
+		@apply bg-[#121212] text-white;
+		
+		.Container {
+			.Top {
+				.top {
+					h3 {
+						@apply text-[22.5vw] text-center font-semibold tracking-[-0.025em] leading-[100%];
+					}
+				}
+
+				.mid {
+					@apply mt-20 px-5;
+
+					span {
+						@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%]
+					}
+				}
+
+				.bottom {
+					@apply space-y-10 mt-28 pl-10 pr-5;
+
+					p {
+						@apply text-xl leading-[140%] tracking-[-0.025em];
+
+						span {
+							@apply uppercase mt-3 inline-block;
+						}
+					}
+
+					ul {
+						@apply space-y-5;
+
+						li {
+							@apply flex justify-start items-center space-x-2.5;
+
+							img {
+								@apply w-3.5;
+							}
+
+							span {
+								@apply underline underline-offset-4 leading-[140%]
+							}
+						}
+					}
+				}
+			}
+
+			.Projects {
+				@apply space-y-5 px-5 mt-28;
+
+				.Project {
+					@apply relative overflow-hidden h-96;
+
+					img {
+						@apply object-cover object-center w-full h-full
+					}
+
+					span {
+						@apply absolute text-5xl font-semibold;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%, -50%)
+					}
+				}
+			}
+
+			.Bottom {
+				@apply overflow-hidden mt-44 px-5 space-y-10;
+				
+				span {
+					@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%];
+				}
+
+				.Clients {
+					@apply space-x-5;
+
+					img {
+						@apply w-20;
 					}
 				}
 			}
