@@ -60,6 +60,74 @@
 			</div>
 		</section>
 
+		<section class="Solutions">
+			<div class="Container">
+				<div class="Top">
+					<div class="top">
+						<h3>
+							Solutions
+						</h3>
+					</div>
+				
+					<div class="mid">
+						<span>
+							Revolutionize Your Business with Our AI Solutions
+						</span>
+					</div>
+
+					<div class="bottom end">
+						<div class="Container">
+							<p>
+								Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries. From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. <br>
+	
+								<span>
+									Discover how our solutions can help you unlock new opportunities and achieve unparalleled success.
+								</span>
+							</p>
+	
+							<ul class="start">
+								<li>
+									<img src="/svg/tiny-star-white.svg" alt="">
+							
+									<span>
+										Explore Our Solutions
+									</span>
+								</li>
+	
+								<li>
+									<img src="/svg/tiny-star-white.svg" alt="">
+							
+									<span>
+										Research and development team
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="Projects start">
+					<div v-for="(project, index) in projects" :key="project.title" class="Project center" :class="{'selected': project.title === selected}" @click="highlightProject(project.title, index)">
+						<img :src="`/images/projects/${project.src}.png`" :alt="`An Image for ${project.title}`">
+
+						<span>
+							{{ project.title }}
+						</span>
+					</div>
+				</div>
+
+				<div class="Bottom">
+					<span>
+						Clients using our <br> solutions
+					</span>
+
+					<div class="Clients start">
+						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<section class="Insights">
 			<div class="Container">
 				<div class="Texts">
@@ -137,7 +205,54 @@ export default {
 					name: "John Doe",
 					title: "CEO of ABC Corporation"
 				},
-			]
+			],
+
+			projects: [
+				{
+					title: "Scant.AI",
+					src: "casper"
+				},
+
+				{
+					title: "Luna.AI",
+					src: "luna"
+				},
+
+				{
+					title: "Casper.AI",
+					src: "casper"
+				}
+			],
+
+			clients: [
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+				"virgin",
+				"disney",
+				"hersheys",
+				"andela",
+				"brooklyn",
+			],
+
+			selected: "Scant.AI"
 		}
 	},
 
@@ -168,9 +283,31 @@ export default {
 			tl.to(image, {
 				x: "0", y: "18.19vw", scale: 1, ease: "none"
 			})
-		}
+		},
 
-		
+		highlightProject(title, index) {
+			const projectsContainer = document.querySelector(".Projects")
+			const project = document.querySelectorAll(".Project")[index]
+			const projects = document.querySelectorAll(".Project")
+			const tl = gsap.timeline()
+
+			// gsap.to(projects, {
+			// 	minWidth: "18.05vw",
+			// 	ease: "none"
+			// })
+			
+			gsap.to(projectsContainer, {
+				x: index === 0 ? 0 : index === 1 ? "-13vw" : "-26vw",
+				ease: "none"
+			})
+
+			// gsap.to(project, {
+			// 	minWidth: "83.33vw",
+			// 	ease: "none"
+			// })
+
+			this.selected = title
+		}
 	},
 
 	mounted() {
@@ -247,8 +384,105 @@ export default {
 		}
 	}
 
+	.Solutions {
+		@apply bg-[#121212] text-white overflow-hidden ;
+		
+		.Container {
+			.Top {
+				.top {
+					h3 {
+						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[80%];
+					}
+				}
+
+				.mid {
+					@apply mt-[22.22vw] ml-[10.55vw] w-[59.72vw];
+
+					span {
+						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-medium;
+					}
+				}
+
+				.bottom {
+					@apply mt-[8.33vw] pr-[10.55vw];
+
+					.Container {
+						@apply space-y-[5.55vw] w-[54.16vw];
+
+						p {
+							@apply text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-normal;
+
+							span {
+								@apply uppercase mt-[1.5vw] inline-block;
+							}
+						}
+
+						ul {
+							@apply space-x-[2.78vw];
+
+							li {
+								@apply flex justify-start items-center space-x-2.5 lg:space-x-[0.83vw];
+
+								img {
+									@apply w-3.5 lg:w-[1.11vw]
+								}
+
+								span {
+									@apply underline underline-offset-4 lg:underline-offset-[0.5vw] lg:text-[1.67vw] !leading-[140%]
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.Projects {
+				@apply space-x-[2.78vw] mt-[8.33vw];
+
+				.Project {
+					@apply relative overflow-hidden min-w-[18.05vw] h-[50vw] duration-500;
+
+					img {
+						@apply object-cover object-center w-full h-full
+					}
+
+					span {
+						@apply absolute text-[12.22vw] font-semibold opacity-0 translate-y-full block duration-500;
+						/* left: 50%;
+						top: 50%; */
+						/* transform: translate(-50%, -50%) */
+					}
+
+					&.selected {
+						@apply min-w-[83.33vw];
+
+						span {
+							@apply opacity-100 translate-y-0
+						}
+					}
+				}
+			}
+
+			.Bottom {
+				@apply overflow-hidden mt-[16.44vw] space-y-[5.55vw];
+				
+				span {
+					@apply block text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-medium ml-[14.44vw];
+				}
+
+				.Clients {
+					@apply space-x-[2.78vw];
+
+					img {
+						@apply w-[11.38vw];
+					}
+				}
+			}
+		}
+	}
+
 	.Insights {
-		@apply pt-60 bg-[#121212] overflow-hidden;
+		@apply pt-[32.5vw] bg-[#121212] overflow-hidden;
 
 		.Container {
 			.Texts {
