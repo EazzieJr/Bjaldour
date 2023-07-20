@@ -60,6 +60,57 @@
 			</div>
 		</section>
 
+		<section class="AIML">
+			<div class="Container">
+				<div class="AI">
+					<div class="Top start">
+						<h2>
+							Artificial
+							<span class="ImageSpan">
+								<img src="/images/projects/casper.png" alt="">
+
+								<span>
+									Casper.Ai
+								</span>
+							</span>
+
+							Inteligence
+						</h2>
+					</div>
+
+					<div class="Bottom sticky left-0">
+						nkajnd;kjen;ejkn;fef
+					</div>
+				</div>
+
+				<div class="ML">
+					<div class="Top start">
+						<h2>
+							Machine
+							<span>
+								<img src="/images/ml.png" alt="">
+
+								<span>
+									Casper.Ai
+								</span>
+							</span>
+
+							Learning
+						</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="Lines">
+				<div class="Line"></div>
+				<div class="Line"></div>
+				<div class="Line"></div>
+				<div class="Line"></div>
+				<div class="Line"></div>
+				<div class="Line"></div>
+			</div>
+		</section>
+
 		<section class="Solutions">
 			<div class="Container">
 				<div class="Top">
@@ -307,11 +358,53 @@ export default {
 			// })
 
 			this.selected = title
+		},
+
+		animateAi() {
+			const container = document.querySelector(".AIML .Container")
+			const ml = document.querySelector(".ML")
+			// const tl = gsap.timeline({
+			// 	scrollTrigger: {
+			// 		trigger: ".AIML .Container .AI .Top",
+			// 		start: "center 30%",
+			// 		end: "+=500%",
+			// 		pin: ".AIML",
+			// 		scrub: true,
+			// 		markers: true
+			// 	}
+			// })
+
+			// tl.to(".AIML .Container", {
+			// 	x: - container.clientWidth + (ml.clientWidth / 1.25),
+			// 	ease: "none"
+			// })
+
+			// tl.to(".AI .ImageSpan", {
+			// 	width: "83.33vw",
+			// 	height: "50vw",
+			// 	duration: 1
+			// 	}, 0.05
+			// )
+
+			/* Animating lines */
+			const lines = document.querySelectorAll(".Line")
+
+			lines.forEach((el, index) => {
+				gsap.to(el, {
+					scrollTrigger: {
+						trigger: lines,
+						start: "center center",
+						end: "center top",
+						scrub: true
+					}, y: index === lines.length - 1 ? 0 : "5.55vw", ease: "none"
+				})
+			})
 		}
 	},
 
 	mounted() {
 		this.animateInsights()
+		this.animateAi()
 	}
 }
 </script>
@@ -334,7 +427,7 @@ export default {
 				@apply absolute bottom-0 p-5 pb-10 lg:px-[2.78vw] lg:pb-[5.56vw] w-full flex justify-between items-baseline;
 
 				h1 {
-					@apply text-[17.78vw] font-semibold text-white tracking-[-2.5%] leading-[12.5vw];
+					@apply text-[17.78vw] font-semibold text-white tracking-[-0.025em] leading-[12.5vw];
 				}
 
 				img {
@@ -384,14 +477,80 @@ export default {
 		}
 	}
 
+	.AIML {
+		@apply mt-[31.80vw] space-y-[34.44vw] overflow-hidden;
+
+		.Container {
+			@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
+			
+			.AI, .ML {
+				.Top {
+					/* @apply */
+
+					h2 {
+						@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center;
+
+						> span {
+							@apply flex items-center justify-center w-[30.55vw] h-[21.38vw] overflow-hidden mx-[2.78vw] relative;
+
+							img {
+								@apply w-full h-full object-cover
+							}
+
+							span {
+								@apply absolute text-[12.22vw] font-semibold block text-white scale-[0.8] opacity-0;
+								/* left: 50%;
+								top: 50%;
+								transform: translate(-50%, -50%) */
+							}
+						}
+					}
+				}
+			}
+
+			.AI {
+				@apply ml-[30vw]
+			}
+		}
+
+		.Lines {
+			@apply space-y-[5.55vw] bg-white;
+
+			.Line {
+				@apply bg-[#121212] w-full;
+
+				&:nth-child(1) {
+					@apply h-[0.69vw]
+				}
+				&:nth-child(2) {
+					@apply h-[1.38vw]
+				}
+				&:nth-child(3) {
+					@apply h-[2.77vw]
+				}
+				&:nth-child(4) {
+					@apply h-[5.55vw]
+				}
+				&:nth-child(5) {
+					@apply h-[11.11vw]
+				}
+				&:nth-child(6) {
+					@apply h-[22.22vw]
+				}
+			}
+		}
+	}
+
 	.Solutions {
-		@apply bg-[#121212] text-white overflow-hidden ;
+		@apply bg-[#121212] text-white overflow-hidden relative z-20;
 		
 		.Container {
 			.Top {
+				@apply -mt-[4.58vw] relative z-50;
+				
 				.top {
 					h3 {
-						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[80%];
+						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[70%];
 					}
 				}
 
