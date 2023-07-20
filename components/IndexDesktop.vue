@@ -558,7 +558,7 @@ export default {
 					@apply mt-[22.22vw] ml-[10.55vw] w-[59.72vw];
 
 					span {
-						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-medium;
+						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold;
 					}
 				}
 
