@@ -106,6 +106,10 @@ export default {
 		}
 	},
 
+	watch: {
+		$route: "animateFooter"
+	},
+
 	methods: {
 		animateFooter() {
 			const topFooter = document.querySelector('.TopFooter')
@@ -122,6 +126,11 @@ export default {
 					scrub: true,
 				}, y: 0, ease: 'none'
 			})
+		},
+
+		updateScrollTrigger() {
+			console.log("Update!!!!", ScrollTrigger)
+			ScrollTrigger.update()
 		}
 	},
 

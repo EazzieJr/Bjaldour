@@ -118,6 +118,10 @@
 </template>
 
 <script>
+import {gsap} from 'gsap/dist/gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 export default {
 	data() {
 		return {
@@ -153,6 +157,10 @@ export default {
 
 			current: 0
 		}
+	},
+
+	mounted() {
+		ScrollTrigger.update()
 	}
 }
 </script>

@@ -25,9 +25,9 @@
 
 			<div class="DesktopView">
 				<ul class="Navlinks">
-					<li v-for="link in navlinks" :key="link">
-						<nuxt-link to="/">
-							{{ link }}
+					<li v-for="link in navlinks" :key="link.name">
+						<nuxt-link :to="`/${link.route}`">
+							{{ link.name }}
 						</nuxt-link>
 					</li>
 				</ul>
@@ -79,10 +79,22 @@ export default {
 	data() {
 		return {
 			navlinks: [
-				"Home",
-				"Projects",
-				"About",
-				"Resources"
+				{
+					name: "Home",
+					route: ""
+				},
+				{
+					name: "Projects",
+					route: "projects"
+				},
+				{
+					name: "About",
+					route: ""
+				},
+				{
+					name: "RanD",
+					route: "research"
+				}
 			],
 
 			socials: [
