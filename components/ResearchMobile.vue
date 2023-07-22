@@ -90,6 +90,26 @@
 				</div>
 			</div>
 		</section>
+
+		<div class="LittleDeats">
+			<div class="Texts">
+				<span>
+					By developing products like CasperAI, Luna, and Scant, we empower businesses with intelligent automation, data-driven insights, and streamlined document management.
+				</span>
+
+				<p>
+					Join us on this journey of innovation as we continue to pioneer the future of technology and drive meaningful impact across industries.
+				</p>
+			</div>
+
+			<div class="WWB">
+				<img src="/svg/tiny-star.svg" alt="">
+			
+				<span>
+					Let’s work together
+				</span>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -257,6 +277,34 @@ export default {
 						@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%] text-center px-5 max-w-[375px] mx-auto absolute text-white capitalize;
 					}
 				}
+			}
+		}
+	}
+
+	.LittleDeats {
+		@apply pl-10 pr-5 space-y-10 my-28;
+		
+		.Texts {
+			@apply space-y-5;
+
+			span {
+				@apply text-2xl leading-[140%] tracking-[-0.025em]
+			}
+
+			p {
+				@apply leading-[140%]
+			}
+		}
+
+		.WWB {
+			@apply flex justify-start items-center space-x-2.5;
+
+			img {
+				@apply w-3.5;
+			}
+
+			span {
+				@apply underline underline-offset-4 leading-[140%]
 			}
 		}
 	}
