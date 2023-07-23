@@ -17,6 +17,24 @@
 				<span>TransTech</span>
 			</div>
 		</Section>
+
+		<div class="AfterHero">
+			<div class="Container">
+				<div class="Texts">
+					<span>
+						Partnering with TransTech, a forward-thinking transportation and logistics company, we created content that explored the integration of machine learning in the transportation industry.
+					</span>
+					
+					<p>
+						Partnering with TransTech, a forward-thinking transportation and logistics company, we created content that explored the integration of machine learning in the transportation industry.
+					</p>
+				</div>
+
+				<div class="Image">
+					<img src="/images/transtech-afterhero.png" alt="">
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -52,6 +70,26 @@ export default {
 
 			span {
 				@apply leading-[100%] tracking-[-0.025em] text-white font-semibold absolute bottom-5 right-5
+			}
+		}
+	}
+
+	.AfterHero {
+		@apply pt-24 px-5;
+
+		.Container {
+			@apply space-y-14;
+
+			.Texts {
+				@apply space-y-5;
+
+				span {
+					@apply text-2xl leading-[140%] tracking-[-0.025em]
+				}
+
+				p {
+					@apply leading-[140%]
+				}
 			}
 		}
 	}
