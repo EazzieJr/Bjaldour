@@ -59,12 +59,44 @@
 				</div>
 			</div>
 		</section>
+
+		<section class="Objectives">
+			<div class="Container">
+				<Tag text="Objectives" />
+
+				<div class="Content">
+					<div class="Texts">
+						<span>
+							The objectives were to improve route optimization, enable real-time fleet management, and implement predictive maintenance. By harnessing the power of data and machine learning algorithms, we aimed to enhance efficiency, reduce costs, and elevate overall performance in the transportation industry.
+						</span>
+
+						<ul>
+							<li v-for="(obj, index) in objectives" :key="index">
+								<img src="/svg/tiny-star.svg" alt="">
+								
+								<p>
+									{{ obj }}
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </template>
 
 <script>
 export default {
-
+	data() {
+		return {
+			objectives: [
+				"Improve Route Optimization: Develop an intelligent machine learning model to optimize route planning and scheduling, reducing delivery times and fuel consumption.",
+				"Real-time Fleet Management: Implement a system that leverages real-time data to monitor vehicle performance, driver behavior, and maintenance needs, ensuring proactive decision-making.",
+				"Predictive Maintenance: Utilize machine learning algorithms to predict potential maintenance issues, minimizing downtime and optimizing vehicle performance."
+			]
+		}
+	}
 }
 </script>
 
@@ -156,8 +188,40 @@ export default {
 		}
 	}
 
-	.Obectives {
-		
+	.Objectives {
+		@apply mt-40 px-5;
+
+		.Container {
+			@apply space-y-5 sm:space-y-0 sm:flex justify-between items-start;
+
+			.Content {
+				@apply pl-8 space-y-10 sm:w-[62.5vw];
+
+				.Texts {
+					@apply space-y-5;
+
+					span {
+						@apply text-2xl leading-[140%] tracking-[-0.025em]
+					}
+
+					ul {
+						@apply mt-5 space-y-5;
+
+						li {
+							@apply flex justify-start items-start space-x-2.5 py-5 border-y border-[#CCCCCC];
+
+							img {
+								@apply w-3.5 mt-1;
+							}
+
+							span {
+								@apply underline underline-offset-4 leading-[140%]
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 </style>
