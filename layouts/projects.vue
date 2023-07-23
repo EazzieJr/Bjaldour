@@ -2,34 +2,7 @@
 	<div class="Project">
 		<nav>
 			<div class="NavContainer">
-				<div class="Left Action" @click="openHighlight">
-					<div class="Top start">
-						<span>
-							Casper AI
-						</span>
-
-						<img src="/svg/chevron-down.svg" alt="">
-					</div>
-
-					<div class="Mid">
-						<p>
-							CasperAI is our flagship AI product that leverages ML algorithms and natural language processing (NLP) to automate complex business processes. By combining advanced AI capabilities with intuitive interfaces, CasperAI empowers organizations to streamline operations, reduce manual efforts, and enhance productivity.
-						</p>
-					</div>
-
-					<div class="Bottom between">
-						<div class="WWB">
-							<img src="/svg/tiny-star.svg" alt="">
-					
-							<span>
-								Let’s work together
-							</span>
-						</div>
-
-						<button class="Close" @click="closeHighlight">
-							Close
-						</button>
-					</div>
+				<div class="Left">
 				</div>
 
 				<div class="Mid end md:block">
@@ -38,13 +11,43 @@
 					</button>
 				</div>
 
-				<div class="Right end">
+				<div class="Right hidden md:end">
 					<nuxt-link to="/">
 						Research
 					</nuxt-link>
 				</div>
 			</div>
 		</nav>
+
+		<div class="ProjectButton">
+			<button class="Top start" @click="openHighlight">
+				<span>
+					Casper AI
+				</span>
+
+				<img src="/svg/chevron-down.svg" alt="">
+			</button>
+
+			<div class="Mid">
+				<p>
+					CasperAI is our flagship AI product that leverages ML algorithms and natural language processing (NLP) to automate complex business processes. By combining advanced AI capabilities with intuitive interfaces, CasperAI empowers organizations to streamline operations, reduce manual efforts, and enhance productivity.
+				</p>
+			</div>
+
+			<div class="Bottom between">
+				<div class="WWB">
+					<img src="/svg/tiny-star.svg" alt="">
+		
+					<span>
+						Let’s work together
+					</span>
+				</div>
+
+				<button class="Close" @click.self="closeHighlight">
+					Close
+				</button>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -100,18 +103,23 @@ export default {
 
 		openHighlight() {
 			const tl = gsap.timeline()
+			const mobile = window.matchMedia("(max-width: 767px)")
 
-			// tl.set(".Left.Action .Mid, .Left.Action .Bottom", { display: "block" })
-
-			tl.to('.Left.Action', {
-				width: "36.94vw",
-				height: "22.77vw",
-				padding: "2.78vw",
-				cursor: "auto",
+			tl.to('.ProjectButton', {
+				width: mobile.matches ? "320px" : "36.94vw",
+				height: mobile.matches ? "260px" : "22.77vw",
+				padding: mobile.matches? "20px" : "2.78vw",
+				// cursor: "auto",
 				ease: "back"
 			})
 
-			tl.to(".Left.Action .Mid, .Left.Action .Bottom", {
+			tl.to('.ProjectButton .Top', {
+				padding: 0,
+				cursor: "auto",
+				ease: "back"
+			}, "<")
+
+			tl.to(".ProjectButton .Mid, .ProjectButton .Bottom", {
 				opacity: 1,
 				stagger: 0.2
 			})
@@ -121,20 +129,24 @@ export default {
 		
 		closeHighlight() {
 			const tl = gsap.timeline()
+			const mobile = window.matchMedia("(max-width: 767px)")
 			
-			tl.to(".Left.Action .Mid, .Left.Action .Bottom", {
+			tl.to(".ProjectButton .Mid, .ProjectButton .Bottom", {
 				opacity: 0,
-				duration: 0.2,
-				// onComplete: () => {gsap.set(".Left.Action .Mid, .Left.Action .Bottom", {display: "none"})}
-				// stagger: 0.2
 			})
 
-			tl.to('.Left.Action', {
-				width: "12.25vw",
-				height: "4.72vw",
-				padding: "1.38vw",
-				cursor: "pointer",
-				ease: "back.in"
+			tl.to('.ProjectButton .Top', {
+				padding: mobile.matches ? "12px" : "1.38vw",
+				// cursor: "auto",
+				ease: "back"
+			}, "<")
+
+			tl.to('.ProjectButton', {
+				width: mobile.matches ? "116px" :"12.25vw",
+				height: mobile.matches ? "44px" :"4.72vw",
+				padding: 0,
+				// cursor: "pointer",
+				// ease: "back.in"
 			})
 			
 			this.highlighted = !this.highlighted
@@ -151,54 +163,12 @@ export default {
 <style lang="postcss">
 .Project {
 	nav {
-		@apply p-5 md:p-[1.67vw] sticky top-0;
+		@apply p-5 md:p-[1.38vw] sticky top-0;
 
 		.NavContainer {
-			@apply md:h-[4.72vw] grid grid-cols-2 md:grid-cols-3 items-center;
+			@apply h-11 md:h-[4.72vw] grid grid-cols-2 md:grid-cols-3 items-center;
 
-			.Left {
-				@apply p-4 md:p-[1.38vw] rounded-lg md:rounded-[0.83vw] border md:border-[0.069vw] border-[#F1F1F1] md:w-[12.25vw] md:h-[4.72vw] overflow-hidden bg-[#FAFAFA] space-y-5 md:space-y-[2.78vw] cursor-pointer;
-				
-				.Top {
-					@apply space-x-[1.38vw];
-					
-					span {
-						@apply text-[1.67vw] font-semibold tracking-[-0.025em] leading-[120%]
-					}
-					
-					img {
-						@apply w-[1.11vw]
-					}
-				}
-
-				.Mid {
-					@apply opacity-0;
-
-					p {
-						@apply block text-sm lg:text-[1.25vw] !leading-[120%]
-					}
-				}
-
-				.Bottom {
-					@apply opacity-0;
-					
-					.WWB {
-						@apply flex justify-start items-center space-x-2.5 lg:space-x-[0.83vw];
-
-						img {
-							@apply w-3.5 lg:w-[1.11vw]
-						}
-
-						span {
-							@apply underline underline-offset-4 lg:underline-offset-[0.5vw] text-sm lg:text-[1.11vw] !leading-[140%]
-						}
-					}
-
-					button {
-						@apply text-sm lg:text-[1.11vw] !leading-[140%];
-					}
-				}
-			}
+			.Left {}
 
 			.Mid {
 				@apply md:place-self-center;
@@ -212,6 +182,50 @@ export default {
 				a {
 					@apply md:text-[1.67vw] font-bold tracking-[-0.025em] w-fit
 				}
+			}
+		}
+	}
+
+	.ProjectButton {
+		@apply rounded-lg md:rounded-[0.83vw] border md:border-[0.069vw] border-[#F1F1F1] w-[116px] md:w-[12.25vw] h-11 md:h-[4.72vw] overflow-hidden bg-[#FAFAFA] space-y-5 md:space-y-[2.78vw] fixed top-5 left-5 md:top-[1.38vw] md:left-[1.38vw];
+				
+		.Top {
+			@apply p-3 md:p-[1.38vw] space-x-3 md:space-x-[1.38vw];
+			
+			span {
+				@apply md:text-[1.67vw] font-semibold tracking-[-0.025em] leading-[120%]
+			}
+			
+			img {
+				@apply w-3 md:w-[1.11vw]
+			}
+		}
+
+		.Mid {
+			@apply opacity-0;
+
+			p {
+				@apply block text-sm lg:text-[1.25vw] !leading-[120%]
+			}
+		}
+
+		.Bottom {
+			@apply opacity-0;
+			
+			.WWB {
+				@apply flex justify-start items-center space-x-2.5 lg:space-x-[0.83vw];
+
+				img {
+					@apply w-3.5 lg:w-[1.11vw]
+				}
+
+				span {
+					@apply underline underline-offset-4 lg:underline-offset-[0.5vw] text-sm lg:text-[1.11vw] !leading-[140%]
+				}
+			}
+
+			button {
+				@apply text-sm lg:text-[1.11vw] !leading-[140%];
 			}
 		}
 	}
