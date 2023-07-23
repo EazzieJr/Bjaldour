@@ -48,6 +48,10 @@
 				</button>
 			</div>
 		</div>
+
+		<main>
+			<nuxt />
+		</main>
 	</div>
 </template>
 
