@@ -302,20 +302,28 @@ export default {
 	}
 
 	.AfterHero {
-		@apply pt-24 px-5;
+		@apply pt-[11.11vw];
 
 		.Container {
-			@apply space-y-14;
+			@apply space-y-[7.08vw] w-[58.75vw] ml-[11.11vw];
 
 			.Texts {
-				@apply space-y-5;
+				@apply space-y-[2.78vw];
 
 				span {
-					@apply text-2xl leading-[140%] tracking-[-0.025em]
+					@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 				}
 
 				p {
-					@apply leading-[140%]
+					@apply block lg:text-[1.66vw] !leading-[140%]
+				}
+			}
+
+			.Image {
+				@apply w-full;
+
+				img {
+					@apply w-full
 				}
 			}
 		}

@@ -447,7 +447,7 @@ export default {
 				@apply space-y-10 lg:space-y-16 xl:space-y-20 w-[62.5vw] mt-2;
 
 				.Texts {
-					@apply space-y-5 lg:space-y-7 xl:space-y-10;
+					@apply space-y-[2.78vw];
 
 					span {
 						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-medium;
