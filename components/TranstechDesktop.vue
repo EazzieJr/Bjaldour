@@ -150,7 +150,7 @@
 					TransTech
 				</span>
 
-				<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<rect width="150" height="150" rx="75" fill="#DFE0E2"/>
 				<path d="M75 24C75 64.8 41 75 24 75C64.8 75 75 109 75 126C75 85.2 109 75 126 75C85.2 75 75 41 75 24Z" fill="black"/>
 				</svg>
@@ -495,13 +495,13 @@ export default {
 	}
 
 	.Thingy {
-		@apply my-36 overflow-hidden;
+		@apply my-[16.67vw] overflow-hidden;
 
 		h3 {
-			@apply text-[25vw] font-semibold leading-[100%] whitespace-nowrap inline-flex items-center;
+			@apply text-[15.55vw] font-semibold leading-[100%] tracking-[-0.025em] whitespace-nowrap inline-flex items-center;
 
 			svg {
-				@apply w-20 mx-7
+				@apply w-[10.41vw] mx-[5.13vw]
 			}
 		}
 	}

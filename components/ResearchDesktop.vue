@@ -270,7 +270,7 @@ export default {
 			@apply relative;
 			
 			.Image {
-				@apply h-[71.11vw] overflow-hidden;
+				@apply h-[100svh] overflow-hidden;
 
 				img {
 					@apply w-full h-full object-cover object-center;
