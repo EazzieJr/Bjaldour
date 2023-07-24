@@ -330,23 +330,23 @@ export default {
 	}
 
 	.Challenges {
-		@apply mt-28 px-5;
+		@apply mt-[11.11vw] px-[2.78vw];
 
 		.Container {
-			@apply space-y-5 sm:space-y-0 sm:flex justify-between items-start;
+			@apply flex justify-between items-start w-[86.45vw];
 
 			.Content {
-				@apply pl-8 space-y-10 sm:w-[62.5vw];
+				@apply space-y-[8.33vw] w-[54.51vw];
 
 				.Texts {
-					@apply space-y-5;
+					@apply space-y-[2vw];
 
 					span {
-						@apply text-2xl leading-[140%] tracking-[-0.025em]
+						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 					}
 
 					p {
-						@apply leading-[140%]
+						@apply block lg:text-[1.66vw] !leading-[140%]
 					}
 				}
 
@@ -354,13 +354,13 @@ export default {
 					@apply flex items-end;
 					
 					img:nth-child(1) {
-						@apply w-28 shrink-0 h-auto
+						@apply w-[20.83vw] shrink-0 h-auto
 					}
 					img:nth-child(2) {
-						@apply w-32 shrink-0 h-auto ml-3
+						@apply w-[18.54vw] shrink-0 h-auto ml-[4.16vw]
 					}
 					img:nth-child(3) {
-						@apply w-14 shrink-0 h-auto -ml-5 -mb-10
+						@apply w-[8.33vw] shrink-0 h-auto -ml-[1.5vw] -mb-[6.25vw]
 					}
 				}
 			}
@@ -368,33 +368,33 @@ export default {
 	}
 
 	.Objectives {
-		@apply mt-40 px-5;
+		@apply mt-[17.63vw] px-[2.78vw];
 
 		.Container {
-			@apply space-y-5 sm:space-y-0 sm:flex justify-between items-start;
+			@apply flex justify-start items-start space-x-[10.69vw] w-[86.45vw];
 
 			.Content {
-				@apply pl-8 space-y-10 sm:w-[62.5vw];
+				@apply space-y-[2.78vw] w-[51.25vw];
 
 				.Texts {
-					@apply space-y-5;
+					@apply space-y-[2.78vw];
 
-					span {
-						@apply text-2xl leading-[140%] tracking-[-0.025em]
+					> span {
+						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 					}
 
 					ul {
-						@apply mt-5 space-y-5;
+						@apply mt-[2.78vw];
 
 						li {
-							@apply flex justify-start items-start space-x-2.5 py-5 border-y border-[#CCCCCC];
+							@apply flex justify-start items-start space-x-[1.73vw] py-[2.78vw] border-t border-[#CCCCCC];
 
 							img {
-								@apply w-3.5 mt-1;
+								@apply w-[1.11vw] mt-1;
 							}
 
-							span {
-								@apply underline underline-offset-4 leading-[140%]
+							p {
+								@apply block lg:text-[1.66vw] !leading-[140%]
 							}
 						}
 					}
@@ -404,7 +404,7 @@ export default {
 	}
 
 	.Engine {
-		@apply mx-5 mt-36 relative h-[400px] overflow-hidden;
+		@apply mx-[2.78vw] mt-[16.66vw] relative h-[100svh] overflow-hidden;
 
 		img {
 			@apply w-full h-full object-cover object-center;
@@ -414,15 +414,15 @@ export default {
 			@apply absolute w-full h-full text-white;
 
 			span {
-				@apply text-lg leading-[140%] tracking-[0.025em];
+				@apply text-[2.22vw] leading-[140%] tracking-[0.025em];
 
 				&.FindOut {
-					@apply absolute bottom-5 right-5 underline underline-offset-4
+					@apply absolute bottom-[2.78vw] right-[2.78vw] underline underline-offset-4
 				}
 			}
 
 			h2 {
-				@apply font-semibold text-7xl
+				@apply font-semibold text-[12.15vw] tracking-[0.025vw] leading-[100%]
 			}
 		}
 	}
