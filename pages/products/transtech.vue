@@ -1,8 +1,8 @@
 <template>
 	<div class="Index">
-		<OptimizingMobile v-if="isMobile" />
+		<TranstechMobile v-if="isMobile" />
 
-		<OptimizingDesktop v-else />
+		<TranstechDesktop v-else />
 	</div>
 </template>
 

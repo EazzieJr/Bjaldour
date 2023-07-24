@@ -75,7 +75,7 @@ export default {
 
 <style lang="postcss">
 nav {
-	@apply p-5 md:p-[2.78px] fixed top-0 left-0 right-0 z-50;
+	@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-50;
 
 	.NavContainer {
 		@apply grid grid-cols-3 md:grid-cols-3;
