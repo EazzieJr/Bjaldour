@@ -182,16 +182,27 @@
 						</div>
 
 						<div class="Solutions">
-							<div v-for="(solution, index) in solutions" :key="index">
-								<span>
-									{{ solution.title }}
-								</span>
+							<div class="Left">
+								<img src="/images/solution-1.png" alt="">
+								<img src="/images/solution-3.png" alt="">
+							</div>
 
-								<ul>
-									<li v-for="(li, index) in solution.solutions" :key="index">
-										{{ li }}
-									</li>
-								</ul>
+							<div class="Container">
+								<div v-for="(solution, index) in solutions" :key="index">
+									<span>
+										{{ solution.title }}
+									</span>
+									
+									<ul>
+										<li v-for="(li, index) in solution.solutions" :key="index">
+											{{ li }}
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="Right">
+								<img src="/images/solution-2.png" alt="">
 							</div>
 						</div>
 					</div>
@@ -507,60 +518,84 @@ export default {
 	}
 
 	.Solution {
-		@apply bg-[#121212] pt-7 px-5;
+		@apply bg-[#121212] pt-[4.16vw] px-[2.78vw];
 
 		.Content {
-			@apply mt-28 text-white;
+			@apply mt-[14.02vw] text-white;
 
 			h4 {
-				@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%] pl-5 max-w-[375px] mx-auto;
+				@apply text-[6.66vw] font-semibold tracking-[-0.025em] leading-[100%] ml-[7.77vw] max-w-[59.72vw] mx-auto;
 			}
 
 			.Top {
-				@apply mt-16;
+				@apply mt-[8.33vw];
 
 				.Texts {
-					@apply space-y-5;
+					@apply space-y-[2vw] ml-[32.5vw] max-w-[54.16vw];
 
 					span {
-						@apply text-2xl leading-[140%] tracking-[-0.025em]
+						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 					}
 
 					p {
-						@apply leading-[140%]
+						@apply block lg:text-[1.66vw] !leading-[140%]
 					}
 				}
 
 				.Solutions {
-					@apply mt-20 space-y-20;
+					@apply mt-[11.11vw] flex items-start justify-start space-x-[10.55vw];
 
-					> div {
-						@apply space-y-5;
+					.Left {
+						@apply space-y-[57.63vw] -mt-[21.52vw];
 
-						span {
-							@apply text-3xl leading-[120%] tracking-[-0.025em] font-medium;
-						}
-
-						ul {
-							@apply pl-5;
-
-							li {
-								@apply leading-[140%] list-disc
+						img {
+							&:nth-child(2) {
+								@apply w-[20.83vw];
 							}
+
+							&:nth-child(2) {
+								@apply w-[14.30vw] ml-[7.63vw];
+							}
+						}
+					}
+
+					.Container {
+						@apply space-y-[11.11vw] w-[30.56vw];
+						
+						> div {
+							@apply space-y-[2vw];
+
+							span {
+								@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium;
+							}
+
+							ul {
+								@apply pl-[2vw];
+
+								li {
+									@apply text-[1.67vw] leading-[140%] list-disc
+								}
+							}
+						}
+					}
+
+					.Right {
+						img {
+							@apply mt-[25.34vw] w-[20.83vw]
 						}
 					}
 				}
 			}
 
 			.Bottom {
-				@apply my-40 w-[300px] mx-auto;
+				@apply mt-[24.86vw] pb-[24.86vw] w-[42.46vw] mx-auto;
 
 				h5 {
-					@apply font-semibold text-[64px] leading-[100%] tracking-[-0.025em] text-white;
+					@apply font-semibold text-[8.88vw] leading-[100%] tracking-[-0.025em] text-white;
 
 					.top {
 						svg {
-							@apply w-32
+							@apply w-[19.79vw]
 						}
 					}
 					
@@ -570,13 +605,13 @@ export default {
 				}
 
 				> span {
-					@apply text-2xl leading-[140%] tracking-[-0.025em] block mt-10;
+					@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 				}
 
 				p {
-					@apply leading-[140%] mt-5;
+					@apply block lg:text-[1.66vw] !leading-[140%]
 				}
-			}
+		}
 		}
 	}
 }
