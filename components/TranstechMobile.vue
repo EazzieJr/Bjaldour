@@ -376,10 +376,10 @@ export default {
 					}
 
 					ul {
-						@apply mt-5 space-y-5;
+						@apply mt-5;
 
 						li {
-							@apply flex justify-start items-start space-x-2.5 py-5 border-y border-[#CCCCCC];
+							@apply flex justify-start items-start space-x-2.5 py-5 border-t border-[#CCCCCC];
 
 							img {
 								@apply w-3.5 mt-1;
@@ -512,7 +512,7 @@ export default {
 			}
 
 			.Bottom {
-				@apply my-40 w-[300px] mx-auto;
+				@apply mt-40 pb-40 w-[300px] mx-auto;
 
 				h5 {
 					@apply font-semibold text-[64px] leading-[100%] tracking-[-0.025em] text-white;
