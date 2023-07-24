@@ -112,14 +112,32 @@
 					</span>
 
 					<div class="Approaches">
-						<div v-for="approach in approaches" :key="approach.title" class="">
-							<span>
-								{{ approach.title }}
-							</span>
+						<div class="Left">
+							<div v-for="approach in approaches.slice(0, 2)" :key="approach.title" class="">
+								<span>
+									{{ approach.title }}
+								</span>
+	
+								<div class="p">
+									<p v-for="(deat, index) in approach.deat" :key="index">
+										{{ deat }}
+									</p>
+								</div>
+							</div>
+						</div>
 
-							<p>
-								{{ approach.deat }}
-							</p>
+						<div class="Right">
+							<div v-for="approach in approaches.slice(2, 4)" :key="approach.title" class="">
+								<span>
+									{{ approach.title }}
+								</span>
+	
+								<div class="p">
+									<p v-for="(deat, index) in approach.deat" :key="index">
+										{{ deat }}
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -222,22 +240,34 @@ export default {
 			approaches: [
 				{
 					title: "Data Collection and Analysis",
-					deat: "Gathered historical data on routes, fuel consumption, vehicle performance, and maintenance records. Conducted a comprehensive analysis to identify patterns, inefficiencies, and potential areas of improvement."
+					deat: [
+						"Gathered historical data on routes, fuel consumption, vehicle performance, and maintenance records.",
+						"Conducted a comprehensive analysis to identify patterns, inefficiencies, and potential areas of improvement."
+					]
 				},
 
 				{
 					title: "Real-time Monitoring and Integration",
-					deat: "Integrated the machine learning model with real-time data sources, including GPS tracking, weather conditions, and traffic updates. Established a centralized dashboard to monitor vehicle locations, performance metrics, and driver behavior in real- time."
+					deat: [
+						"Integrated the machine learning model with real-time data sources, including GPS tracking, weather conditions, and traffic updates.",
+						" Established a centralized dashboard to monitor vehicle locations, performance metrics, and driver behavior in real- time."
+					]
 				},
 
 				{
 					title: "Machine Learning Model Development",
-					deat: "Developed a machine learning model utilizing algorithms such as regression and clustering. Trained the model using the collected data to predict optimal routes, estimate fuel consumption, and identify maintenance requirements."
+					deat: [
+						"Developed a machine learning model utilizing algorithms such as regression and clustering. ",
+						"Trained the model using the collected data to predict optimal routes, estimate fuel consumption, and identify maintenance requirements."
+					]
 				},
 
 				{
 					title: "Predictive Maintenance Implementation",
-					deat: "Utilized the machine learning model to analyze vehicle sensor data and identify potential maintenance issues. Developed a proactive maintenance schedule to address identified issues before they escalate, reducing unexpected breakdowns and minimizing costs."
+					deat: [
+						"Utilized the machine learning model to analyze vehicle sensor data and identify potential maintenance issues. ",
+						"Developed a proactive maintenance schedule to address identified issues before they escalate, reducing unexpected breakdowns and minimizing costs."
+					]
 				}
 			],
 
@@ -428,32 +458,35 @@ export default {
 	}
 
 	.Approach {
-		@apply mt-28 px-5;
+		@apply mt-[11.11vw] px-[2.78vw];
 
 		.Container {
-			@apply space-y-5;
+			@apply space-x-[7.78vw] flex justify-start items-start;
 
 			.Content {
+				@apply w-[70.48vw];
+
+				
 				> span {
-					@apply text-2xl leading-[140%] tracking-[-0.025em]
+					@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 				}
 
 				.Approaches {
-					@apply mt-28 gap-y-10 grid grid-cols-1;
+					@apply mt-[11.11vw] flex items-start justify-start space-x-[9.37vw] space-y-[11.80vw];
 
-					div {
-						@apply space-y-5 w-4/5;
+					.Left, .Right {
+						@apply space-y-[5.55vw] w-[30.55vw];
 
-						span {
-							@apply text-3xl leading-[120%] tracking-[-0.025em] font-medium						
-						}
+						> div {
+							@apply space-y-[2vw];
 
-						p {
-							@apply leading-[140%]
-						}
+							span {
+								@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium						
+							}
 
-						&:nth-child(even) {
-							@apply place-self-end
+							p {
+								@apply text-[1.67vw] leading-[140%]
+							}
 						}
 					}
 				}
