@@ -83,6 +83,103 @@
 				</div>
 			</div>
 		</section>
+
+		<div class="Engine center">
+			<img src="/images/luna-image.png" alt="">
+
+			<div class="Overlay col-center">
+				<span>
+					Built on
+				</span>
+
+				<h2>
+					luna.ai
+				</h2>
+
+				<span class="FindOut">
+					find out more
+				</span>
+			</div>
+		</div>
+
+		<section class="Approach">
+			<div class="Container">
+				<Tag text="Approach" />
+
+				<div class="Content">
+					<span>
+						Our approach involved analyzing historical data to identify patterns and developing a machine learning model for optimized route planning, fuel consumption estimation, and predictive maintenance. Real-time monitoring and integration were implemented to leverage live data sources. 
+					</span>
+
+					<div class="Approaches">
+						<div v-for="approach in approaches" :key="approach.title" class="">
+							<span>
+								{{ approach.title }}
+							</span>
+
+							<p>
+								{{ approach.deat }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="Thingy">
+			<h3>
+				<span>
+					TransTech
+				</span>
+
+				<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="150" height="150" rx="75" fill="#DFE0E2"/>
+				<path d="M75 24C75 64.8 41 75 24 75C64.8 75 75 109 75 126C75 85.2 109 75 126 75C85.2 75 75 41 75 24Z" fill="black"/>
+				</svg>
+				
+				<span>
+					Bjaldour
+				</span>
+			</h3>
+		</div>
+
+		<section class="Solution">
+			<div class="Container">
+				<Tag text="Solution" white />
+
+				<div class="Content">
+					<h4>
+						Revolutionize Your Business with Our AI Solutions
+					</h4>
+
+					<div class="Top">
+						<div class="Texts">
+							<span>
+								Through the integration of machine learning into their transportation operations, TransTech successfully optimized their logistics processes, improved route efficiency, and reduced maintenance costs.
+							</span>
+
+							<p>
+								The implementation of real-time fleet management and predictive maintenance capabilities enabled them to make data-driven decisions, enhance vehicle performance, and deliver exceptional customer service.
+							</p>
+						</div>
+
+						<div class="Solutions">
+							<div v-for="(solution, index) in solutions" :key="index">
+								<span>
+									{{ solution.title }}
+								</span>
+
+								<ul>
+									<li v-for="(li, index) in solution.solutions" :key="index">
+										{{ li }}
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
 </template>
 
@@ -94,6 +191,54 @@ export default {
 				"Improve Route Optimization: Develop an intelligent machine learning model to optimize route planning and scheduling, reducing delivery times and fuel consumption.",
 				"Real-time Fleet Management: Implement a system that leverages real-time data to monitor vehicle performance, driver behavior, and maintenance needs, ensuring proactive decision-making.",
 				"Predictive Maintenance: Utilize machine learning algorithms to predict potential maintenance issues, minimizing downtime and optimizing vehicle performance."
+			],
+
+			approaches: [
+				{
+					title: "Data Collection and Analysis",
+					deat: "Gathered historical data on routes, fuel consumption, vehicle performance, and maintenance records. Conducted a comprehensive analysis to identify patterns, inefficiencies, and potential areas of improvement."
+				},
+
+				{
+					title: "Real-time Monitoring and Integration",
+					deat: "Integrated the machine learning model with real-time data sources, including GPS tracking, weather conditions, and traffic updates. Established a centralized dashboard to monitor vehicle locations, performance metrics, and driver behavior in real- time."
+				},
+
+				{
+					title: "Machine Learning Model Development",
+					deat: "Developed a machine learning model utilizing algorithms such as regression and clustering. Trained the model using the collected data to predict optimal routes, estimate fuel consumption, and identify maintenance requirements."
+				},
+
+				{
+					title: "Predictive Maintenance Implementation",
+					deat: "Utilized the machine learning model to analyze vehicle sensor data and identify potential maintenance issues. Developed a proactive maintenance schedule to address identified issues before they escalate, reducing unexpected breakdowns and minimizing costs."
+				}
+			],
+
+			solutions: [
+				{
+					title: "Route Optimization and Fuel Efficiency",
+					solutions: [
+						"Achieved a 15% reduction in delivery times through optimized route planning.",
+						"Decreased fuel consumption by 10 % by identifying the most efficient routes based on real - time traffic and weather conditions."
+					]
+				},
+
+				{
+					title: "Real-time Fleet Management",
+					solutions: [
+						"Improved fleet performance monitoring, enabling TransTech to proactively address driver behavior issues and reduce vehicle idling time.",
+						"Enhanced decision - making with real - time data insights, leading to improved operational efficiency and customer satisfaction.",
+					]
+				},
+
+				{
+					title: "Predictive Maintenance",
+					solutions: [
+						"Reduced maintenance costs by 20% through early identification of potential issues and proactive maintenance scheduling.",
+						"Minimized vehicle downtime by addressing maintenance needs before they caused significant disruptions.",
+					]
+				}
 			]
 		}
 	}
@@ -220,6 +365,88 @@ export default {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	.Engine {
+		@apply mx-5 mt-36 relative h-[400px] overflow-hidden;
+
+		img {
+			@apply w-full h-full object-cover object-center;
+		}
+
+		.Overlay {
+			@apply absolute w-full h-full text-white;
+
+			span {
+				@apply text-lg leading-[140%] tracking-[0.025em];
+
+				&.FindOut {
+					@apply absolute bottom-5 right-5 underline underline-offset-4
+				}
+			}
+
+			h2 {
+				@apply font-semibold text-7xl
+			}
+		}
+	}
+
+	.Approach {
+		@apply mt-28 px-5;
+
+		.Container {
+			@apply space-y-5;
+
+			.Content {
+				> span {
+					@apply text-2xl leading-[140%] tracking-[-0.025em]
+				}
+
+				.Approaches {
+					@apply mt-28 gap-y-10 grid grid-cols-1;
+
+					div {
+						@apply space-y-5 w-4/5;
+
+						span {
+							@apply text-3xl leading-[120%] tracking-[-0.025em] font-medium						
+						}
+
+						p {
+							@apply leading-[140%]
+						}
+
+						&:nth-child(even) {
+							@apply place-self-end
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.Thingy {
+		@apply my-36 overflow-hidden;
+
+		h3 {
+			@apply text-[25vw] font-semibold leading-[100%] whitespace-nowrap inline-flex items-center;
+
+			svg {
+				@apply w-20 mx-7
+			}
+		}
+	}
+
+	.Solution {
+		@apply bg-[#121212] pt-7 px-5;
+
+		.Content {
+			@apply mt-28;
+
+			h4 {
+				@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%] text-center px-5 max-w-[375px] mx-auto;
 			}
 		}
 	}

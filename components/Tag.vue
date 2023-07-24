@@ -4,7 +4,7 @@
 			<circle cx="12" cy="12" r="11.5" stroke="black"/>
 		</svg>
 
-		<span>
+		<span :class="{'text-white' : white}">
 			{{ text }}
 		</span>
 	</div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-	props: ["text"]
+	props: ["text", "white"]
 }
 </script>
 
