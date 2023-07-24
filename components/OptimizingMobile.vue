@@ -177,6 +177,32 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="Bottom">
+						<h5>
+							<span class="top between">
+								<span>
+									In
+								</span>
+
+								<svg width="285" height="10" viewBox="0 0 285 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<line y1="5" x2="285" y2="5" stroke="white" stroke-width="10"/>
+								</svg>
+							</span>
+
+							<span class="bottom">
+								Conclusion
+							</span>
+						</h5>
+
+						<span>
+							By embracing machine learning, TransTech transformed their operations, ensuring timely deliveries, reducing fuel consumption, and maximizing the lifespan of their fleet. 
+						</span>
+
+						<p>
+							This project stands as a testament to the power of machine learning in revolutionizing the transportation and logistics industry, and TransTech's commitment to innovation and excellence.
+						</p>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -443,10 +469,72 @@ export default {
 		@apply bg-[#121212] pt-7 px-5;
 
 		.Content {
-			@apply mt-28;
+			@apply mt-28 text-white;
 
 			h4 {
-				@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%] text-center px-5 max-w-[375px] mx-auto;
+				@apply text-4xl font-semibold tracking-[-0.025em] leading-[100%] pl-5 max-w-[375px] mx-auto;
+			}
+
+			.Top {
+				@apply mt-16;
+
+				.Texts {
+					@apply space-y-5;
+
+					span {
+						@apply text-2xl leading-[140%] tracking-[-0.025em]
+					}
+
+					p {
+						@apply leading-[140%]
+					}
+				}
+
+				.Solutions {
+					@apply mt-20 space-y-20;
+
+					> div {
+						@apply space-y-5;
+
+						span {
+							@apply text-3xl leading-[120%] tracking-[-0.025em] font-medium;
+						}
+
+						ul {
+							@apply pl-5;
+
+							li {
+								@apply leading-[140%] list-disc
+							}
+						}
+					}
+				}
+			}
+
+			.Bottom {
+				@apply my-40 w-[300px] mx-auto;
+
+				h5 {
+					@apply font-semibold text-[64px] leading-[100%] tracking-[-0.025em] text-white;
+
+					.top {
+						svg {
+							@apply w-32
+						}
+					}
+					
+					.bottom {
+						@apply block;
+					}
+				}
+
+				> span {
+					@apply text-2xl leading-[140%] tracking-[-0.025em] block mt-10;
+				}
+
+				p {
+					@apply leading-[140%] mt-5;
+				}
 			}
 		}
 	}

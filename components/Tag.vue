@@ -1,7 +1,7 @@
 <template>
 	<div class="Tag start">
 		<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<circle cx="12" cy="12" r="11.5" stroke="black"/>
+			<circle cx="12" cy="12" r="11.5" :stroke="white ? 'white' : 'black'"/>
 		</svg>
 
 		<span :class="{'text-white' : white}">
@@ -12,7 +12,10 @@
 
 <script>
 export default {
-	props: ["text", "white"]
+	props: {
+		text: String,
+		white: Boolean
+	}
 }
 </script>
 
