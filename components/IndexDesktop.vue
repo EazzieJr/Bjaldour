@@ -516,7 +516,7 @@ export default {
 		.Lines {
 			@apply space-y-[5.55vw] bg-white;
 
-			.Line {
+			> .Line {
 				@apply bg-[#121212] w-full;
 
 				&:nth-child(1) {
