@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 nav {
 	@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-50;
 
