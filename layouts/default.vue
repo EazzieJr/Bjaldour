@@ -30,7 +30,6 @@ import Lenis from '@studio-freight/lenis'
 import { preloadImage } from '~/utils'
 import { gsap } from "gsap/dist/gsap"
 
-
 export default {
 	data() {
 		return {
@@ -64,26 +63,26 @@ export default {
 		percentageLoaded() {
 			gsap.to(".LoadingLine div", {
 				width: this.percentageLoaded + '%',
-				duration: 3,
+				duration: 4,
 				// ease: "power3.out"
 			})
 
 			gsap.to(".Numbers", {
 				yPercent: this.percentageLoaded === 100 ? - 95 : - this.percentageLoaded,
-				duration: 3,
+				duration: 4,
 				// ease: "power3.out"
 			})
 
 			if (this.percentageLoaded === 100) {
-				// console.log{this.numbersArr}
-				// gsap.to('.Loader', {
-				// 	y: '-100%',
-				// 	duration: 1,
-				// 	ease: 'power2.inOut',
-				// 	onComplete: () => {
-				// 		this.loaded = true
-				// 	}
-				// })
+				gsap.to('.Loader', {
+					y: '-100%',
+					delay: 4,
+					duration: 1,
+					ease: 'power2.inOut',
+					onComplete: () => {
+						this.loaded = true
+					}
+				})
 			}
 		}
 	},
@@ -180,7 +179,7 @@ export default {
 	}
 
 	.Percentages {
-		@apply pl-5 pb-10 md:h-[18vw] flex items-start justify-start overflow-hidden;
+		@apply pl-5 pb-10 h-24 md:h-[18vw] flex items-start justify-start overflow-hidden;
 
 		span {
 			@apply text-black font-semibold text-8xl md:text-[17.77vw]
