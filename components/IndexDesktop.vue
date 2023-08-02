@@ -412,13 +412,14 @@ export default {
 					}, opacity: 1, duration: 1.5, ease: "power3.out"
 				})
 
-				gsap.fromTo(el.lastChild, { yPercent: 20 }, {
+				gsap.fromTo(el.lastChild, { y: "2.5vw" }, {
 					scrollTrigger: {
 						trigger: el.lastChild,
 						start: "top bottom",
 						end: "bottom top",
+						markers: true,
 						scrub: true
-					}, yPercent: 0, ease: "none"
+					}, y: "-1vw",
 				})
 			})
 		}
