@@ -109,6 +109,8 @@
 				<div class="Line"></div>
 				<div class="Line"></div>
 			</div>
+			
+			<div class="LinesFiller"></div>
 		</section>
 
 		<section class="Solutions">
@@ -128,13 +130,15 @@
 
 					<div class="bottom end">
 						<div class="Container">
-							<p>
-								Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries. From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. <br>
-	
+							<div class="Texts">
+								<p>
+									Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries. From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. <br>
+								</p>
+									
 								<span>
 									Discover how our solutions can help you unlock new opportunities and achieve unparalleled success.
 								</span>
-							</p>
+							</div>
 	
 							<ul class="start">
 								<li>
@@ -161,17 +165,21 @@
 					<div v-for="(project, index) in projects" :key="project.title" class="Project center" :class="{'selected': project.title === selected}" @click="highlightProject(project.title, index)">
 						<img :src="`/images/projects/${project.src}.png`" :alt="`An Image for ${project.title}`">
 
-						<span>
-							{{ project.title }}
-						</span>
+						<div class="OverflowDecoy">
+							<span>
+								{{ project.title }}
+							</span>
+						</div>
 					</div>
 				</div>
 
 				<div class="Bottom">
-					<span>
-						Clients using our <br> solutions
-					</span>
-
+					<div class="OverflowDecoy">
+						<span>
+							Clients using our <br> solutions
+						</span>
+					</div>
+					
 					<div class="Clients start">
 						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
 					</div>
@@ -233,6 +241,8 @@
 
 <script>
 import { gsap } from 'gsap/dist/gsap'
+import JellyEffect from '../animations/jelly'
+
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger)
@@ -308,6 +318,53 @@ export default {
 	},
 
 	methods: {
+		initJelly() {
+			const jelly = new JellyEffect();
+		},
+
+		animateSolutions() {
+			const clients = document.querySelector(".Clients")
+
+			gsap.fromTo(".Solutions .Top .top h3", { yPercent: 100 }, {
+				scrollTrigger: {
+					trigger: ".Solutions .Top .top",
+					start: "top 70%",
+					toggleActions: "play none none reset"
+				}, yPercent: 0, duration: 1, ease: "power3.out"
+			})
+
+			gsap.fromTo(".Solutions .Top .mid span", { yPercent: 100 }, {
+				scrollTrigger: {
+					trigger: ".Solutions .Top .mid",
+					start: "top 70%",
+					toggleActions: "play none none reset"
+				}, yPercent: 0, duration: 1, ease: "power3.out"
+			})
+
+			gsap.fromTo(".Solutions .Top .bottom p, .Solutions .Top .bottom span", { opacity: 0 }, {
+				scrollTrigger: {
+					trigger: ".Solutions .Top .bottom",
+					start: "top 70%",
+					toggleActions: "play none none reset"
+				}, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2
+			})
+
+			gsap.fromTo(".Solutions .Bottom .OverflowDecoy span", { yPercent: 100 }, {
+				scrollTrigger: {
+					trigger: ".Solutions .Bottom",
+					start: "top 70%",
+					toggleActions: "play none none reset"
+				}, yPercent: 0, duration: 1, ease: "power3.out"
+			})
+
+			gsap.to(clients, {
+				repeat: -1,
+				x: - clients.clientWidth / 5 - (window.innerWidth * 0.0139),
+				duration: 10,
+				ease: "none"
+			})
+		},
+		
 		animateInsights() {
 			const image = document.querySelector(".Insights .Image img")
 
@@ -390,13 +447,15 @@ export default {
 			const lines = document.querySelectorAll(".Line")
 
 			lines.forEach((el, index) => {
+				console.dir(el)
 				gsap.to(el, {
 					scrollTrigger: {
 						trigger: lines,
-						start: "center center",
-						end: "center top",
-						scrub: true
-					}, y: index === lines.length - 1 ? 0 : "5.55vw", ease: "none"
+						start: "center 60%",
+						// end: "center top",
+						scrub: true,
+						markers: true,
+					}, y: - el.parentElement.clientHeight / 2, ease: "none"
 				})
 			})
 		},
@@ -417,7 +476,7 @@ export default {
 						trigger: el.lastChild,
 						start: "top bottom",
 						end: "bottom top",
-						markers: true,
+						// markers: true,
 						scrub: true
 					}, y: "-1vw",
 				})
@@ -426,6 +485,8 @@ export default {
 	},
 
 	mounted() {
+		this.initJelly()
+		this.animateSolutions()
 		this.animateInsights()
 		this.animateAi()
 		this.animateTestimonies()
@@ -502,7 +563,7 @@ export default {
 	}
 
 	.AIML {
-		@apply mt-[31.80vw] space-y-[34.44vw] overflow-hidden;
+		@apply mt-[31.80vw] space-y-[34.44vw] overflow-hidden relative;
 
 		.Container {
 			@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
@@ -541,7 +602,7 @@ export default {
 			@apply space-y-[5.55vw] bg-white;
 
 			> .Line {
-				@apply bg-[#121212] w-full;
+				@apply bg-[#121212] w-full relative;
 
 				&:nth-child(1) {
 					@apply h-[0.69vw]
@@ -562,27 +623,33 @@ export default {
 					@apply h-[22.22vw]
 				}
 			}
+
+		}
+		.LinesFiller {
+			@apply h-[44.44vw] bg-[#121212] absolute w-full bottom-0
 		}
 	}
 
 	.Solutions {
-		@apply bg-[#121212] text-white overflow-hidden relative z-20;
+		@apply bg-[#121212] text-white overflow-hidden relative z-20 -mt-[20vw];
 		
 		.Container {
 			.Top {
-				@apply -mt-[4.58vw] relative z-50;
+				@apply relative z-50;
 				
 				.top {
+					@apply overflow-hidden;
+					
 					h3 {
-						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[70%];
+						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[75%];
 					}
 				}
 
 				.mid {
-					@apply mt-[22.22vw] ml-[10.55vw] w-[59.72vw];
+					@apply mt-[22.22vw] ml-[10.55vw] w-[59.72vw] overflow-hidden;
 
 					span {
-						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold;
+						@apply block text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold;
 					}
 				}
 
@@ -592,11 +659,13 @@ export default {
 					.Container {
 						@apply space-y-[5.55vw] w-[54.16vw];
 
-						p {
-							@apply text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-normal;
+						.Texts {
+							p {
+								@apply text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-normal;
+							}
 
 							span {
-								@apply uppercase mt-[1.5vw] inline-block;
+								@apply text-[2.5vw] !leading-[140%] tracking-[-0.025em] font-normal uppercase mt-[1.5vw] block;
 							}
 						}
 
@@ -623,17 +692,21 @@ export default {
 				@apply space-x-[2.78vw] mt-[8.33vw];
 
 				.Project {
-					@apply relative overflow-hidden min-w-[18.05vw] h-[50vw] duration-500;
+					@apply relative overflow-hidden min-w-[18.05vw] h-[50vw] duration-1000;
 
 					img {
 						@apply object-cover object-center w-full h-full
 					}
 
-					span {
-						@apply absolute text-[12.22vw] font-semibold opacity-0 translate-y-full block duration-500;
-						/* left: 50%;
-						top: 50%; */
-						/* transform: translate(-50%, -50%) */
+					.OverflowDecoy {
+						@apply absolute overflow-hidden;
+
+						span {
+							@apply text-[12.22vw] font-semibold translate-y-full block duration-1000;
+							/* left: 50%;
+							top: 50%; */
+							/* transform: translate(-50%, -50%) */
+						}
 					}
 
 					&.selected {
@@ -654,10 +727,10 @@ export default {
 				}
 
 				.Clients {
-					@apply space-x-[2.78vw];
+					@apply space-x-[2.78vw] w-max;
 
 					img {
-						@apply w-[11.38vw];
+						@apply w-full max-w-[11.38vw];
 					}
 				}
 			}
@@ -740,6 +813,10 @@ export default {
 				}
 			}
 		}
+	}
+
+	.OverflowDecoy {
+		@apply overflow-hidden
 	}
 }
 </style>
