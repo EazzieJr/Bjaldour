@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="Loader">
+		<div class="Loader" v-if="!loaded">
 			<div class="LoadingLine"><div></div></div>
 
 			<div class="Percentages">
@@ -55,7 +55,8 @@ export default {
 				"https://res.cloudinary.com/dmwfd0zhh/image/upload/q_auto,f_auto/v1621568117/Korty/Rectangle_23_dxgpdz.jpg"
 			],
 			numbersArr: [],
-			percentageLoaded: 0
+			percentageLoaded: 0,
+			loaded: true
 		}
 	},
 

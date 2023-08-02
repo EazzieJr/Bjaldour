@@ -399,12 +399,35 @@ export default {
 					}, y: index === lines.length - 1 ? 0 : "5.55vw", ease: "none"
 				})
 			})
+		},
+
+		animateTestimonies() {
+			const testimonies = document.querySelectorAll(".Testimony")
+
+			testimonies.forEach(el => {
+				gsap.fromTo(el, { opacity: 0 }, {
+					scrollTrigger: {
+						trigger: el,
+						start: "top 80%",
+					}, opacity: 1, duration: 1.5, ease: "power3.out"
+				})
+
+				gsap.fromTo(el.lastChild, { yPercent: 20 }, {
+					scrollTrigger: {
+						trigger: el.lastChild,
+						start: "top bottom",
+						end: "bottom top",
+						scrub: true
+					}, yPercent: 0, ease: "none"
+				})
+			})
 		}
 	},
 
 	mounted() {
 		this.animateInsights()
 		this.animateAi()
+		this.animateTestimonies()
 	}
 }
 </script>
