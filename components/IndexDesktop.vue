@@ -190,13 +190,17 @@
 		<section class="Insights">
 			<div class="Container">
 				<div class="Texts">
-					<h4>
-						We have helped over 500+ businesses generate over $500m revenue using our AI/ML models
-					</h4>
+					<div class="OverflowDecoy">
+						<h4>
+							We have helped over 500+ businesses generate over $500m revenue using our AI/ML models
+						</h4>
+					</div>
 
-					<p>
-						From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. 
-					</p>
+					<div class="OverflowDecoy trigger">
+						<p>
+							From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. 
+						</p>
+					</div>
 
 					<div class="Action start">
 						<img src="/svg/tiny-star-white.svg" alt="">
@@ -346,7 +350,7 @@ export default {
 					trigger: ".Solutions .Top .bottom",
 					start: "top 70%",
 					toggleActions: "play none none reset"
-				}, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.2
+				}, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.2
 			})
 
 			gsap.fromTo(".Solutions .Bottom .OverflowDecoy span", { yPercent: 100 }, {
@@ -364,9 +368,31 @@ export default {
 				ease: "none"
 			})
 		},
-		
+
 		animateInsights() {
 			const image = document.querySelector(".Insights .Image img")
+
+			gsap.fromTo(".Insights .Texts h4", {
+				yPercent: 100,
+			}, {
+				scrollTrigger: {
+					trigger: ".Insights .Texts",
+					start: "top 70%",
+					toggleActions: "play none none reset",
+					// markers: true
+				}, yPercent: 0, duration: 1, ease: "power3.out"
+			})
+
+			gsap.fromTo(".Insights .Texts  p", {
+				yPercent: 100,
+			}, {
+				scrollTrigger: {
+					trigger: ".Insights .Texts .OverflowDecoy.trigger",
+					start: "top 80%",
+					toggleActions: "play none none reset",
+					markers: true
+				}, yPercent: 0, duration: 1, ease: "power3.out"
+			})
 
 			const tl = gsap.timeline({
 				scrollTrigger: {
@@ -454,7 +480,7 @@ export default {
 						start: "center 60%",
 						// end: "center top",
 						scrub: true,
-						markers: true,
+						// markers: true,
 					}, y: - el.parentElement.clientHeight / 2, ease: "none"
 				})
 			})
