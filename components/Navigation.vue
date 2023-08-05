@@ -162,7 +162,7 @@ export default {
 		setTimeout(() => {
 			this.intiAnimations()
 			this.scrollListen()
-		}, 1000)
+		}, 500)
 	}
 }
 </script>

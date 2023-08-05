@@ -331,12 +331,23 @@ export default {
 		initHero() {
 			const tl = gsap.timeline()
 
+			tl.to(".Hero .Image", {
+				clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+				duration: 1,
+				ease: "power3.out",
+			})
+
+			tl.to(".Hero .Image img", {
+				scaleY: 1,
+				duration: 1,
+				ease: "power3.out",
+			}, "<")
+			
 			tl.to(".Hero .TextArrow h1, .Hero .TextArrow img", {
 				y: 0,
 				duration: 1,
 				ease: "power3.out",
 				stagger: 0.2,
-				delay: 1
 			})
 		},
 
@@ -545,10 +556,11 @@ export default {
 			@apply relative;
 
 			.Image {
-				@apply h-auto w-full;
+				@apply w-full h-[52.77vw] overflow-hidden;
+				clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 
 				img {
-					@apply object-cover w-full h-full object-center
+					@apply object-cover w-full h-full object-center scale-y-[2]
 				}
 			}
 
