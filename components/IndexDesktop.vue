@@ -351,6 +351,26 @@ export default {
 			})
 		},
 
+		animateAbout() {
+			gsap.fromTo(".About .Texts span, .About .Texts p", {
+				opacity: 0
+			}, {
+				scrollTrigger: {
+					trigger: ".About .Content",
+					start: "top 80%",
+				}, ease: "power3.out", duration: 1.5, stagger: 0.2, opacity: 1
+			})
+
+			gsap.fromTo(".About ul li", {
+				opacity: 0
+			}, {
+				scrollTrigger: {
+					trigger: ".About ul",
+					start: "top 80%",
+				}, ease: "power3.out", duration: 1.5, stagger: 0.2, opacity: 1
+			})
+		},
+
 		animateSolutions() {
 			const clients = document.querySelector(".Clients")
 
@@ -540,6 +560,7 @@ export default {
 		this.initJelly()
 
 		setTimeout(() => {
+			this.animateAbout()
 			this.animateSolutions()
 			this.animateInsights()
 			this.animateAi()
