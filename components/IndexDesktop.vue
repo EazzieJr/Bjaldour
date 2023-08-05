@@ -550,10 +550,10 @@ export default {
 			}
 
 			.TextArrow {
-				@apply absolute bottom-0 px-5 mb-10 lg:px-[2.78vw] lg:mb-[5.56vw] w-full flex justify-between items-baseline overflow-hidden;
+				@apply absolute bottom-0 px-5 mb-10 lg:px-[2.78vw] lg:mb-[2.78vw] w-full flex justify-between items-baseline overflow-hidden;
 
 				h1 {
-					@apply text-[17.78vw] font-semibold text-white tracking-[-0.025em] leading-[12.5vw] translate-y-full;
+					@apply text-[17.78vw] font-semibold text-white tracking-[-0.025em] !leading-[100%] translate-y-full;
 				}
 
 				img {

@@ -117,7 +117,6 @@ export default {
 
 		scrollListen() {
 			const nav = document.querySelector("nav")
-			const navContainer = document.querySelector(".NavContainer")
 			
 			const tl = gsap.timeline({
 				scrollTrigger: {
@@ -127,7 +126,7 @@ export default {
 				}
 			})
 			
-			tl.to(navContainer, {
+			tl.to(nav, {
 				yPercent: -100,
 				duration: 1,
 				ease: "power3.inOut"
