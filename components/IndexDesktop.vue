@@ -334,13 +334,13 @@ export default {
 			tl.to(".Hero .Image", {
 				clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
 				duration: 1,
-				ease: "power3.out",
+				ease: "power3.inOut",
 			})
 
 			tl.to(".Hero .Image img", {
 				scaleY: 1,
 				duration: 1,
-				ease: "power3.out",
+				ease: "power3.inOut",
 			}, "<")
 			
 			tl.to(".Hero .TextArrow h1, .Hero .TextArrow img", {
