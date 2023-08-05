@@ -415,7 +415,7 @@ export default {
 					trigger: ".Insights .Texts .OverflowDecoy.trigger",
 					start: "top 80%",
 					toggleActions: "play none none reset",
-					markers: true
+					// markers: true
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
