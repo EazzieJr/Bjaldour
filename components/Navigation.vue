@@ -64,10 +64,14 @@
 					</div>
 				</div>
 
-				<div class="Logo">
+				<div class="Logo" :class="{ 'show': menuOpened }">
 					<nuxt-link to="/">
 						ScantAI
 					</nuxt-link>
+
+					<button class="close" v-if="menuOpened" @click="toggleMenuState">
+						<img src="/svg/opened-menu.svg" alt="">
+					</button>
 				</div>
 			</div>
 		</div>
@@ -79,6 +83,7 @@ import { gsap } from "gsap/dist/gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
+import { mapState, mapMutations } from "vuex"
 
 export default {
 	data() {
@@ -110,32 +115,52 @@ export default {
 		}
 	},
 
+	computed: {
+		...mapState(["menuOpened"])
+	},
+	
 	methods: {
+		...mapMutations(["toggleMenuState"]),
+		
 		intiAnimations() {
+			const nav = document.querySelector("nav")
+			const navContainer = document.querySelector(".NavContainer")
 
+			gsap.to(navContainer, {
+				y: 0,
+				duration: 1,
+			})
 		},
 
 		scrollListen() {
 			const nav = document.querySelector("nav")
+			const menuButton = document.querySelector(".MenuButton button")
 			
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: nav,
 					start: "+=" + nav.clientHeight * 2,
-					toggleActions: "play none none reverse"
+					toggleActions: `play none none ${this.menuOpened ? 'none' : 'reverse'}`
 				}
 			})
+
 			
 			tl.to(nav, {
 				yPercent: -100,
 				duration: 1,
 				ease: "power3.inOut"
 			})
+
+			tl.to(menuButton, {
+				y: 0,
+				ease: "power3.inOut"
+			}, 0.5)
 		}
 	},
 
 	mounted() {
 		setTimeout(() => {
+			this.intiAnimations()
 			this.scrollListen()
 		}, 1000)
 	}
@@ -144,9 +169,10 @@ export default {
 
 <style lang="postcss" scoped>
 nav {
-	@apply sticky top-0 bg-white p-5 lg:p-[2.78vw] md:pb-[6.66vw] z-[1000];
+	@apply sticky top-0 bg-white z-[1000];
 
 	.NavContainer {
+		@apply -translate-y-full p-5 md:p-[2.78vw] md:pb-[6.66vw];
 		.MobileView {
 			@apply md:hidden;
 
@@ -175,7 +201,15 @@ nav {
 			}
 
 			.Logo {
-				@apply col-span-2
+				@apply col-span-2;
+
+				&.show {
+					@apply flex justify-between items-start;
+				}
+
+				.close {
+					@apply w-5 lg:w-[1.52vw]
+				}
 			}
 		}
 	}

@@ -527,10 +527,13 @@ export default {
 	mounted() {
 		this.initHero()
 		this.initJelly()
-		this.animateSolutions()
-		this.animateInsights()
-		this.animateAi()
-		this.animateTestimonies()
+
+		setTimeout(() => {
+			this.animateSolutions()
+			this.animateInsights()
+			this.animateAi()
+			this.animateTestimonies()
+		}, 500)
 	}
 }
 </script>

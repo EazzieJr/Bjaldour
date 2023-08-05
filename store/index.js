@@ -1,6 +1,7 @@
 export const state = () => ({
 	isMobile: false,
-	loaded: false
+	loaded: true,
+	menuOpened: false
 })
 
 export const mutations = {
@@ -10,5 +11,9 @@ export const mutations = {
 
 	toggleLoadedState(state) {
 		state.loaded = !state.loaded
+	},
+
+	toggleMenuState(state) {
+		state.menuOpened = !state.menuOpened
 	}
 }

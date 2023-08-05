@@ -24,7 +24,7 @@
 			<MenuButton />
 			
 			<nuxt/>
-			
+
 			<Footer />
 		</main>
 	</div>
@@ -153,7 +153,6 @@ export default {
 			};
 			
 			this.assetsToBeLoaded.forEach((image, index) => {
-				// const percentage = (100 / totalImages) * (index + 1);
 				const percentage = Math.floor((100 / totalImages) * (index + 1));
 				this.numbersArr = [...this.numbersArr, min3Digits(percentage)];
 			});
@@ -167,13 +166,11 @@ export default {
 					this.percentageLoaded = percentage;
 				})
 			);
-
-
 		},
 	},
 
 	mounted() {
-		this.preload()
+		// this.preload()
 		this.getCurrentScreen()
 		this.initLenis()
 	}
