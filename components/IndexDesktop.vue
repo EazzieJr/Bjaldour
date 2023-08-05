@@ -11,7 +11,9 @@
 						Bjaldour
 					</h1>
 
-					<img src="/svg/arrow-down.svg" alt="">
+					<div class="OverflowDecoy">
+						<img src="/svg/arrow-down.svg" alt="">
+					</div>
 				</div>
 			</div>
 		</section>
@@ -326,6 +328,18 @@ export default {
 			const jelly = new JellyEffect();
 		},
 
+		initHero() {
+			const tl = gsap.timeline()
+
+			tl.to(".Hero .TextArrow h1, .Hero .TextArrow img", {
+				y: 0,
+				duration: 1,
+				ease: "power3.out",
+				stagger: 0.2,
+				delay: 1
+			})
+		},
+
 		animateSolutions() {
 			const clients = document.querySelector(".Clients")
 
@@ -511,6 +525,7 @@ export default {
 	},
 
 	mounted() {
+		this.initHero()
 		this.initJelly()
 		this.animateSolutions()
 		this.animateInsights()
@@ -535,14 +550,14 @@ export default {
 			}
 
 			.TextArrow {
-				@apply absolute bottom-0 p-5 pb-10 lg:px-[2.78vw] lg:pb-[5.56vw] w-full flex justify-between items-baseline;
+				@apply absolute bottom-0 px-5 mb-10 lg:px-[2.78vw] lg:mb-[5.56vw] w-full flex justify-between items-baseline overflow-hidden;
 
 				h1 {
-					@apply text-[17.78vw] font-semibold text-white tracking-[-0.025em] leading-[12.5vw];
+					@apply text-[17.78vw] font-semibold text-white tracking-[-0.025em] leading-[12.5vw] translate-y-full;
 				}
 
 				img {
-					@apply w-[5.13vw]
+					@apply w-[5.13vw] -translate-y-full
 				}
 			}
 		}

@@ -18,14 +18,20 @@
 			</div>
 		</div>
 		
-		<Navigation />
-		<nuxt/>
-		<Footer />
+		<main v-else>
+			<Navigation />
+			
+			<MenuButton />
+			
+			<nuxt/>
+			
+			<Footer />
+		</main>
 	</div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import Lenis from '@studio-freight/lenis'
 import { preloadImage } from '~/utils'
 import { gsap } from "gsap/dist/gsap"
@@ -56,10 +62,13 @@ export default {
 			],
 			numbersArr: [],
 			percentageLoaded: 0,
-			loaded: true
 		}
 	},
 
+	computed: {
+		...mapState(["loaded"])
+	},
+	
 	watch: {
 		percentageLoaded() {
 			gsap.to(".LoadingLine div", {
@@ -75,21 +84,25 @@ export default {
 			})
 
 			if (this.percentageLoaded === 100) {
-				gsap.to('.Loader', {
+				const tl = gsap.timeline({ onComplete: () => this.toggleLoadedState() })
+				
+				tl.to('.Loader', {
 					y: '-100%',
 					delay: 4,
 					duration: 1,
 					ease: 'power2.inOut',
-					onComplete: () => {
-						this.loaded = true
-					}
 				})
+
+				tl.to(".Loader .Percentages", {
+					yPercent: 100,
+					duration: 0.5
+				}, "-=0.5")
 			}
 		}
 	},
 	
 	methods: {
-		...mapMutations(['setIsMobile']),
+		...mapMutations(['setIsMobile', "toggleLoadedState"]),
 
 		getCurrentScreen() {
 			this.currentScreen = window.innerWidth
@@ -169,7 +182,7 @@ export default {
 
 <style lang="postcss" scoped>
 .Loader {
-	@apply fixed top-0 left-0 right-0 bottom-0 w-full h-[100svh] bg-white z-[1000] flex flex-col justify-between;
+	@apply fixed top-0 left-0 right-0 bottom-0 w-full h-[100svh] bg-white z-[1000] flex flex-col justify-between overflow-hidden;
 
 	.LoadingLine {
 		@apply h-5 lg:h-[1.36vw] w-full;

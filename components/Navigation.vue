@@ -75,6 +75,11 @@
 </template>
 
 <script>
+import { gsap } from "gsap/dist/gsap"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
 	data() {
 		return {
@@ -103,13 +108,44 @@ export default {
 				"LinkedIn",
 			]
 		}
+	},
+
+	methods: {
+		intiAnimations() {
+
+		},
+
+		scrollListen() {
+			const nav = document.querySelector("nav")
+			const navContainer = document.querySelector(".NavContainer")
+			
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: nav,
+					start: "+=" + nav.clientHeight * 2,
+					toggleActions: "play none none reverse"
+				}
+			})
+			
+			tl.to(navContainer, {
+				yPercent: -100,
+				duration: 1,
+				ease: "power3.inOut"
+			})
+		}
+	},
+
+	mounted() {
+		setTimeout(() => {
+			this.scrollListen()
+		}, 1000)
 	}
 }
 </script>
 
 <style lang="postcss" scoped>
 nav {
-	@apply p-5 lg:p-[2.78vw] md:pb-10 lg:pb-20 xl:pb-24 bg-white;
+	@apply sticky top-0 bg-white p-5 lg:p-[2.78vw] md:pb-[6.66vw] z-[1000];
 
 	.NavContainer {
 		.MobileView {
@@ -125,7 +161,7 @@ nav {
 		}
 
 		.DesktopView {
-			@apply hidden md:grid grid-cols-4;
+			@apply hidden md:grid grid-cols-11;
 
 			ul li, > div span, a {
 				@apply font-semibold lg:text-xl xl:text-2xl xl:leading-7 tracking-[-0.025em] block w-fit
@@ -135,8 +171,12 @@ nav {
 				@apply space-y-1
 			}
 
+			ul, .Reach {
+				@apply col-span-3
+			}
+
 			.Logo {
-				@apply text-right flex justify-end
+				@apply col-span-2
 			}
 		}
 	}
