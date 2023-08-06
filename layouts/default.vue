@@ -170,7 +170,7 @@ export default {
 	},
 
 	mounted() {
-		this.preload()
+		// this.preload()
 		this.getCurrentScreen()
 		this.initLenis()
 	}

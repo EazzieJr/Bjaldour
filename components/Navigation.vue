@@ -139,7 +139,7 @@ export default {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: nav,
-					start: "+=" + nav.clientHeight * 2,
+					start: "+=" + nav.clientHeight,
 					toggleActions: `play none none ${this.menuOpened ? 'none' : 'reverse'}`
 				}
 			})

@@ -2,11 +2,11 @@
 	<div class="ResearchDesktop">
 		<section class="Hero">
 			<h1>
-				<span>
+				<span class="OverflowDecoy one">
 					Research &
 				</span>
 
-				<span>
+				<span class="OverflowDecoy two">
 					Development
 				</span>
 			</h1>
@@ -159,7 +159,77 @@ export default {
 		}
 	},
 
+	methods: {
+		splitTexts(el) {
+			return el.innerText.split('')
+		},
+
+		animateHero() {
+			const textOne = document.querySelector("h1 span.one")
+			const textTwo = document.querySelector("h1 span.two")
+
+			const textOneArray = this.splitTexts(textOne)
+			const textTwoArray = this.splitTexts(textTwo)
+
+			textOne.innerHTML = ""
+			textTwo.innerHTML = ""
+
+			textOneArray.forEach((letter, index) => {
+				const span = document.createElement("span");
+				span.innerText = letter;
+				textOne.appendChild(span);
+
+				gsap.set(span, {
+					// opacity: 0,
+					yPercent: 100,
+					display: "block"
+				})
+			});
+
+			textTwoArray.forEach((letter, index) => {
+				const span = document.createElement("span");
+				span.innerText = letter;
+				textTwo.appendChild(span);
+
+				gsap.set(span, {
+					// opacity: 0,
+					yPercent: 100,
+					display: "block"
+				})
+			});
+
+			gsap.to(textOne.children, {
+				opacity: 1,
+				stagger: 0.05,
+				delay: 0.5,
+				yPercent: 0,
+				ease: "power3.out",
+				duration: 1
+			})
+			gsap.to(textTwo.children, {
+				opacity: 1,
+				stagger: 0.05,
+				delay: 0.55,
+				yPercent: 0,
+				ease: "power3.out",
+				duration: 1
+			})
+
+			// gsap.to(textOne.children, {
+			// 	scrollTrigger: {
+			// 		trigger: "nav",
+			// 		start: "top top",
+			// 		endTrigger: textOne,
+			// 		end: "bottom top",
+			// 		scrub: true,
+			// 		markers: true
+			// 	}, yPercent: -100, opacity: 0, stagger: 0.05
+			// })
+		}
+	},
+
 	mounted() {
+		this.animateHero()
 		ScrollTrigger.update()
 	}
 }
@@ -174,7 +244,7 @@ export default {
 			@apply font-semibold text-[24.86vw] leading-[80%] tracking-[-0.05em];
 
 			span {
-				@apply inline-block whitespace-nowrap
+				@apply inline-flex items-center whitespace-nowrap overflow-hidden
 			}
 		}
 	}
