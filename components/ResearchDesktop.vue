@@ -190,6 +190,7 @@ export default {
 			const textOne = document.querySelector("h1 span.one")
 			const textTwo = document.querySelector("h1 span.two")
 
+
 			this.splitTexts(textOne)
 			this.splitTexts(textTwo)
 
@@ -220,7 +221,7 @@ export default {
 					endTrigger: textOne,
 					end: "bottom top",
 					scrub: true,
-					markers: true
+					// markers: true
 				}, xPercent: -15
 			})
 
@@ -231,7 +232,7 @@ export default {
 					endTrigger: textOne,
 					end: "bottom top",
 					scrub: true,
-					markers: true
+					// markers: true
 				}, xPercent: 0
 			})
 		}
