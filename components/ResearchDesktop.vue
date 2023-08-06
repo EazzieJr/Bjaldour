@@ -2,13 +2,9 @@
 	<div class="ResearchDesktop">
 		<section class="Hero">
 			<h1>
-				<span class="OverflowDecoy one">
-					Research &
-				</span>
+				<span class="OverflowDecoy one whitespace-pre">Research &</span>
 
-				<span class="OverflowDecoy two">
-					Development
-				</span>
+				<span class="OverflowDecoy two">Development</span>
 			</h1>
 		</section>
 
@@ -118,10 +114,13 @@
 </template>
 
 <script>
-import {gsap} from 'gsap/dist/gsap'
+import { gsap } from 'gsap/dist/gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
+
+// import Splitting from "splitting"
+
 export default {
 	data() {
 		return {
@@ -161,42 +160,40 @@ export default {
 
 	methods: {
 		splitTexts(el) {
-			return el.innerText.split('')
+			const text = el
+			const textArray = text.innerHTML.split('')
+			text.innerHTML = ""
+			
+			if (textArray.includes("&")) {
+				textArray.splice(10, 14)
+			}
+			console.log(textArray)
+
+			// Removing possible "amp;" from the array
+
+			textArray.forEach((letter, index) => {
+				const span = document.createElement("span");
+				span.innerText = letter;
+				text.appendChild(span);
+
+				console.log(span)
+				gsap.set(span, {
+					// opacity: 0,
+					yPercent: 100,
+					display: "block"
+				})
+			});
+
 		},
 
 		animateHero() {
 			const textOne = document.querySelector("h1 span.one")
 			const textTwo = document.querySelector("h1 span.two")
 
-			const textOneArray = this.splitTexts(textOne)
-			const textTwoArray = this.splitTexts(textTwo)
+			this.splitTexts(textOne)
+			this.splitTexts(textTwo)
 
-			textOne.innerHTML = ""
-			textTwo.innerHTML = ""
-
-			textOneArray.forEach((letter, index) => {
-				const span = document.createElement("span");
-				span.innerText = letter;
-				textOne.appendChild(span);
-
-				gsap.set(span, {
-					// opacity: 0,
-					yPercent: 100,
-					display: "block"
-				})
-			});
-
-			textTwoArray.forEach((letter, index) => {
-				const span = document.createElement("span");
-				span.innerText = letter;
-				textTwo.appendChild(span);
-
-				gsap.set(span, {
-					// opacity: 0,
-					yPercent: 100,
-					display: "block"
-				})
-			});
+			gsap.set(textTwo, {xPercent: -25})
 
 			gsap.to(textOne.children, {
 				opacity: 1,
@@ -206,6 +203,7 @@ export default {
 				ease: "power3.out",
 				duration: 1
 			})
+
 			gsap.to(textTwo.children, {
 				opacity: 1,
 				stagger: 0.05,
@@ -215,16 +213,27 @@ export default {
 				duration: 1
 			})
 
-			// gsap.to(textOne.children, {
-			// 	scrollTrigger: {
-			// 		trigger: "nav",
-			// 		start: "top top",
-			// 		endTrigger: textOne,
-			// 		end: "bottom top",
-			// 		scrub: true,
-			// 		markers: true
-			// 	}, yPercent: -100, opacity: 0, stagger: 0.05
-			// })
+			gsap.to(textOne, {
+				scrollTrigger: {
+					trigger: "nav",
+					start: "top top",
+					endTrigger: textOne,
+					end: "bottom top",
+					scrub: true,
+					markers: true
+				}, xPercent: -15
+			})
+
+			gsap.to(textTwo, {
+				scrollTrigger: {
+					trigger: "nav",
+					start: "top top",
+					endTrigger: textOne,
+					end: "bottom top",
+					scrub: true,
+					markers: true
+				}, xPercent: 0
+			})
 		}
 	},
 
@@ -244,7 +253,7 @@ export default {
 			@apply font-semibold text-[24.86vw] leading-[80%] tracking-[-0.05em];
 
 			span {
-				@apply inline-flex items-center whitespace-nowrap overflow-hidden
+				@apply inline-flex items-center overflow-hidden
 			}
 		}
 	}
