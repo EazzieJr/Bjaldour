@@ -42,7 +42,9 @@
 					<div class="Texts">
 						<h2>
 							The leading AI company driving innovation through state-of-the-art AI, ML, and DL technologies
-							<span><img src="/svg/large-star.svg" alt=""></span>
+							<span class="Decoy">
+							</span>
+							<span class="Star"><img src="/svg/large-star.svg" alt=""></span>
 						</h2>
 
 						<p>
@@ -116,8 +118,9 @@
 <script>
 import { gsap } from 'gsap/dist/gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+import { TextPlugin } from 'gsap/dist/TextPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, TextPlugin)
 
 // import Splitting from "splitting"
 
@@ -235,12 +238,63 @@ export default {
 					// markers: true
 				}, xPercent: 0
 			})
+		},
+
+		aniamteAfterHero() {
+			const topSpan = document.querySelector(".AfterHero .Top .Texts span")
+			const bottomP = document.querySelector(".AfterHero .Top .Texts p")
+			
+			gsap.fromTo([topSpan, bottomP], {opacity: 0}, {
+				scrollTrigger: {
+					trigger: ".AfterHero .Top",
+					start: "top 80%",
+				}, opacity: 1, stagger: 0.2, ease: "power3.out", duration: 1
+			})
+
+			const videoAnimation = gsap.to(".AfterHero .Video", {
+				clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+				ease: "none"
+			})
+			const textAnimation = gsap.to(".AfterHero .Bottom .Texts h2 .Decoy", {
+				text: {
+					value: "The leading AI company driving innovation through state-of-the-art AI, ML, and DL technologies",
+					delimiter: " "
+				},
+				onComplete: () => {
+					gsap.to(".AfterHero .Bottom .Texts p", {
+						opacity: 1,
+						duration: 1.5,
+						ease: "power3.out"
+					})
+				},
+				ease: "none"
+			})
+
+			ScrollTrigger.create({
+				trigger: ".AfterHero .Video",
+				start: "center center",
+				end: "+=200%",
+				scrub: true,
+				pin: true,
+				animation: videoAnimation,
+			})
+
+			gsap.set(".AfterHero .Bottom .Texts p", {opacity: 0})
+			
+			ScrollTrigger.create({
+				trigger: ".AfterHero .Bottom .Texts h2",
+				start: "top bottom",
+				end: "bottom 70%",
+				scrub: true,
+				markers: true,
+				animation: textAnimation,
+			})
 		}
 	},
 
 	mounted() {
 		this.animateHero()
-		ScrollTrigger.update()
+		this.aniamteAfterHero()
 	}
 }
 </script>
@@ -292,7 +346,8 @@ export default {
 			}
 
 			.Video {
-				@apply px-5 lg:px-[2.78vw] mt-[12.5vw] mb-[9.72vw] relative h-[71.11vw] overflow-hidden;
+				@apply px-5 lg:px-[2.78vw] mt-[12.5vw] mb-[9.72vw] relative h-[100svh] overflow-hidden;
+				clip-path: polygon(15% 85%, 85% 85%, 85% 15%, 15% 15%);
 
 				img {
 					@apply w-full h-full object-cover object-center;
@@ -310,9 +365,13 @@ export default {
 					@apply space-y-[5.55vw] w-[54.51vw] mx-auto;
 
 					h2 {
-						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold max-w-[64.65vw] indent-[7vw];
+						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold max-w-[64.65vw] indent-[7vw] relative text-[#E2E3E5];
 
-						span {
+						.Decoy {
+							@apply absolute top-0 left-0 text-[#121212];
+						}
+
+						.Star {
 							@apply w-fit inline-block -mt-[5vw] ml-[2.5vw];
 							
 							img {
