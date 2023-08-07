@@ -321,7 +321,7 @@ export default {
 				start: "top bottom",
 				end: "bottom 70%",
 				scrub: true,
-				markers: true,
+				// markers: true,
 				animation: textAnimation,
 			})
 		},
