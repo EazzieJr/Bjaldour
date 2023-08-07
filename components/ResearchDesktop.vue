@@ -68,21 +68,41 @@
 		<section class="Projects">
 			<div class="Container">
 				<div class="Project">
-					<div class="Image">
-						<img :src="`/images/projects/${projects[current].name}-noise.webp`" alt="">
+					<div class="Images">
+						<div v-for="(project, index) in projects" :key="project.name"  :class="`Image ${index}`">
+							<img :src="`/images/projects/${project.name}-noise.webp`"  alt="">
+						</div>
 					</div>
 					
 					<div class="Overlay start">
-						<span :class="{'!text-black' : current === 1}">
-							{{ projects[current].text }}
-						</span>
-
-						<div class="InnerImage center">
-							<img :src="`/images/projects/${projects[current].name}.png`" alt="">
-							
-							<span>
-								{{ projects[current].name }}
+						<div class="OverflowDecoy">
+							<span class="ProjectDeat">
+								{{ currentText.deat }}
 							</span>
+						</div>
+
+						<div class="InnerImage">
+							<div class="Images">
+								<div class="Image">
+									<img :src="`/images/projects/${projects[2].name}.png`" alt="">
+								</div>
+
+								<div class="Image">
+									<img :src="`/images/projects/${projects[1].name}.png`" alt="">
+								</div>
+
+								<div class="Image">
+									<img :src="`/images/projects/${projects[0].name}.png`" alt="">
+								</div>
+							</div>
+							
+							<div class="Texts center">
+								<div class="OverflowDecoy">
+									<span class="Name">
+										{{ currentText.name }}
+									</span>
+								</div>
+							</div>
 						</div>
 
 						<div class="Slider">
@@ -119,8 +139,9 @@
 import { gsap } from 'gsap/dist/gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { TextPlugin } from 'gsap/dist/TextPlugin'
+import { Observer } from 'gsap/dist/Observer'
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin)
+gsap.registerPlugin(ScrollTrigger, TextPlugin, Observer)
 
 // import Splitting from "splitting"
 
@@ -157,7 +178,21 @@ export default {
 				},
 			],
 
-			current: 0
+			current: 0,
+			currentText: {
+				name: "casper",
+				deat: "Unleashing Intelligent Automation"
+			},
+		}
+	},
+
+	watch: {
+		current(newVal, oldVal) {
+			if (newVal > oldVal) {
+				this.next(newVal, oldVal)
+			} else {
+				this.previous(newVal, oldVal)
+			}
 		}
 	},
 
@@ -170,7 +205,7 @@ export default {
 			if (textArray.includes("&")) {
 				textArray.splice(10, 14)
 			}
-			console.log(textArray)
+			// console.log(textArray)
 
 			// Removing possible "amp;" from the array
 
@@ -179,7 +214,7 @@ export default {
 				span.innerText = letter;
 				text.appendChild(span);
 
-				console.log(span)
+				// console.log(span)
 				gsap.set(span, {
 					// opacity: 0,
 					yPercent: 100,
@@ -240,7 +275,7 @@ export default {
 			})
 		},
 
-		aniamteAfterHero() {
+		animateAfterHero() {
 			const topSpan = document.querySelector(".AfterHero .Top .Texts span")
 			const bottomP = document.querySelector(".AfterHero .Top .Texts p")
 			
@@ -289,12 +324,160 @@ export default {
 				markers: true,
 				animation: textAnimation,
 			})
+		},
+
+		animateProjects() {
+			ScrollTrigger.create({
+				trigger: ".Projects",
+				start: "center center",
+				end: "+=300%",
+				pin: true,
+				scrub: true,
+				onUpdate: ({ progress }) => {
+					if (progress < 0.33) {
+						this.current = 0
+					} else if (progress >= 0.33 && progress < 0.66) {
+						this.current = 1
+					} else if (progress >= 0.66) {
+						this.current = 2
+					}
+				}
+			})
+		},
+
+		next(newVal, oldVal) {
+			const tl = gsap.timeline({defaults: {ease: "power3.inOut", duration: 1.5}})
+
+			const previousSlide = document.querySelectorAll(`.Project .Images .Image`)[oldVal]
+			const currentSlide = document.querySelectorAll(`.Project .Images .Image`)[newVal]
+			const previousSlideSmall = document.querySelectorAll(`.Project .InnerImage .Image`)[2 - oldVal]
+			const currentSlideSmall = document.querySelectorAll(`.Project .InnerImage .Image`)[2 - newVal]
+
+			tl.to(previousSlide.firstChild, {
+				scaleY: 2,
+			})
+
+			tl.to(previousSlideSmall.firstChild, {
+				scaleY: 2,
+			}, "<")
+
+			tl.to(".Project > .Images", {
+				y: newVal == 1 ? -100 + "vh" : -200 + "vh",
+			}, "<")
+
+			tl.to(".Slider > .Position", {
+				y: newVal == 1 ? +100 + "%" : +200 + "%",	
+			}, "<")
+
+			tl.to(".Project .InnerImage .Images", {
+				y: newVal == 1 ? -26.87 + "vw" : +0 + "vw",
+			}, "<")
+
+			tl.to(".ProjectDeat", {
+				y: "-100%", duration: 0.8,
+				onComplete: () => {
+					this.currentText.deat = this.projects[newVal].text
+					gsap.set(".ProjectDeat", { y: "100%", color: newVal === 1 ? "black" : "white" })
+					gsap.to(".ProjectDeat", {
+						y: 0,
+						duration: 0.8
+					})
+				}
+			}, "<")
+			
+			tl.fromTo(currentSlide.firstChild, {scaleY: 2, duration: 0}, {
+				scaleY: 1,
+			}, "<")
+
+			tl.fromTo(currentSlideSmall.firstChild, {scaleY: 2, duration: 0}, {
+				scaleY: 1,
+			}, "<")
+
+			tl.to(".InnerImage .Name", {
+				y: "-100%", duration: 0.8,
+				onComplete: () => {
+					this.currentText.name = this.projects[newVal].name
+					gsap.set(".InnerImage .Name", { y: "100%" })
+					gsap.to(".InnerImage .Name", {
+						y: 0,
+						duration: 0.8
+					})
+				}
+			}, "<")
+		},
+
+		previous(newVal, oldVal) {
+			console.log("lmao")
+			const tl = gsap.timeline({ defaults: { ease: "power3.inOut", duration: 1.5 } })
+
+			const previousSlide = document.querySelectorAll(`.Project .Images .Image`)[oldVal]
+			const currentSlide = document.querySelectorAll(`.Project .Images .Image`)[newVal]
+			const previousSlideSmall = document.querySelectorAll(`.Project .InnerImage .Image`)[2 - oldVal]
+			const currentSlideSmall = document.querySelectorAll(`.Project .InnerImage .Image`)[2 - newVal]
+
+			tl.to(previousSlide.firstChild, {
+				scaleY: 2,
+			})
+
+			tl.to(previousSlideSmall.firstChild, {
+				scaleY: 2,
+			}, "<")
+
+			tl.to(".Project > .Images", {
+				y: newVal == 1 ? -100 + "vh" : +0 + "vh",
+
+			}, "<")
+
+			tl.to(".Slider > .Position", {
+				y: newVal == 1 ? +100 + "%" : -0 + "%",
+			}, "<")
+
+			tl.to(".Project .InnerImage .Images", {
+				y: newVal == 1 ? -26.87 + "vw" : -53.57 + "vw",
+			}, "<")
+
+			tl.to(".ProjectDeat", {
+				y: "100%", duration: 0.8,
+				onComplete: () => {
+					this.currentText.deat = this.projects[newVal].text
+					gsap.set(".ProjectDeat", { y: "-100%", color: newVal === 1 ? "black" : "white" })
+					gsap.to(".ProjectDeat", {
+						y: 0,
+						duration: 0.8
+					})
+				}
+			}, "<")
+
+			tl.to(".Project .InnerImage .Images", {
+				y: newVal == 1 ? -26.87 + "vw" : -53.57 + "vw",
+			}, "<")
+
+			tl.to(currentSlide.firstChild, {
+				scaleY: 1,
+			}, "<")
+
+			tl.to(currentSlideSmall.firstChild, {
+				scaleY: 1,
+			}, "<")
+
+			tl.to(".InnerImage .Name", {
+				y: "100%", duration: 0.8,
+				onComplete: () => {
+					this.currentText.name = this.projects[newVal].name
+					gsap.set(".InnerImage .Name", {y: "-100%"})
+					gsap.to(".InnerImage .Name", {
+						y: 0,
+						duration: 0.8
+					})
+				}
+			}, "<")
 		}
 	},
 
 	mounted() {
 		this.animateHero()
-		this.aniamteAfterHero()
+		this.animateAfterHero()
+		this.animateProjects()
 	}
 }
 </script>
@@ -406,32 +589,56 @@ export default {
 
 	.Projects {
 		.Project {
-			@apply relative;
+			@apply relative h-[100svh] overflow-hidden;
 			
-			.Image {
-				@apply h-[100svh] overflow-hidden;
+			> .Images {
+				@apply h-[300svh];
 
-				img {
-					@apply w-full h-full object-cover object-center;
+				.Image {
+					@apply h-[100svh] overflow-hidden;
+					
+					img {
+						@apply w-full;
+					}
 				}
 			}
 
 			.Overlay {
 				@apply absolute top-0 left-0 w-full h-full pl-[5.55vw];
 
-				> span {
-					@apply text-[3.33vw] font-semibold tracking-[-0.025em] leading-[100%] block max-w-[22.7vw] text-white
+				.OverflowDecoy {
+					@apply overflow-hidden;
+					
+					 span {
+						@apply text-[3.33vw] font-semibold tracking-[-0.025em] leading-[100%] block max-w-[22.7vw] text-white
+					}
 				}
 
 				.InnerImage {
 					@apply relative w-[41.11vw] h-[26.87vw] overflow-hidden bg-[#121212] ml-[1.11vw];
 
-					img {
-						@apply object-cover object-center w-full h-full;
+					.Images {
+						@apply -translate-y-[53.74vw];
+
+						.Image {
+							@apply w-[41.11vw] h-[26.87vw] overflow-hidden;
+
+							img {
+								@apply object-cover object-center w-full h-full;
+							}
+						}
 					}
 
-					span {
-						@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold max-w-[64.65vw] mx-auto text-center absolute text-white capitalize;
+					.Texts {
+						@apply overflow-hidden absolute top-0 left-0 w-full h-full;
+
+						.OverflowDecoy {
+							@apply overflow-hidden;
+
+							span {
+								@apply block text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold max-w-[64.65vw] mx-auto text-center text-white capitalize;
+							}
+						}
 					}
 				}
 
