@@ -345,6 +345,18 @@ export default {
 			})
 		},
 
+		animateLittleDeats() {
+			const topSpan = document.querySelector(".LittleDeats .Texts span")
+			const bottomP = document.querySelector(".LittleDeats .Texts p")
+
+			gsap.fromTo([topSpan, bottomP], { opacity: 0 }, {
+				scrollTrigger: {
+					trigger: ".LittleDeats",
+					start: "top 80%",
+				}, opacity: 1.6, stagger: 0.2, ease: "power3.inOut", duration: 1
+			})
+		},
+		
 		next(newVal, oldVal) {
 			const tl = gsap.timeline({defaults: {ease: "power3.inOut", duration: 1.5}})
 
@@ -478,6 +490,7 @@ export default {
 		this.animateHero()
 		this.animateAfterHero()
 		this.animateProjects()
+		this.animateLittleDeats()
 	}
 }
 </script>
