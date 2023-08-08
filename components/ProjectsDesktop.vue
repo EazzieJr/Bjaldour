@@ -63,6 +63,11 @@
 </template>
 
 <script>
+import { gsap } from "gsap/dist/gsap"
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
 	data() {
 		return {
@@ -107,6 +112,48 @@ export default {
 				"brooklyn",
 			]
 		}
+	},
+
+	methods: {
+		animateHero() {
+			const result = this.$splitting({ target: ".Hero h1", by: "lines" });
+			const h1 = document.querySelector(".ProjectsDesktop h1")
+
+			console.log(result)
+			result[0].lines.forEach(line => {
+				// console.log(line)
+				const span = document.createElement("span")
+
+				line.forEach(word => {
+					const whitespace = document.createElement("span")
+					whitespace.innerHTML = " "
+
+					span.appendChild(word)
+					span.appendChild(whitespace)
+					// console.log(span, word.innerHTML)
+				})
+
+				// console.log("span", span)
+				h1.appendChild(span)
+
+				gsap.set(span, {overflow: "hidden"})
+
+				gsap.fromTo(".word", {
+					y: "100%"
+				}, {
+					y: 0,
+					ease: "power3.inOut",
+					stagger: 0.1,
+					delay: 1
+				})
+			})
+			// console.log(result[0].lines);
+
+		}
+	},
+
+	mounted() {
+		this.animateHero()
 	}
 }
 </script>
