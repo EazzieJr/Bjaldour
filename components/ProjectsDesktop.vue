@@ -116,11 +116,13 @@ export default {
 
 	methods: {
 		animateHero() {
-			const result = this.$splitting({ target: ".Hero h1", by: "lines" });
+			const splittedH1 = this.$splitting({ target: ".Hero h1", by: "lines" });
+			const splittedHerotext = this.$splitting({ target: ".Hero p", by: "lines" });
 			const h1 = document.querySelector(".ProjectsDesktop h1")
+			const heroText = document.querySelector(".ProjectsDesktop .Hero p")
+			const tl = gsap.timeline()
 
-			console.log(result)
-			result[0].lines.forEach(line => {
+			splittedH1[0].lines.forEach(line => {
 				// console.log(line)
 				const span = document.createElement("span")
 
@@ -133,22 +135,47 @@ export default {
 					// console.log(span, word.innerHTML)
 				})
 
-				// console.log("span", span)
 				h1.appendChild(span)
 
-				gsap.set(span, {overflow: "hidden"})
+				gsap.set(span, { overflow: "hidden", display: "block" })
+				gsap.set(".word", {y: "100%"})
 
-				gsap.fromTo(".word", {
-					y: "100%"
-				}, {
-					y: 0,
-					ease: "power3.inOut",
-					stagger: 0.1,
-					delay: 1
-				})
 			})
-			// console.log(result[0].lines);
 
+			splittedHerotext[0].lines.forEach(line => {
+				// console.log(line)
+				const span = document.createElement("span")
+
+				line.forEach(word => {
+					const whitespace = document.createElement("span")
+					whitespace.innerHTML = " "
+
+					span.appendChild(word)
+					span.appendChild(whitespace)
+					// console.log(span, word.innerHTML)
+				})
+
+				heroText.appendChild(span)
+
+				gsap.set(span, { overflow: "hidden", display: "block" })
+				gsap.set(".Hero p .word", { y: "100%", opacity: 0 })
+			})
+
+			tl.to(splittedH1[0].lines, {
+				y: 0,
+				ease: "power3.inOut",
+				duration: 1.6,
+				stagger: 0.05
+			})
+
+			tl.to(splittedHerotext[0].lines, {
+				y: 0,
+				ease: "power3.inOut",
+				duration: 1,
+				stagger: 0.01,
+				opacity: 1
+			}, 0.5)
+			// console.log(result[0].lines);
 		}
 	},
 
