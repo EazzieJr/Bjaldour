@@ -378,7 +378,7 @@ export default {
 				scrollTrigger: {
 					trigger: ".Solutions .Top .top",
 					start: "top 70%",
-					toggleActions: "play none none reset"
+					// toggleActions: "play none none reset"
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
@@ -386,7 +386,7 @@ export default {
 				scrollTrigger: {
 					trigger: ".Solutions .Top .mid",
 					start: "top 70%",
-					toggleActions: "play none none reset"
+					// toggleActions: "play none none reset"
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
@@ -394,7 +394,7 @@ export default {
 				scrollTrigger: {
 					trigger: ".Solutions .Top .bottom",
 					start: "top 70%",
-					toggleActions: "play none none reset"
+					// toggleActions: "play none none reset"
 				}, opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.2
 			})
 
@@ -402,7 +402,7 @@ export default {
 				scrollTrigger: {
 					trigger: ".Solutions .Bottom",
 					start: "top 70%",
-					toggleActions: "play none none reset"
+					// toggleActions: "play none none reset"
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
