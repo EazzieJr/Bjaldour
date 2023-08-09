@@ -1,6 +1,6 @@
 export const state = () => ({
 	isMobile: false,
-	loaded: true,
+	loaded: false,
 	menuOpened: false
 })
 
