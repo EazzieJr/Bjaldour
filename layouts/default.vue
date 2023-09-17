@@ -62,6 +62,7 @@ export default {
 			],
 			numbersArr: [],
 			percentageLoaded: 0,
+			lenis: null,
 		}
 	},
 
@@ -125,14 +126,15 @@ export default {
 		}, 
 
 		initLenis() {
-			const lenis = new Lenis({duration: 2})
+			this.lenis = new Lenis({ duration: 2 })
+			console.log(this.lenis)
 
-			lenis.on('scroll', (e) => {
+			this.lenis.on('scroll', (e) => {
 				// console.log(e)
 			})
 
-			function raf(time) {
-				lenis.raf(time)
+			const raf = (time) => {
+				this.lenis.raf(time)
 				requestAnimationFrame(raf)
 			}
 
@@ -170,7 +172,7 @@ export default {
 	},
 
 	mounted() {
-		this.preload()
+		// this.preload()
 		this.getCurrentScreen()
 		this.initLenis()
 	}
@@ -205,5 +207,29 @@ export default {
 			}
 		}
 	}
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 </style>

@@ -38,7 +38,7 @@ export default {
 			
 			gsap.to(nav, {
 				yPercent: 0,
-				duration: 1,
+				// duration: 1,
 			})
 
 			gsap.to(menuButton, {
@@ -52,12 +52,14 @@ export default {
 			
 			gsap.to(nav, {
 				yPercent: -100,
-				duration: 1,
+				duration: 0.5,
+				ease: "power4.inOut"
 			})
 
 			gsap.to(menuButton, {
 				y: 0,
-				delay: 0.5
+				delay: 0.25,
+				ease: "power4.inOut"
 			})
 		}
 	}
@@ -67,10 +69,10 @@ export default {
 <style lang="postcss" scoped>
 
 .MenuButton {
-	@apply fixed right-5 top-5 lg:right-[2.78vw] lg:top-[2.78vw] z-[999] overflow-hidden;
+	@apply fixed right-5 top-5 lg:right-[2.78vw] lg:top-[2.78vw] z-[999] overflow-hidden mix-blend-exclusion invert;
 
 	button {
-		@apply space-x-2 md:space-x-[0.55vw] translate-y-full;
+		@apply space-x-2 md:space-x-[0.55vw] translate-y-full text-black;
 
 		span {
 			@apply font-semibold md:text-[1.66vw] tracking-[-0.025em]

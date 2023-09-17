@@ -147,13 +147,13 @@ export default {
 			
 			tl.to(nav, {
 				yPercent: -100,
-				duration: 1,
-				ease: "power3.inOut"
+				// duration: 1,
+				ease: "power4.inOut"
 			})
 
 			tl.to(menuButton, {
 				y: 0,
-				ease: "power3.inOut"
+				ease: "power4.inOut"
 			}, 0.5)
 		}
 	},
