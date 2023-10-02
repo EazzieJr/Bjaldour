@@ -360,16 +360,13 @@ export default {
 			const wrapper = document.querySelector("#OverlayProject")
 			this.lenis = new Lenis({ duration: 2, wrapper })
 
-			this.lenis.on('scroll', (e) => {
-				// console.log(e)
+			this.lenis.on('scroll', ScrollTrigger.update)
+
+			gsap.ticker.add((time) => {
+				this.lenis.raf(time * 1000)
 			})
 
-			const raf = (time) => {
-				this.lenis.raf(time)
-				requestAnimationFrame(raf)
-			}
-
-			requestAnimationFrame(raf)
+			gsap.ticker.lagSmoothing(0)
 		},
 
 		animateHero() {

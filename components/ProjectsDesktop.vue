@@ -270,7 +270,7 @@ export default {
 		},
 
 		initModalAnimations() {
-			this.initLenis()
+			// this.initLenis()
 			this.animateModalHero()
 			this.animateModalAfterHero()
 			this.animateModalChallenges()
