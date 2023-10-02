@@ -130,7 +130,7 @@ export default {
 			console.log(this.lenis)
 
 			this.lenis.on('scroll', (e) => {
-				// console.log(e)
+				// console.log('lele')
 			})
 
 			const raf = (time) => {

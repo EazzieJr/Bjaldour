@@ -270,6 +270,7 @@ import Lenis from '@studio-freight/lenis'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Flip } from "gsap/dist/Flip";
 
+gsap.registerPlugin(ScrollTrigger, Flip, { performance: true })
 export default {
 	props: {
 		data: Object,
@@ -406,8 +407,8 @@ export default {
 					start: "top 70%",
 					end: "bottom",
 					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
+					// scroller: "#OverlayProject",
+					// toggleActions: "play none none reset"
 				}
 			})
 
@@ -427,7 +428,7 @@ export default {
 					start: "bottom bottom",
 					// end: "bottom",
 					markers: true,
-					scroller: "#OverlayProject",
+					// scroller: "#OverlayProject",
 					scrub: true
 				}, defaults: { ease: "none" }
 			})
@@ -438,8 +439,8 @@ export default {
 					start: "top 70%",
 					end: "bottom",
 					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
+					// scroller: "#OverlayProject",
+					// toggleActions: "play none none reset"
 				},
 				opacity: 1, duration: 1, ease: "power3.in", stagger: "0.2"
 			})
@@ -464,8 +465,8 @@ export default {
 					start: "top 70%",
 					end: "bottom",
 					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
+					// scroller: "#OverlayProject",
+					// toggleActions: "play none none reset"
 				},
 				opacity: 1, duration: 1.5, ease: "power3.out"
 			})
@@ -476,8 +477,8 @@ export default {
 					start: "top 70%",
 					end: "bottom",
 					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
+					// scroller: "#OverlayProject",
+					// toggleActions: "play none none reset"
 				},
 				opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.2
 			})
@@ -490,7 +491,7 @@ export default {
 					start: "center center",
 					end: "+=200%",
 					scrub: true,
-					scroller: "#OverlayProject",
+					// scroller: "#OverlayProject",
 					pin: true
 				}, clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)", ease: "none"
 			})
@@ -533,6 +534,11 @@ export default {
 		this.initLenis()
 
 		setTimeout(() => {
+			ScrollTrigger.defaults({
+				scroller: "#OverlayProject",
+				toggleActions: "play none none reset"
+			})
+
 			this.animateHero()
 			this.animateModalAfterHero()
 			this.animateModalChallenges()
