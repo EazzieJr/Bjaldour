@@ -26,7 +26,7 @@
 					</div>
 				</div>
 
-				<div class="Bottom Tiles">
+				<div class="Bottom Grid">
 					<!-- <div class="Anchor"></div> -->
 					<div v-for="(project, index) in projects" :key="index" class="Project" @click="openProject(index)">
 						<div class="Image">
@@ -572,7 +572,7 @@ export default {
 				}
 
 				&.Grid {
-					@apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw];
+					@apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw] h-fit;
 
 					.Project {
 						@apply space-y-[1.04vw];
@@ -672,6 +672,14 @@ export default {
 								@apply w-full h-[36.11vw]
 							}
 						}
+					}
+				}
+
+				&.Stack {
+					@apply h-[134.93vw];
+					
+					> div {
+						@apply absolute top-0 left-0
 					}
 				}
 			}
