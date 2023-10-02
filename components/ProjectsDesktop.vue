@@ -16,7 +16,7 @@
 			<div class="Container">
 				<div class="Top between">
 					<div class="Tabs start">
-						<button v-for="display in displays" :key="display" class="Display" :class="{'active': display === currentDisplay}">
+						<button v-for="display in displays" :key="display" class="Display" :class="{'active': display === currentDisplay}" @click="changeDisplay(display)">
 							{{ display }}
 						</button>
 					</div>
@@ -26,7 +26,8 @@
 					</div>
 				</div>
 
-				<div class="Bottom">
+				<div class="Bottom Tiles">
+					<!-- <div class="Anchor"></div> -->
 					<div v-for="(project, index) in projects" :key="index" class="Project" @click="openProject(index)">
 						<div class="Image">
 							<img class="w-full h-full" :src="`/images/projects/${index}.png`" alt="">
@@ -123,7 +124,9 @@ export default {
 				deat: null,
 				smallImage: null,
 				bigImage: null
-			}
+			},
+
+			displayAnimating: false
 		}
 	},
 
@@ -397,6 +400,98 @@ export default {
 			})
 		},
 
+		changeDisplay(display) {
+			if (this.displayAnimating) return
+			this.displayAnimating = true
+			this.currentDisplay = display
+
+			const anchor = document.querySelector(".Anchor")
+			const projects = document.querySelectorAll(".Project")
+			const projectsContainer = document.querySelector(".AllProjects .Bottom")
+			const state = Flip.getState(projects)
+
+			projectsContainer.style.height = `${projectsContainer.offsetHeight}px`
+
+			projects.forEach((el, index) => {
+				gsap.to(el.lastChild, {
+					opacity: 0,
+					duration: 0.5,
+					ease: "power4.inOut",
+					delay: 0.1 * index
+				})
+				anchor.appendChild(el)
+			})
+
+			if(display === "grid") {
+				Flip.from(state, {
+					duration: 1.25,
+					ease: "power4.inOut",
+					stagger: 0.05,
+					onComplete: () => {
+						// Append each project into a new random position making sure no 2 projects are in the same position or overlapping
+						const projectsContainer = document.getElementById('projects-container'); // Replace with your container element
+
+						const projectElements = Array.from(projectsContainer.children);
+
+						const randomPositions = [];
+						const maxTries = 10; // Maximum attempts to find a non-overlapping position
+
+						projectElements.forEach((el, index) => {
+							let tries = 0;
+
+							while (tries < maxTries) {
+								const randomX = Math.floor(Math.random() * (window.innerWidth - el.offsetWidth));
+								const randomY = Math.floor(Math.random() * (window.innerHeight - el.offsetHeight));
+								const overlapping = randomPositions.some((position) => {
+									return (
+										randomX < position.x + el.offsetWidth &&
+										randomX + el.offsetWidth > position.x &&
+										randomY < position.y + el.offsetHeight &&
+										randomY + el.offsetHeight > position.y
+									);
+								});
+
+								if (!overlapping) {
+									randomPositions.push({ x: randomX, y: randomY });
+									gsap.set(el, { x: randomX, y: randomY });
+									break;
+								}
+
+								tries++;
+							}
+
+							// If maximum attempts are reached and no non-overlapping position is found, place it at a default position.
+							if (tries === maxTries) {
+								gsap.set(el, { x: 0, y: 0 });
+							}
+						});
+					}
+				})
+			} else {
+				Flip.from(state, {
+					duration: 1.25,
+					ease: "power4.inOut",
+					stagger: 0.05,
+					absolute: true,
+					onComplete: () => {
+						// Append each project into a new random position making sure no 2 projects are in the same position or overlapping
+						projects.forEach((el, index) => {
+							const randomX = Math.floor(Math.random() * (window.innerWidth - el.offsetWidth))
+							const randomY = Math.floor(Math.random() * (window.innerHeight - el.offsetHeight))
+
+							gsap.to(el, {
+								x: randomX,
+								y: randomY,
+							})
+
+							// projectsContainer.appendChild(el)
+							this.displayAnimating = false
+						})
+					}
+				})
+			}
+		},
+
 		initLenis() {
 			const wrapper = document.querySelector("#OverlayProject")
 			this.lenis = new Lenis({ duration: 2, wrapper, lerp: 1 })
@@ -466,25 +561,116 @@ export default {
 			}
 
 			.Bottom {
-				@apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw];
+				@apply relative w-full;
 
-				.Project {
-					@apply space-y-[1.04vw];
-					clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+				.Anchor {
+					@apply absolute top-0 left-0 z-0;
 
-					.Image {
-						@apply overflow-hidden w-[30.55vw] h-[36.11vw];
+					> div {
+						@apply absolute top-0 left-0
+					}
+				}
 
-						img {
-							@apply w-full;
+				&.Grid {
+					@apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw];
+
+					.Project {
+						@apply space-y-[1.04vw];
+						clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+						.Image {
+							@apply overflow-hidden w-[30.55vw] h-[36.11vw];
+
+							img {
+								@apply w-full;
+							}
+						}
+
+						.Text {
+							@apply pl-[4.58vw];
+
+							p {
+								@apply text-[1.67vw]
+							}
 						}
 					}
+				}
 
-					.Text {
-						@apply pl-[4.58vw];
+				&.Tiles {
+					@apply relative h-[196.11vw];
 
-						p {
-							@apply text-[1.67vw]
+					.Project {
+						@apply space-y-[1.04vw] absolute;
+						/* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+
+						.Image {
+							/* @apply overflow-hidden w-[30.55vw] h-[36.11vw]; */
+
+							img {
+								@apply w-full object-cover object-center;
+							}
+						}
+
+						.Text {
+							p {
+								@apply text-[1.67vw]
+							}
+						}
+
+						&:nth-child(1) {
+							@apply -top-[17.98vw] left-[16.80vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[38.19vw]
+							}
+						}
+
+						&:nth-child(2) {
+							@apply -top-[2.5vw] left-[47.36vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
+						}
+
+						&:nth-child(3) {
+							@apply top-[32.91vw] left-[5.83vw] w-[25.97vw];
+							
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
+						}
+
+						&:nth-child(4) {
+							@apply top-[43.19vw] left-[66.66vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
+						}
+
+						&:nth-child(5) {
+							@apply top-[79.30vw] left-[0vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
+						}
+
+						&:nth-child(6) {
+							@apply top-[107.5vw] left-[41.66vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
+						}
+
+						&:nth-child(7) {
+							@apply top-[137.77vw] left-[10.55vw] w-[25.97vw];
+
+							.Image {
+								@apply w-full h-[36.11vw]
+							}
 						}
 					}
 				}
