@@ -221,13 +221,11 @@ export default {
 					display: "block"
 				})
 			});
-
 		},
 
 		animateHero() {
 			const textOne = document.querySelector("h1 span.one")
 			const textTwo = document.querySelector("h1 span.two")
-
 
 			this.splitTexts(textOne)
 			this.splitTexts(textTwo)
