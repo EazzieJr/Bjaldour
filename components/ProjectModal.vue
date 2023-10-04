@@ -188,9 +188,11 @@
 					<Tag text="Solution" white />
 	
 					<div class="Content">
-						<h4>
-							Revolutionize Your Business with Our AI Solutions
-						</h4>
+						<div class="TextAnim">
+							<h4>
+								Revolutionize Your Business with Our AI Solutions
+							</h4>
+						</div>
 	
 						<div class="Top">
 							<div class="Texts">
@@ -212,7 +214,7 @@
 								</div>
 	
 								<div class="Container">
-									<div v-for="(solution, index) in solutions" :key="index">
+									<div class="Sol" v-for="(solution, index) in solutions" :key="index">
 										<span>
 											{{ solution.title }}
 										</span>
@@ -528,6 +530,77 @@ export default {
 					stagger: 0.2
 				})
 			})
+
+			/* Animate the thingy section */
+			gsap.to(".Thingy h3", {
+				scrollTrigger: {
+					trigger: ".Thingy",
+					start: "top bottom",
+					end: "bottom top",
+					scrub: true,
+					markers: true
+				},
+				
+				x: "-40vw", ease: "none"
+			})
+		},
+
+		animateSolutions() {
+			const solutions = document.querySelectorAll(".Sol")
+			const images = document.querySelectorAll(".Solution img")
+
+			gsap.fromTo(".Solution h4", {
+				y: "100%"
+			}, {
+				scrollTrigger: {
+					trigger: ".Solution .Content > .TextAnim",
+					start: "top 80%"
+				},
+				y: 0,
+				ease: "power3.out",
+				duration: 1
+			})
+
+			gsap.to(".Solution .Top .Texts span, .Solution .Top .Texts p", {
+				scrollTrigger: {
+					trigger: ".Solution .Top .Texts",
+					start: "top 80%"
+				},
+				opacity: 1,
+				ease: "power3.in",
+				duration: 1,
+				stagger: 0.2
+			})
+
+			solutions.forEach(el => {
+				gsap.fromTo(el.children, {
+					opacity: 0
+				}, {
+					scrollTrigger: {
+						trigger: el,
+						start: "top 80%"
+					},
+					opacity: 1,
+					ease: "power3.in",
+					duration: 1,
+					stagger: 0.2
+				})
+			})
+
+			images.forEach(el => {
+				gsap.to(el, {
+					scrollTrigger: {
+						trigger: el,
+						start: "top bottom",
+						end: "+=100%",
+						scrub: true
+					},
+					y: "20vw",
+					ease: "power3.in",
+					duration: 1,
+					stagger: 0.2
+				})
+			})
 		},
 
 		splitAnimateTextLines(el) {
@@ -578,6 +651,7 @@ export default {
 			this.animateModalObjectives()
 			this.animateModalEngine()
 			this.animateApproach()
+			this.animateSolutions()
 		}, 100)
 	}
 }
@@ -827,11 +901,11 @@ export default {
 						@apply space-y-[2vw] ml-[32.5vw] max-w-[54.16vw];
 
 						span {
-							@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+							@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] opacity-0;
 						}
 
 						p {
-							@apply block lg:text-[1.66vw] !leading-[140%]
+							@apply block lg:text-[1.66vw] !leading-[140%] opacity-0
 						}
 					}
 
