@@ -1,6 +1,6 @@
 <template>
 	<div class="Modal" id="OverlayProject">
-		<div>
+		<div class="">
 			<Section class="Hero center">
 				<div class="BigImage">
 					<img :src="data.bigImage" alt="">
@@ -124,15 +124,17 @@
 					<Tag text="Approach" />
 	
 					<div class="Content">
-						<span>
-							Our approach involved analyzing historical data to identify patterns and developing a machine learning model
-							for optimized route planning, fuel consumption estimation, and predictive maintenance. Real-time monitoring
-							and integration were implemented to leverage live data sources.
-						</span>
+						<div class="TextAnim">
+							<span>
+								Our approach involved analyzing historical data to identify patterns and developing a machine learning model
+								for optimized route planning, fuel consumption estimation, and predictive maintenance. Real-time monitoring
+								and integration were implemented to leverage live data sources.
+							</span>
+						</div>
 	
 						<div class="Approaches">
 							<div class="Left">
-								<div v-for="approach in approaches.slice(0, 2)" :key="approach.title" class="">
+								<div v-for="approach in approaches.slice(0, 2)" :key="approach.title" class="App">
 									<span>
 										{{ approach.title }}
 									</span>
@@ -146,7 +148,7 @@
 							</div>
 	
 							<div class="Right">
-								<div v-for="approach in approaches.slice(2, 4)" :key="approach.title" class="">
+								<div v-for="approach in approaches.slice(2, 4)" :key="approach.title" class="App">
 									<span>
 										{{ approach.title }}
 									</span>
@@ -361,13 +363,16 @@ export default {
 			const wrapper = document.querySelector("#OverlayProject")
 			this.lenis = new Lenis({ duration: 2, wrapper })
 
-			this.lenis.on('scroll', ScrollTrigger.update)
-
-			gsap.ticker.add((time) => {
-				this.lenis.raf(time * 1000)
+			this.lenis.on('scroll', (e) => {
+				// console.log("Eiii")
 			})
 
-			gsap.ticker.lagSmoothing(0)
+			const raf = (time) => {
+				this.lenis.raf(time)
+				requestAnimationFrame(raf)
+			}
+
+			requestAnimationFrame(raf)
 		},
 
 		animateHero() {
@@ -412,8 +417,8 @@ export default {
 				}
 			})
 
-			tl.fromTo(".AfterHero .Texts span, .AfterHero .Texts p", { yPercent: 100 }, {
-				yPercent: 0, duration: 1, ease: "power3.out"
+			tl.fromTo(".AfterHero .Texts span, .AfterHero .Texts p", { yPercent: 150 }, {
+				yPercent: 0, duration: 1.5, ease: "power3.out"
 			})
 
 			tl.to(".AfterHero .Image", {
@@ -497,6 +502,34 @@ export default {
 			})
 		},
 
+		animateApproach() {
+			const approaches = document.querySelectorAll(".Approaches .App")
+			
+			gsap.fromTo(".Approach .Content > .TextAnim span", {
+				y: "100%"
+			}, {
+				scrollTrigger: {
+					trigger: ".Approach .Content",
+					start: "top 70%",
+					markers: true
+				}, y: 0, duration: 1, ease: "power3.inOut"
+			})
+
+			approaches.forEach((el, index) => {
+				console.log(el.firstChild, el.lastChild)
+				gsap.to(el.children, {
+					scrollTrigger: {
+						trigger: el,
+						start: "top 80%"
+					},					
+					opacity: 1,
+					ease: "power3.in",
+					duration: 1,
+					stagger: 0.2
+				})
+			})
+		},
+
 		splitAnimateTextLines(el) {
 			const splittedText = this.$splitting({ target: el, by: "lines" });
 			const target = document.querySelector(el)
@@ -544,6 +577,7 @@ export default {
 			this.animateModalChallenges()
 			this.animateModalObjectives()
 			this.animateModalEngine()
+			this.animateApproach()
 		}, 100)
 	}
 }
@@ -625,80 +659,79 @@ export default {
 			}
 		}
 
-	.Challenges {
-		@apply pt-[11.11vw] px-[2.78vw] bg-white;
+		.Challenges {
+			@apply pt-[11.11vw] px-[2.78vw] bg-white;
 
-		.Container {
-			@apply flex justify-between items-start w-[86.45vw];
+			.Container {
+				@apply flex justify-between items-start w-[86.45vw];
 
-			.Content {
-				@apply space-y-[8.33vw] w-[54.51vw];
+				.Content {
+					@apply space-y-[8.33vw] w-[54.51vw];
 
-				.Texts {
-					@apply space-y-[2vw];
+					.Texts {
+						@apply space-y-[2vw];
 
-					span {
-						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+						span {
+							@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+						}
+
+						p {
+							@apply block lg:text-[1.66vw] !leading-[140%]
+						}
 					}
 
-					p {
-						@apply block lg:text-[1.66vw] !leading-[140%]
-					}
-				}
-
-				.Images {
-					@apply flex items-end;
-					
-					img:nth-child(1) {
-						@apply w-[20.83vw] shrink-0 h-auto
-					}
-					img:nth-child(2) {
-						@apply w-[18.54vw] shrink-0 h-auto ml-[4.16vw]
-					}
-					img:nth-child(3) {
-						@apply w-[8.33vw] shrink-0 h-auto -ml-[1.5vw] -mb-[6.25vw]
+					.Images {
+						@apply flex items-end;
+						
+						img:nth-child(1) {
+							@apply w-[20.83vw] shrink-0 h-auto
+						}
+						img:nth-child(2) {
+							@apply w-[18.54vw] shrink-0 h-auto ml-[4.16vw]
+						}
+						img:nth-child(3) {
+							@apply w-[8.33vw] shrink-0 h-auto -ml-[1.5vw] -mb-[6.25vw]
+						}
 					}
 				}
 			}
 		}
-	}
 
-	.Objectives {
-		@apply py-[17.63vw] px-[2.78vw] bg-white;
+		.Objectives {
+			@apply py-[17.63vw] px-[2.78vw] bg-white;
 
-		.Container {
-			@apply flex justify-start items-start space-x-[10.69vw] w-[86.45vw];
+			.Container {
+				@apply flex justify-start items-start space-x-[10.69vw] w-[86.45vw];
 
-			.Content {
-				@apply space-y-[2.78vw] w-[51.25vw];
+				.Content {
+					@apply space-y-[2.78vw] w-[51.25vw];
 
-				.Texts {
-					@apply space-y-[2.78vw];
+					.Texts {
+						@apply space-y-[2.78vw];
 
-					> span {
-						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
-					}
+						> span {
+							@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+						}
 
-					ul {
-						@apply mt-[2.78vw];
+						ul {
+							@apply mt-[2.78vw];
 
-						li {
-							@apply flex justify-start items-start space-x-[1.73vw] py-[2.78vw] border-t border-[#CCCCCC];
+							li {
+								@apply flex justify-start items-start space-x-[1.73vw] py-[2.78vw] border-t border-[#CCCCCC];
 
-							img {
-								@apply w-[1.11vw] mt-1;
-							}
+								img {
+									@apply w-[1.11vw] mt-1;
+								}
 
-							p {
-								@apply block lg:text-[1.66vw] !leading-[140%]
+								p {
+									@apply block lg:text-[1.66vw] !leading-[140%]
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-	}
-
 
 		.Engine {
 			@apply mx-[2.78vw] relative h-[100svh] overflow-hidden bg-white;
@@ -734,9 +767,8 @@ export default {
 				.Content {
 					@apply w-[70.48vw];
 
-					
-					> span {
-						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+					.TextAnim span {
+						@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 					}
 
 					.Approaches {
@@ -749,11 +781,15 @@ export default {
 								@apply space-y-[2vw];
 
 								span {
-									@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium						
+									@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium opacity-0			
 								}
 
-								p {
-									@apply text-[1.67vw] leading-[140%]
+								> div {
+									@apply opacity-0;
+									
+									p {
+										@apply text-[1.67vw] leading-[140%]
+									}
 								}
 							}
 						}
@@ -876,4 +912,28 @@ export default {
 	.TextAnim {
 		@apply overflow-hidden;
 	}
+
+	.Modal.lenis {
+		height: auto;
+	}
+
+	.lenis.lenis-smooth {
+		scroll-behavior: auto;
+	}
+
+	.lenis.lenis-smooth [data-lenis-prevent] {
+		overscroll-behavior: contain;
+	}
+
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+
+	.lenis.lenis-scrolling iframe {
+		pointer-events: none;
+	}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 </style>

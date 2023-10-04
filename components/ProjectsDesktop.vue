@@ -61,7 +61,7 @@
 			</div>
 		</section>
 
-		<ProjectModal v-if="projectOpened" :data="modal"/>
+		<ProjectModal v-if="projectOpened" :data="modal" data-lenis-prevent/>
 	</div>
 </template>
 
@@ -78,8 +78,8 @@ export default {
 	data() {
 		return {
 			lenis: null,
-			displays: ["grid", "tiles"],
-			currentDisplay: "grid",
+			displays: ["Grid", "Tiles"],
+			currentDisplay: "Grid",
 			projectOpened: false,
 
 			projects: [
@@ -207,37 +207,6 @@ export default {
 				smallImage: selectedImage,
 				bigImage		
 			}
-			console.log(this.modal)
-			// this.$nuxt.$root.$children[2].lenis.stop()
-			// setTimeout(() => {
-			// 	const images = document.querySelectorAll(".Project img")
-			// 	const selectedImage = images[index]
-			// 	const modalImage = document.querySelector(".Modal .BigImage")
-			// 	const state = Flip.getState(selectedImage)
-			// 	const otherImages= []
-			// 	modalImage.appendChild(selectedImage)
-			// 	images.forEach((el, elIndex) => {
-			// 		elIndex === index ? null : otherImages.push(el.parentElement.parentElement)
-			// 	})
-
-			// 	gsap.to(otherImages, {
-			// 		// opacity: 0,
-			// 		clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-			// 		ease: "power4.inOut",
-			// 		duration: 1
-			// 		// scale: 0.9,
-			// 		// stagger: 0.05,
-			// 	})
-				
-			// 	Flip.from(state, {
-			// 		// delay: 0.5,
-			// 		duration: 1,
-			// 		ease: "power4.inOut",
-			// 	})
-
-			// 	this.initModalAnimations()
-			// }, 100)
-
 		},
 
 		splitAnimateTextLines(el) {
@@ -401,95 +370,29 @@ export default {
 		},
 
 		changeDisplay(display) {
-			if (this.displayAnimating) return
+			if (this.displayAnimating || this.currentDisplay === display) return
 			this.displayAnimating = true
 			this.currentDisplay = display
 
-			const anchor = document.querySelector(".Anchor")
-			const projects = document.querySelectorAll(".Project")
+			// const anchor = document.querySelector(".Anchor")
+			// const projects = document.querySelectorAll(".Project")
 			const projectsContainer = document.querySelector(".AllProjects .Bottom")
-			const state = Flip.getState(projects)
+			const state = Flip.getState(".AllProjects .Bottom, .AllProjects .Project")
 
-			projectsContainer.style.height = `${projectsContainer.offsetHeight}px`
+			// projectsContainer.classList.remove(projectsContainer.classList[1])
+			console.log(projectsContainer.classList)
+			projectsContainer.classList.value = `Bottom ${display}`
 
-			projects.forEach((el, index) => {
-				gsap.to(el.lastChild, {
-					opacity: 0,
-					duration: 0.5,
-					ease: "power4.inOut",
-					delay: 0.1 * index
-				})
-				anchor.appendChild(el)
+			Flip.from(state, {
+				duration: 1.25,
+				ease: "power4.inOut",
+				stagger: 0.05,
+				// absolute: true,
+				onComplete: () => {
+					projectsContainer.classList.value = `Bottom ${display}`
+					this.displayAnimating = false
+				},
 			})
-
-			if(display === "grid") {
-				Flip.from(state, {
-					duration: 1.25,
-					ease: "power4.inOut",
-					stagger: 0.05,
-					onComplete: () => {
-						// Append each project into a new random position making sure no 2 projects are in the same position or overlapping
-						const projectsContainer = document.getElementById('projects-container'); // Replace with your container element
-
-						const projectElements = Array.from(projectsContainer.children);
-
-						const randomPositions = [];
-						const maxTries = 10; // Maximum attempts to find a non-overlapping position
-
-						projectElements.forEach((el, index) => {
-							let tries = 0;
-
-							while (tries < maxTries) {
-								const randomX = Math.floor(Math.random() * (window.innerWidth - el.offsetWidth));
-								const randomY = Math.floor(Math.random() * (window.innerHeight - el.offsetHeight));
-								const overlapping = randomPositions.some((position) => {
-									return (
-										randomX < position.x + el.offsetWidth &&
-										randomX + el.offsetWidth > position.x &&
-										randomY < position.y + el.offsetHeight &&
-										randomY + el.offsetHeight > position.y
-									);
-								});
-
-								if (!overlapping) {
-									randomPositions.push({ x: randomX, y: randomY });
-									gsap.set(el, { x: randomX, y: randomY });
-									break;
-								}
-
-								tries++;
-							}
-
-							// If maximum attempts are reached and no non-overlapping position is found, place it at a default position.
-							if (tries === maxTries) {
-								gsap.set(el, { x: 0, y: 0 });
-							}
-						});
-					}
-				})
-			} else {
-				Flip.from(state, {
-					duration: 1.25,
-					ease: "power4.inOut",
-					stagger: 0.05,
-					absolute: true,
-					onComplete: () => {
-						// Append each project into a new random position making sure no 2 projects are in the same position or overlapping
-						projects.forEach((el, index) => {
-							const randomX = Math.floor(Math.random() * (window.innerWidth - el.offsetWidth))
-							const randomY = Math.floor(Math.random() * (window.innerHeight - el.offsetHeight))
-
-							gsap.to(el, {
-								x: randomX,
-								y: randomY,
-							})
-
-							// projectsContainer.appendChild(el)
-							this.displayAnimating = false
-						})
-					}
-				})
-			}
 		},
 
 		initLenis() {
@@ -537,7 +440,7 @@ export default {
 	}
 
 	.AllProjects {
-		@apply px-5 lg:px-[2.78vw] pt-[21.52vw];
+		@apply px-5 lg:px-[2.78vw] pt-[21.52vw] overflow-hidden;
 
 		.Container {
 			@apply space-y-[3.82vw];
@@ -561,18 +464,10 @@ export default {
 			}
 
 			.Bottom {
-				@apply relative w-full;
-
-				.Anchor {
-					@apply absolute top-0 left-0 z-0;
-
-					> div {
-						@apply absolute top-0 left-0
-					}
-				}
+				@apply relative w-full grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw];
 
 				&.Grid {
-					@apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw] h-fit;
+					/* @apply grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw]; */
 
 					.Project {
 						@apply space-y-[1.04vw];
@@ -582,7 +477,7 @@ export default {
 							@apply overflow-hidden w-[30.55vw] h-[36.11vw];
 
 							img {
-								@apply w-full;
+								@apply w-full object-cover object-center;
 							}
 						}
 
@@ -597,7 +492,7 @@ export default {
 				}
 
 				&.Tiles {
-					@apply relative h-[196.11vw];
+					@apply h-[196.11vw];
 
 					.Project {
 						@apply space-y-[1.04vw] absolute;
