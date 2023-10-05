@@ -124,6 +124,7 @@ export default {
 					endTrigger: bottomFooter,
 					end: "bottom bottom",
 					scrub: true,
+					markers: true
 				}, y: 0, ease: 'none'
 			})
 		},
