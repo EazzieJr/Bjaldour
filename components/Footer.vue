@@ -107,7 +107,7 @@ export default {
 	},
 
 	watch: {
-		$route: "animateFooter"
+		$route: "updateScrollTrigger"
 	},
 
 	methods: {
@@ -130,8 +130,10 @@ export default {
 		},
 
 		updateScrollTrigger() {
-			console.log("Update!!!!", ScrollTrigger)
-			ScrollTrigger.update()
+			setTimeout(() => {
+				console.log("Update!!!!", ScrollTrigger)
+				ScrollTrigger.refresh()
+			}, 2000)
 		}
 	},
 
