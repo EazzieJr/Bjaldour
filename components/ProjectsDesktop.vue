@@ -241,14 +241,14 @@ export default {
 			})
 		},
 
-		initModalAnimations() {
-			// this.initLenis()
-			this.animateModalHero()
-			this.animateModalAfterHero()
-			this.animateModalChallenges()
-			this.animateModalObjectives()
-			this.animateModalEngine()
-		},
+		// initModalAnimations() {
+		// 	// this.initLenis()
+		// 	this.animateModalHero()
+		// 	this.animateModalAfterHero()
+		// 	this.animateModalChallenges()
+		// 	this.animateModalObjectives()
+		// 	this.animateModalEngine()
+		// },
 
 		animateModalHero() {
 			const tl = gsap.timeline({

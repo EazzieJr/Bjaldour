@@ -15,6 +15,10 @@ export default {
 
 	computed: {
 		...mapState(['isMobile'])
+	},
+
+	mounted() {
+		console.log()
 	}
 }
 </script>
