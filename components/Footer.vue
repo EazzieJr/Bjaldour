@@ -135,7 +135,9 @@ export default {
 	},
 
 	mounted() {
-		this.animateFooter()
+		setTimeout(() => {
+			this.animateFooter()
+		}, 1000)
 	}
 }
 </script>
