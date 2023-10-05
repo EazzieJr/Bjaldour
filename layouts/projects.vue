@@ -6,9 +6,9 @@
 				</div>
 
 				<div class="Mid end md:block">
-					<button class="Back">
+					<nuxt-link to="/" class="Back">
 						Back
-					</button>
+					</nuxt-link>
 				</div>
 
 				<div class="Right hidden md:end">

@@ -609,7 +609,7 @@ export default {
 					@apply h-[100svh] overflow-hidden;
 					
 					img {
-						@apply w-full;
+						@apply w-full h-full object-cover object-center;
 					}
 				}
 			}
