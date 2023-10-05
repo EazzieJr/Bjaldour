@@ -110,7 +110,7 @@ export default {
 			const mobile = window.matchMedia("(max-width: 767px)")
 
 			tl.to('.ProjectButton', {
-				width: mobile.matches ? "320px" : "36.94vw",
+				width: mobile.matches ? "90%" : "36.94vw",
 				height: mobile.matches ? "260px" : "22.77vw",
 				padding: mobile.matches? "20px" : "2.78vw",
 				// cursor: "auto",
