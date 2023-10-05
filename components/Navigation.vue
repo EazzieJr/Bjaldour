@@ -169,7 +169,7 @@ export default {
 
 <style lang="postcss" scoped>
 nav {
-	@apply sticky top-0 bg-white z-[1000];
+	@apply fixed top-0 bg-white z-[1000] w-full;
 
 	.NavContainer {
 		@apply -translate-y-full p-5 md:p-[2.78vw] md:pb-[6.66vw];
