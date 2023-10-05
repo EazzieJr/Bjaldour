@@ -1,6 +1,6 @@
 <template>
 	<div class="CasperDesktop">
-		<div class="Images Tiles">
+		<div class="Images Grid">
 			<div class="Image">
 				<img src="/images/casper-01.png" alt="">
 			</div>
@@ -107,31 +107,48 @@ export default {
 			// const anchor = document.querySelector(".Anchor")
 			// const projects = document.querySelectorAll(".Project")
 			const projectsContainer = document.querySelector(".Images")
+			const images = document.querySelectorAll(".Images img")
 			const state = Flip.getState(".Images, .Image")
 
 			// projectsContainer.classList.remove(projectsContainer.classList[1])
 			// console.log(projectsContainer.classList)
-			projectsContainer.classList.value = `Images Stack`
+			// projectsContainer.classList.value = `Images Stack`
+			projectsContainer.classList.value = `Images ${display}`
 
 			Flip.from(state, {
 				duration: 1.25,
 				ease: "power4.inOut",
-				stagger: 0.05,
+				// stagger: 0.05,
+				// rotate: true,
 				// absolute: true,
 				onComplete: () => {
-					projectsContainer.classList.value = `Images ${display}`
+					this.displayAnimating = false
+					// projectsContainer.classList.value = `Images ${display}`
 
-					Flip.from(state, {
-						duration: 1.25,
-						ease: "power4.inOut",
-						stagger: 0.05,
-						onComplete: () => {
-							this.displayAnimating = false
-						},
-					})
+					// Flip.from(state, {
+					// 	duration: 1.25,
+					// 	ease: "power4.inOut",
+					// 	stagger: 0.05,
+					// 	onComplete: () => {
+					// 		this.displayAnimating = false
+					// 	},
+					// })
 				},
 			})
 
+			// images.forEach((el, index) => {
+			// 	if (index === 0 || index === 3) {
+			// 		gsap.to(el, {
+			// 			rotate: -90,
+			// 			scale: 1.4,
+			// 			// dealy: index * 0.05,
+			// 			// ease: "power4.inOut",
+			// 			// duration: 1.25
+			// 		})
+
+			// 		console.log("hian")
+			// 	}
+			// })
 		},
 	}
 }
@@ -140,6 +157,10 @@ export default {
 <style lang="postcss" scoped>
 .CasperDesktop {
 	@apply pt-[5.76vw] overflow-hidden;
+
+	img {
+		/* @apply duration-500 delay-[0.05] */
+	}
 
 	.Images {
 		@apply relative;
@@ -156,19 +177,19 @@ export default {
 		}
 
 		&.Stack {
-			.Image {
-				@apply absolute top-0 left-0
-			}
-		}
+			@apply h-[calc(100vh_-_13.19vw)] w-[calc(100vw_-_3.46vw)] mx-auto;
 
-		&.Stack {
 			.Image {
-				@apply absolute top-0 left-0
+				@apply absolute top-0 left-0 w-[9.72vw] h-[15.27vw] overflow-hidden;
+
+				img {
+					@apply w-full h-full object-cover object-center;
+				}
 			}
 		}
 		
 		&.Tiles {
-			@apply h-[calc(100vh_-_13.19vw)] w-[calc(100vw_-_3.46vw)] mx-auto;
+			@apply md:h-[49.86vw] w-[calc(100vw_-_3.46vw)] mx-auto;
 			.Image {
 				@apply absolute overflow-hidden;
 
@@ -180,7 +201,7 @@ export default {
 					@apply h-[17.92vw] w-[11.94vw] top-[-1.18vw] left-0;
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -196,7 +217,7 @@ export default {
 					@apply h-[17.92vw] w-[11.94vw] top-[-1.18vw] left-[45.97vw];
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -208,7 +229,7 @@ export default {
 					@apply h-[17.92vw] w-[11.94vw] top-[-1.18vw] left-[78.61vw];
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -224,7 +245,7 @@ export default {
 					@apply w-[14.93vw] h-[14.93vw] top-[16.80vw] left-[34.02vw];
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -240,7 +261,7 @@ export default {
 					@apply h-[17.92vw] w-[11.94vw] top-[15.34vw] left-[91.52vw];
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -253,7 +274,7 @@ export default {
 					@apply h-[17.92vw] w-[11.94vw] top-[31.94vw] left-[19.30vw];
 
 					img {
-						@apply -rotate-90 scale-[1.4]
+						/* @apply -rotate-90 scale-[1.4] */
 					}
 				}
 
@@ -269,7 +290,7 @@ export default {
 	}
 
 	.Others {
-		@apply mt-[8.88vw] grid grid-cols-3 px-[2.78vw] pt-0 fixed bottom-[2.78vw] w-full;
+		@apply mt-[8.88vw] grid grid-cols-3 p-[2.78vw] pt-0 w-full;
 
 		.Tabs {
 			@apply space-x-5 lg:space-x-[1.38vw];
@@ -303,4 +324,5 @@ export default {
 			}
 		}
 	}
-}</style>
+}
+</style>

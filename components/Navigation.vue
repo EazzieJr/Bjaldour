@@ -99,7 +99,7 @@ export default {
 				},
 				{
 					name: "About",
-					route: ""
+					route: "products/casper"
 				},
 				{
 					name: "RanD",

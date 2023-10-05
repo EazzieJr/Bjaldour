@@ -167,7 +167,7 @@ export default {
 <style lang="postcss">
 .Project {
 	nav {
-		@apply p-5 md:p-[1.38vw] sticky top-0;
+		@apply p-5 md:p-[1.38vw] sticky top-0 z-[500];
 
 		.NavContainer {
 			@apply h-11 md:h-[4.72vw] grid grid-cols-2 md:grid-cols-3 items-center;
@@ -191,7 +191,7 @@ export default {
 	}
 
 	.ProjectButton {
-		@apply rounded-lg md:rounded-[0.83vw] border md:border-[0.069vw] border-[#F1F1F1] w-[116px] md:w-[12.25vw] h-11 md:h-[4.72vw] overflow-hidden bg-[#FAFAFA] space-y-5 md:space-y-[2.78vw] fixed top-5 left-5 md:top-[1.38vw] md:left-[1.38vw];
+		@apply rounded-lg md:rounded-[0.83vw] border md:border-[0.069vw] border-[#F1F1F1] w-[116px] md:w-[12.25vw] h-11 md:h-[4.72vw] overflow-hidden bg-[#FAFAFA] space-y-5 md:space-y-[2.78vw] fixed top-5 left-5 md:top-[1.38vw] md:left-[1.38vw] z-[500];
 				
 		.Top {
 			@apply p-3 md:p-[1.38vw] space-x-3 md:space-x-[1.38vw];
