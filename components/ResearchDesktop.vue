@@ -496,7 +496,7 @@ export default {
 <style lang="postcss" scoped>
 .ResearchDesktop {
 	.Hero {
-		@apply pt-[4vw] overflow-hidden;
+		@apply pt-[22.56vw] overflow-hidden;
 
 		h1 {
 			@apply font-semibold text-[24.86vw] leading-[80%] tracking-[-0.05em];

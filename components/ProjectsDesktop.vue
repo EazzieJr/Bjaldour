@@ -424,7 +424,7 @@ export default {
 <style lang="postcss" scoped>
 .ProjectsDesktop {
 	> .Hero {
-		@apply pt-[4vw] px-5 lg:px-[2.78vw];
+		@apply pt-[22.56vw] px-5 lg:px-[2.78vw];
 
 		.Container {
 			@apply space-y-[4.16vw];

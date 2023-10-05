@@ -577,7 +577,7 @@ export default {
 			@apply relative;
 
 			.Image {
-				@apply w-full h-[52.77vw] overflow-hidden;
+				@apply w-full h-[100dvh] overflow-hidden;
 				clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 
 				img {
