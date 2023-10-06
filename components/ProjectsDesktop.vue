@@ -209,6 +209,10 @@ export default {
 			}
 		},
 
+		closeProject(index) {
+			console.log(index)
+		},
+
 		splitAnimateTextLines(el) {
 			const splittedText = this.$splitting({ target: el, by: "lines" });
 			const target = document.querySelector(el)
