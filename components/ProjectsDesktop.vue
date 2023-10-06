@@ -200,7 +200,7 @@ export default {
 
 			const images = document.querySelectorAll(".Project img")
 			const selectedImage = images[index]
-			const bigImage = `/images/projects/big-image-${index}.webp`
+			const bigImage = `/images/projects/big-${index}.webp`
 
 			this.modal = {
 				deat: this.projects[index].deat,
