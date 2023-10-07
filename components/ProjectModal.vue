@@ -641,7 +641,7 @@ export default {
 
 				gsap.set(span, { overflow: "hidden", display: "block" })
 				gsap.set(el, { opacity: 1 })
-				gsap.set(".word", { y: "100%" })
+				gsap.set(el + " .word", { y: "100%" })
 			})
 
 			gsap.to(splittedText[0].lines, {
@@ -651,6 +651,8 @@ export default {
 				duration: 1.25,
 				stagger: 0.05
 			})
+
+			console.log(splittedText[0].lines)
 		},
 
 		close() {
@@ -674,7 +676,7 @@ export default {
 				clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
 			}, '<30%')
 
-			tl.to(".word", {
+			tl.to(".Modal .word", {
 				y: "100%"
 			}, "<")
 
