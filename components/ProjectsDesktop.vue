@@ -33,7 +33,7 @@
 							<img class="w-full h-full" :src="`/images/projects/${index}.png`" alt="">
 						</div>
 						
-						<div class="Text">
+						<div class="Text overflow-hidden">
 							<p>
 								{{ project.deat }}
 							</p>
@@ -61,7 +61,7 @@
 			</div>
 		</section>
 
-		<ProjectModal v-if="projectOpened" :data="modal" data-lenis-prevent/>
+		<ProjectModal v-if="projectOpened" :data="modal" @close="closeProject" data-lenis-prevent/>
 	</div>
 </template>
 
@@ -123,7 +123,8 @@ export default {
 			modal: {
 				deat: null,
 				smallImage: null,
-				bigImage: null
+				bigImage: null,
+				index: null
 			},
 
 			displayAnimating: false
@@ -196,21 +197,47 @@ export default {
 
 		openProject(index) {
 			this.projectOpened = !this.projectOpened
-			gsap.set('body', { overflow: "hidden" })
+			// gsap.set('body', { overflow: "hidden" })
 
 			const images = document.querySelectorAll(".Project img")
 			const selectedImage = images[index]
 			const bigImage = `/images/projects/big-${index}.webp`
+			const selectedProjectText = document.querySelectorAll(".Project p")[index]
 
 			this.modal = {
 				deat: this.projects[index].deat,
 				smallImage: selectedImage,
-				bigImage		
+				bigImage,
+				index		
 			}
+
+			gsap.to(selectedProjectText, {
+				opacity: 0,
+				ease: "power3.in",
+				// duration: 1
+			})
 		},
 
-		closeProject(index) {
-			console.log(index)
+		closeProject(smallImage, done) {
+			const images = document.querySelectorAll(".Project .Image")
+			const selectedProjectText = document.querySelectorAll(".Project p")[this.modal.index]
+			const state = Flip.getState(smallImage)
+			images[this.modal.index].appendChild(smallImage)
+
+			Flip.from(state, {
+				// delay: 0.5,
+				duration: 1.25,
+				ease: "power4.inOut",
+				onComplete: () => {
+					this.projectOpened = !this.projectOpened
+					gsap.to(selectedProjectText, {
+						opacity: 1,
+						ease: "power3.in",
+						// duration: 1
+					})
+					gsap.set('body', { overflow: "auto" })
+				}
+			})
 		},
 
 		splitAnimateTextLines(el) {
@@ -444,7 +471,7 @@ export default {
 	}
 
 	.AllProjects {
-		@apply px-5 lg:px-[2.78vw] pt-[21.52vw] overflow-hidden;
+		@apply px-5 lg:px-[2.78vw] pt-[21.52vw];
 
 		.Container {
 			@apply space-y-[3.82vw];
@@ -467,6 +494,10 @@ export default {
 				}
 			}
 
+			p {
+				@apply duration-500
+			}
+
 			.Bottom {
 				@apply relative w-full grid grid-cols-3 gap-y-[8.88vw] gap-x-[1.38vw];
 
@@ -475,10 +506,10 @@ export default {
 
 					.Project {
 						@apply space-y-[1.04vw];
-						clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+						/* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
 
 						.Image {
-							@apply overflow-hidden w-[30.55vw] h-[36.11vw];
+							@apply w-[30.55vw] h-[36.11vw];
 
 							img {
 								@apply w-full object-cover object-center;

@@ -4,7 +4,7 @@
 			<div class="NavContainer">
 				<div class="Decoy"></div>
 
-				<button class="Back">
+				<button class="Back" @click="close">
 					Back
 				</button>
 
@@ -362,7 +362,9 @@ export default {
 						"Minimized vehicle downtime by addressing maintenance needs before they caused significant disruptions.",
 					]
 				}
-			]
+			],
+
+			scroll: null
 		}
 	},
 
@@ -379,14 +381,14 @@ export default {
 	methods: {
 		initLenis() {
 			const wrapper = document.querySelector("#OverlayProject")
-			this.lenis = new Lenis({ duration: 2, wrapper })
+			this.scroll = new Lenis({ duration: 2, wrapper })
 
-			this.lenis.on('scroll', (e) => {
+			this.scroll.on('scroll', (e) => {
 				// console.log("Eiii")
 			})
 
 			const raf = (time) => {
-				this.lenis.raf(time)
+				this.scroll.raf(time)
 				requestAnimationFrame(raf)
 			}
 
@@ -650,8 +652,38 @@ export default {
 				stagger: 0.05
 			})
 		},
-	},
 
+		close() {
+			let done = false;
+			const smallImage = document.querySelector(".Modal .Hero .SmallImage img")
+			const modal = document.querySelector(".Modal")
+			const tl = gsap.timeline({
+				defaults: {
+					ease: "power4.inOut",
+					duration: 1.25
+				}
+			})
+
+			this.scroll.scrollTo(0, 0)
+
+			tl.to('.LastWord', {
+				y: "100%"
+			})
+
+			tl.to('.BigImage', {
+				clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+			}, '<30%')
+
+			tl.to(".word", {
+				y: "100%"
+			}, "<")
+
+			setTimeout(() => {
+				this.$emit("close", smallImage)
+			}, 1000)
+		}
+	},
+	
 	mounted() {
 		this.initLenis()
 
@@ -677,16 +709,19 @@ export default {
 	.Modal {
 		@apply fixed top-0 left-0 bottom-0 right-0 z-[1000] overflow-auto;
 		overscroll-behavior: contain;
+		/* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+
 		
 		&::-webkit-scrollbar {
 			@apply opacity-0 hidden
 		}
+
 		> div {
-			@apply overflow-hidden
+			overscroll-behavior: contain;
 		}
 
 		nav {
-			@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-[1001] mix-blend-exclusion invert bg-white;
+			@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-[1001] mix-blend-exclusion invert;
 
 			.NavContainer {
 				@apply grid grid-cols-3 md:grid-cols-3;
@@ -726,7 +761,7 @@ export default {
 				@apply w-full h-full flex items-center px-[2.78vw] text-white overflow-hidden;
 
 				h1 {
-					@apply font-semibold text-[8.88vw] leading-[110%] tracking-[-0.025em] opacity-0 w-full max-w-[80vw]
+					@apply font-semibold text-[8.88vw] leading-[110%] tracking-[-0.025em] opacity-0 w-full max-w-[90vw]
 				}
 
 				> div {
