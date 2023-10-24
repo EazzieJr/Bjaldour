@@ -81,7 +81,7 @@
 					</div>
 
 					<div class="Bottom sticky left-0">
-						nkajnd;kjen;ejkn;fef
+						<!-- nkajnd;kjen;ejkn;fef -->
 					</div>
 				</div>
 
@@ -489,46 +489,63 @@ export default {
 		},
 
 		animateAi() {
-			const container = document.querySelector(".AIML .Container")
-			const ml = document.querySelector(".ML")
-			// const tl = gsap.timeline({
-			// 	scrollTrigger: {
-			// 		trigger: ".AIML .Container .AI .Top",
-			// 		start: "center 30%",
-			// 		end: "+=500%",
-			// 		pin: ".AIML",
-			// 		scrub: true,
-			// 		markers: true
-			// 	}
-			// })
+			const container = document.querySelector('.AIML .Container')
+			const imageSpan = document.querySelector('.AI .ImageSpan')
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: '.AIML .AI',
+					start: 'center 40%',
+					end: container.clientWidth - window.innerWidth,
+					scrub: true,
+					pin: ".AIML"
+				},
 
-			// tl.to(".AIML .Container", {
-			// 	x: - container.clientWidth + (ml.clientWidth / 1.25),
-			// 	ease: "none"
-			// })
-
-			// tl.to(".AI .ImageSpan", {
-			// 	width: "83.33vw",
-			// 	height: "50vw",
-			// 	duration: 1
-			// 	}, 0.05
-			// )
-
-			/* Animating lines */
-			const lines = document.querySelectorAll(".Line")
-
-			lines.forEach((el, index) => {
-				console.dir(el)
-				gsap.to(el, {
-					scrollTrigger: {
-						trigger: lines,
-						start: "center 60%",
-						// end: "center top",
-						scrub: true,
-						// markers: true,
-					}, y: - el.parentElement.clientHeight / 2, ease: "none"
-				})
+				defaults: {
+					ease: 'none'
+				}
 			})
+
+			tl.to(container, {
+				x: '-50vw'
+			})
+
+			tl.to(imageSpan, {
+				width: '83.33vw',
+				height: "48.61vw"
+			})
+
+			tl.to(container, {
+				x: '-=35vw'
+			}, '<')
+
+			tl.to(imageSpan, {
+				width: '30.55vw',
+				height: "21.38vw"
+			})
+
+			tl.to(container, {
+				x: '-=25vw'
+			}, '<')
+
+			tl.to(container, {
+				x: -(container.clientWidth - window.innerWidth * 1.35)
+			})
+			
+			/* Animating lines */
+			// const lines = document.querySelectorAll(".Line")
+
+			// lines.forEach((el, index) => {
+			// 	console.dir(el)
+			// 	gsap.to(el, {
+			// 		scrollTrigger: {
+			// 			trigger: lines,
+			// 			start: "center 60%",
+			// 			// end: "center top",
+			// 			scrub: true,
+			// 			// markers: true,
+			// 		}, y: - el.parentElement.clientHeight / 2, ease: "none"
+			// 	})
+			// })
 		},
 
 		animateTestimonies() {
@@ -640,7 +657,7 @@ export default {
 	}
 
 	.AIML {
-		@apply mt-[31.80vw] space-y-[34.44vw] overflow-hidden relative;
+		@apply pt-[31.80vw] space-y-[34.44vw] overflow-x-hidden relative;
 
 		.Container {
 			@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
@@ -650,7 +667,7 @@ export default {
 					/* @apply */
 
 					h2 {
-						@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center;
+						@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center h-[21.38vw];
 
 						> span {
 							@apply flex items-center justify-center w-[30.55vw] h-[21.38vw] overflow-hidden mx-[2.78vw] relative;
