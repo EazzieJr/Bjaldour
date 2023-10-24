@@ -197,7 +197,7 @@ export default {
 
 		openProject(index) {
 			this.projectOpened = !this.projectOpened
-			// gsap.set('body', { overflow: "hidden" })
+			gsap.set('body', { overflow: "hidden" })
 
 			const images = document.querySelectorAll(".Project img")
 			const selectedImage = images[index]
@@ -216,6 +216,8 @@ export default {
 				ease: "power3.in",
 				// duration: 1
 			})
+
+			// this.$nuxt.$root.$children[2].lenis.stop()
 		},
 
 		closeProject(smallImage, done) {
@@ -446,7 +448,7 @@ export default {
 
 	mounted() {
 		this.animateHero()
-		// console.log(this.$nuxt.$root.$children)
+		// console.log(this.$nuxt.$root.$children[2].lenis)
 		// this.openProject()
 	}
 }

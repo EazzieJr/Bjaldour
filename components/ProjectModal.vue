@@ -381,18 +381,36 @@ export default {
 	methods: {
 		initLenis() {
 			const wrapper = document.querySelector("#OverlayProject")
-			this.scroll = new Lenis({ duration: 2, wrapper })
+			const lenis = new Lenis({ duration: 2, wrapper })
+			this.scroll = lenis
 
-			this.scroll.on('scroll', (e) => {
-				// console.log("Eiii")
+			lenis.on('scroll', (e) => {
+				// console.log(e)
 			})
 
 			const raf = (time) => {
-				this.scroll.raf(time)
+				lenis.raf(time)
 				requestAnimationFrame(raf)
 			}
 
 			requestAnimationFrame(raf)
+
+			if (lenis) {
+				ScrollTrigger.scrollerProxy(wrapper, {
+					scrollTop(value) {
+						if (arguments.length) {
+							lenis.scrollTo(0, value);
+						}
+						
+						return lenis.animatedScroll;
+					},
+				});
+
+				ScrollTrigger.defaults({
+					scroller: wrapper,
+					toggleActions: "play none none reset"
+				})
+			}
 		},
 
 		animateHero() {
@@ -522,7 +540,7 @@ export default {
 			})
 		},
 
-		animateApproach() {
+		animateApproach() { 
 			const approaches = document.querySelectorAll(".Approaches .App")
 			
 			gsap.fromTo(".Approach .Content > .TextAnim span", {
@@ -652,7 +670,7 @@ export default {
 				stagger: 0.05
 			})
 
-			console.log(splittedText[0].lines)
+			// console.log(splittedText[0].lines)
 		},
 
 		close() {
@@ -690,10 +708,10 @@ export default {
 		this.initLenis()
 
 		setTimeout(() => {
-			ScrollTrigger.defaults({
-				scroller: "#OverlayProject",
-				toggleActions: "play none none reset"
-			})
+		// 	ScrollTrigger.defaults({
+		// 		// scroller: "#OverlayProject",
+		// 		toggleActions: "play none none reset"
+		// 	})
 
 			this.animateHero()
 			this.animateModalAfterHero()
@@ -710,7 +728,7 @@ export default {
 <style lang="postcss" scoped>
 	.Modal {
 		@apply fixed top-0 left-0 bottom-0 right-0 z-[1000] overflow-auto;
-		overscroll-behavior: contain;
+		/* overscroll-behavior: contain; */
 		/* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
 
 		
@@ -719,7 +737,7 @@ export default {
 		}
 
 		> div {
-			overscroll-behavior: contain;
+			/* overscroll-behavior: contain; */
 		}
 
 		nav {
