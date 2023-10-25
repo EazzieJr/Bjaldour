@@ -424,7 +424,7 @@ export default {
 					trigger: ".Insights .Texts",
 					start: "top 70%",
 					toggleActions: "play none none reset",
-					// markers: true
+					markers: true
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
@@ -497,7 +497,8 @@ export default {
 					start: 'center 40%',
 					end: container.clientWidth - window.innerWidth,
 					scrub: true,
-					pin: ".AIML"
+					pin: container,
+					markers: true,
 				},
 
 				defaults: {
@@ -528,7 +529,13 @@ export default {
 			}, '<')
 
 			tl.to(container, {
-				x: -(container.clientWidth - window.innerWidth * 1.35)
+				x: -(container.clientWidth - window.innerWidth * 1.35),
+				onComplete: () => {
+					ScrollTrigger.refresh()
+					ScrollTrigger.update()
+
+					console.log('refreshed')
+				}
 			})
 			
 			/* Animating lines */
