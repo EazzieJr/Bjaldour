@@ -25,18 +25,23 @@
 				<div class="Content">
 					<div class="Texts">
 						<span>
-							The leading AI company driving innovation through state-of-the-art AI, ML, and DL technologies. Our groundbreaking SaaS products and tech hardware solutions are designed to supercharge your business and propel you ahead of the competition.
+							The leading AI company driving innovation through state-of-the-art AI, ML, and DL technologies. Our
+							groundbreaking SaaS products and tech hardware solutions are designed to supercharge your business and
+							propel you ahead of the competition.
 						</span>
-	
+
 						<p>
-							Welcome to Bjaldour, where cutting-edge AI technology meets innovative SaaS products and tech hardware solutions. We're revolutionizing industries by harnessing the power of artificial intelligence, machine learning, and deep learning to create products that drive meaningful change. Explore our website and unlock a world of possibilities for your business.
+							Welcome to Bjaldour, where cutting-edge AI technology meets innovative SaaS products and tech hardware
+							solutions. We're revolutionizing industries by harnessing the power of artificial intelligence, machine
+							learning, and deep learning to create products that drive meaningful change. Explore our website and unlock
+							a world of possibilities for your business.
 						</p>
 					</div>
 
 					<ul>
 						<li>
 							<img src="/svg/tiny-star.svg" alt="">
-							
+
 							<span>
 								Learn More About Us
 							</span>
@@ -44,7 +49,7 @@
 
 						<li>
 							<img src="/svg/tiny-star.svg" alt="">
-							
+
 							<span>
 								Find out more about our engineering background
 							</span>
@@ -52,7 +57,7 @@
 
 						<li>
 							<img src="/svg/tiny-star.svg" alt="">
-							
+
 							<span>
 								Research and development team
 							</span>
@@ -63,6 +68,13 @@
 		</section>
 
 		<section class="AIML">
+			<div class="DottedCircle center">
+				<svg viewBox="0 0 424 424" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="212" cy="212" r="211.5" stroke="black" stroke-dasharray="8 8" />
+				</svg>
+
+			</div>
+
 			<div class="Container">
 				<div class="AI">
 					<div class="Top start">
@@ -78,10 +90,6 @@
 
 							Inteligence
 						</h2>
-					</div>
-
-					<div class="Bottom sticky left-0">
-						<!-- nkajnd;kjen;ejkn;fef -->
 					</div>
 				</div>
 
@@ -103,6 +111,26 @@
 				</div>
 			</div>
 
+			<div class="AITexts">
+				<div class="OverflowDecoy">
+					<div class="WholeText start">
+						<span>
+							#01
+						</span>
+
+						<span>
+							AI
+						</span>
+					</div>
+				</div>
+
+				<p>
+					With a team of top-tier AI experts and engineers, we are dedicated to developing cutting-edge products that
+					empower businesses to thrive in the digital era. Our mission is to provide you with the tools and technologies
+					you need to innovate, automate, and succeed.
+				</p>
+			</div>
+
 			<div class="Lines">
 				<div class="Line"></div>
 				<div class="Line"></div>
@@ -111,7 +139,7 @@
 				<div class="Line"></div>
 				<div class="Line"></div>
 			</div>
-			
+
 			<div class="LinesFiller"></div>
 		</section>
 
@@ -123,7 +151,7 @@
 							Solutions
 						</h3>
 					</div>
-				
+
 					<div class="mid">
 						<span>
 							Revolutionize Your Business with Our AI Solutions
@@ -134,26 +162,28 @@
 						<div class="Container">
 							<div class="Texts">
 								<p>
-									Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries. From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. <br>
+									Bjaldour offers a range of AI-powered solutions tailored to meet the unique needs of various industries.
+									From predictive analytics and natural language processing to computer vision and robotic automation, our
+									products are designed to enhance productivity, streamline processes, and drive growth. <br>
 								</p>
-									
+
 								<span>
 									Discover how our solutions can help you unlock new opportunities and achieve unparalleled success.
 								</span>
 							</div>
-	
+
 							<ul class="start">
 								<li>
 									<img src="/svg/tiny-star-white.svg" alt="">
-							
+
 									<span>
 										Explore Our Solutions
 									</span>
 								</li>
-	
+
 								<li>
 									<img src="/svg/tiny-star-white.svg" alt="">
-							
+
 									<span>
 										Research and development team
 									</span>
@@ -164,7 +194,8 @@
 				</div>
 
 				<div class="Projects start">
-					<div v-for="(project, index) in projects" :key="project.title" class="Project center" :class="{'selected': project.title === selected}" @click="highlightProject(project.title, index)">
+					<div v-for="(project, index) in projects" :key="project.title" class="Project center"
+						:class="{ 'selected': project.title === selected }" @click="highlightProject(project.title, index)">
 						<img :src="`/images/projects/${project.src}.png`" :alt="`An Image for ${project.title}`">
 
 						<div class="OverflowDecoy">
@@ -181,9 +212,10 @@
 							Clients using our <br> solutions
 						</span>
 					</div>
-					
+
 					<div class="Clients start">
-						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
+						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`"
+							:alt="`A small sized logo of ${client}`">
 					</div>
 				</div>
 			</div>
@@ -200,13 +232,14 @@
 
 					<div class="OverflowDecoy trigger">
 						<p>
-							From predictive analytics and natural language processing to computer vision and robotic automation, our products are designed to enhance productivity, streamline processes, and drive growth. 
+							From predictive analytics and natural language processing to computer vision and robotic automation, our
+							products are designed to enhance productivity, streamline processes, and drive growth.
 						</p>
 					</div>
 
 					<div class="Action start">
 						<img src="/svg/tiny-star-white.svg" alt="">
-							
+
 						<span>
 							See our yearly insights
 						</span>
@@ -234,7 +267,7 @@
 
 					<div class="WWU start">
 						<img src="/svg/tiny-star.svg" alt="">
-							
+
 						<span>
 							Let’s work together
 						</span>
@@ -342,7 +375,7 @@ export default {
 				duration: 1,
 				ease: "power3.inOut",
 			}, "<")
-			
+
 			tl.to(".Hero .TextArrow h1, .Hero .TextArrow img", {
 				y: 0,
 				duration: 1,
@@ -474,7 +507,7 @@ export default {
 			// 	minWidth: "18.05vw",
 			// 	ease: "none"
 			// })
-			
+
 			gsap.to(projectsContainer, {
 				x: index === 0 ? 0 : index === 1 ? "-13vw" : "-26vw",
 				ease: "none"
@@ -495,10 +528,11 @@ export default {
 				scrollTrigger: {
 					trigger: '.AIML .AI',
 					start: 'center 40%',
-					end: container.clientWidth - window.innerWidth,
+					end: '+=500%',
+					// end: container.clientWidth - window.innerWidth,
 					scrub: true,
-					pin: container,
-					markers: true,
+					pin: '.AIML',
+					// markers: true,
 				},
 
 				defaults: {
@@ -507,37 +541,117 @@ export default {
 			})
 
 			tl.to(container, {
-				x: '-50vw'
+				x: '-59vw'
 			})
+
+			tl.to('.AITexts p', {
+				y: '0vw',
+				opacity: 1,
+				duration: 0.3
+			}, '>-0.3')
+
+			tl.to('.DottedCircle svg', {
+				scale: 1,
+				opacity: 1,
+				duration: 0.3
+			}, '<')
 
 			tl.to(imageSpan, {
 				width: '83.33vw',
 				height: "48.61vw"
 			})
 
-			tl.to(container, {
-				x: '-=35vw'
+			tl.to('.DottedCircle', {
+				y: "30vw",
 			}, '<')
+
+			tl.to('.AITexts ', {
+				y: '12.1525vw'
+			}, '<')
+
+			tl.to(container, {
+				x: '-=25vw'
+			}, '<')
+
+			tl.to('.AITexts .OverflowDecoy', {
+				y: '0vw'
+			}, '> -0.5')
+
+			tl.to('.AITexts .WholeText', {
+				y: 0
+			}, '> -0.5')
 
 			tl.to(imageSpan, {
 				width: '30.55vw',
 				height: "21.38vw"
 			})
 
-			tl.to(container, {
-				x: '-=25vw'
+			tl.to('.AITexts', {
+				y: '0vw'
+			}, '<')
+
+			tl.to('.AITexts .OverflowDecoy', {
+				y: '10vw'
 			}, '<')
 
 			tl.to(container, {
-				x: -(container.clientWidth - window.innerWidth * 1.35),
+				x: '-=10vw'
+			}, '<')
+
+			tl.to(container, {
+				x: '-=25vw',
+			})
+
+			tl.to('.DottedCircle svg', {
+				scale: 0.3,
+				opacity: 0,
+			}, '<')
+
+			tl.to('.AITexts p', {
+				y: '-100%'
+			}, '<')
+
+			tl.to('.AITexts .OverflowDecoy', {
+				y: '+=10vw'
+			}, '<')
+
+			tl.to('.AITexts .WholeText', {
+				y: '100%'
+			}, '> -0.5')
+
+			// tl.to(container, {
+			// 	x: '-=10vw',
+			// 	onComplete: () => {
+			// 		console.log('refreshed')
+			// 	}
+			// })
+
+			tl.to('.DottedCircle svg', {
+				// scale: 0.3,
+				opacity: 1,
+				duration: 0.3
+			}, '> 0.4')
+
+			tl.to(container, {
+				x: -(container.clientWidth - window.innerWidth * 1.33),
 				onComplete: () => {
 					ScrollTrigger.refresh()
 					ScrollTrigger.update()
 
-					console.log('refreshed')
-				}
-			})
-			
+					// console.log('refreshed')
+				},
+			}, '< -0.4')
+
+			tl.to('.DottedCircle', {
+				y: "25vw",
+			}, '> -0.4')
+
+			tl.to('.DottedCircle svg', {
+				scale: 1,
+				opacity: 1,
+				duration: 0.3
+			}, '<')
+
 			/* Animating lines */
 			// const lines = document.querySelectorAll(".Line")
 
@@ -664,19 +778,29 @@ export default {
 	}
 
 	.AIML {
-		@apply pt-[31.80vw] space-y-[34.44vw] overflow-x-hidden relative;
+		@apply pt-[31.80vw] overflow-x-hidden relative;
+
+
+		.DottedCircle {
+			@apply w-full translate-y-[10vw];
+
+			svg {
+				@apply w-[29.44vw] scale-[0.3] opacity-0
+			}
+		}
 
 		.Container {
 			@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
-			
-			.AI, .ML {
+
+			.AI,
+			.ML {
 				.Top {
 					/* @apply */
 
 					h2 {
 						@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center h-[21.38vw];
 
-						> span {
+						>span {
 							@apply flex items-center justify-center w-[30.55vw] h-[21.38vw] overflow-hidden mx-[2.78vw] relative;
 
 							img {
@@ -699,33 +823,63 @@ export default {
 			}
 		}
 
-		.Lines {
-			@apply space-y-[5.55vw] bg-white;
+		.AITexts {
+			@apply mt-[2.08vw] ml-[10vw] space-x-[19.51vw] overflow-hidden flex items-start;
 
-			> .Line {
+			.OverflowDecoy {
+				@apply translate-y-[12vw] overflow-hidden;
+
+				.WholeText {
+					@apply translate-y-full space-x-[1.38vw];
+
+					span {
+						@apply block w-fit
+					}
+				}
+			}
+
+			p, span {
+				@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] w-[54.16vw];
+			}
+
+			p {
+				@apply opacity-0 translate-y-1/2
+			}
+		}
+
+		.Lines {
+			@apply space-y-[5.55vw] bg-white mt-[34.44vw];
+
+			>.Line {
 				@apply bg-[#121212] w-full relative;
 
 				&:nth-child(1) {
 					@apply h-[0.69vw]
 				}
+
 				&:nth-child(2) {
 					@apply h-[1.38vw]
 				}
+
 				&:nth-child(3) {
 					@apply h-[2.77vw]
 				}
+
 				&:nth-child(4) {
 					@apply h-[5.55vw]
 				}
+
 				&:nth-child(5) {
 					@apply h-[11.11vw]
 				}
+
 				&:nth-child(6) {
 					@apply h-[22.22vw]
 				}
 			}
 
 		}
+
 		.LinesFiller {
 			@apply h-[44.44vw] bg-[#121212] absolute w-full bottom-0
 		}
@@ -733,14 +887,14 @@ export default {
 
 	.Solutions {
 		@apply bg-[#121212] text-white overflow-hidden relative z-20 -mt-[20vw];
-		
+
 		.Container {
 			.Top {
 				@apply relative z-50;
-				
+
 				.top {
 					@apply overflow-hidden;
-					
+
 					h3 {
 						@apply text-[24.30vw] text-center font-semibold tracking-[-0.025em] leading-[75%];
 					}
@@ -822,7 +976,7 @@ export default {
 
 			.Bottom {
 				@apply overflow-hidden mt-[16.44vw] space-y-[5.55vw];
-				
+
 				span {
 					@apply block text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-medium ml-[14.44vw];
 				}
@@ -848,8 +1002,9 @@ export default {
 				h4 {
 					@apply text-white font-semibold text-[8.33vw] leading-[80%] tracking-[-0.025em];
 				}
-				
-				p, .Action {
+
+				p,
+				.Action {
 					@apply ml-[6.94vw] text-white;
 				}
 
