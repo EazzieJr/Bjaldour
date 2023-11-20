@@ -61,7 +61,7 @@
 			</div>
 		</section>
 
-		<ProjectModal v-if="projectOpened" :data="modal" @close="closeProject" data-lenis-prevent/>
+		<ProjectModal v-if="projectOpened" :data="modal" @close="closeProject"/>
 	</div>
 </template>
 

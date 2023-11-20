@@ -68,67 +68,69 @@
 		</section>
 
 		<section class="AIML">
-			<div class="DottedCircle center">
-				<svg viewBox="0 0 424 424" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<circle cx="212" cy="212" r="211.5" stroke="black" stroke-dasharray="8 8" />
-				</svg>
+			<div class="Animation">
+				<div class="DottedCircle center">
+					<svg viewBox="0 0 424 424" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="212" cy="212" r="211.5" stroke="black" stroke-dasharray="8 8" />
+					</svg>
 
-			</div>
+				</div>
 
-			<div class="Container">
-				<div class="AI">
-					<div class="Top start">
-						<h2>
-							Artificial
-							<span class="ImageSpan">
-								<img src="/images/projects/casper.png" alt="">
+				<div class="Container">
+					<div class="AI">
+						<div class="Top start">
+							<h2>
+								Artificial
+								<span class="ImageSpan">
+									<img src="/images/projects/casper.png" alt="">
 
-								<span>
-									Casper.Ai
+									<span>
+										Casper.Ai
+									</span>
 								</span>
-							</span>
 
-							Inteligence
-						</h2>
+								Inteligence
+							</h2>
+						</div>
+					</div>
+
+					<div class="ML">
+						<div class="Top start">
+							<h2>
+								Machine
+								<span>
+									<img src="/images/ml.png" alt="">
+
+									<span>
+										Casper.Ai
+									</span>
+								</span>
+
+								Learning
+							</h2>
+						</div>
 					</div>
 				</div>
 
-				<div class="ML">
-					<div class="Top start">
-						<h2>
-							Machine
+				<div class="AITexts">
+					<div class="OverflowDecoy">
+						<div class="WholeText start">
 							<span>
-								<img src="/images/ml.png" alt="">
-
-								<span>
-									Casper.Ai
-								</span>
+								#01
 							</span>
 
-							Learning
-						</h2>
+							<span>
+								AI
+							</span>
+						</div>
 					</div>
+
+					<p>
+						With a team of top-tier AI experts and engineers, we are dedicated to developing cutting-edge products that
+						empower businesses to thrive in the digital era. Our mission is to provide you with the tools and technologies
+						you need to innovate, automate, and succeed.
+					</p>
 				</div>
-			</div>
-
-			<div class="AITexts">
-				<div class="OverflowDecoy">
-					<div class="WholeText start">
-						<span>
-							#01
-						</span>
-
-						<span>
-							AI
-						</span>
-					</div>
-				</div>
-
-				<p>
-					With a team of top-tier AI experts and engineers, we are dedicated to developing cutting-edge products that
-					empower businesses to thrive in the digital era. Our mission is to provide you with the tools and technologies
-					you need to innovate, automate, and succeed.
-				</p>
 			</div>
 
 			<div class="Lines">
@@ -411,6 +413,7 @@ export default {
 				scrollTrigger: {
 					trigger: ".Solutions .Top .top",
 					start: "top 70%",
+					// markers: true
 					// toggleActions: "play none none reset"
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
@@ -457,7 +460,7 @@ export default {
 					trigger: ".Insights .Texts",
 					start: "top 70%",
 					toggleActions: "play none none reset",
-					markers: true
+					// markers: true
 				}, yPercent: 0, duration: 1, ease: "power3.out"
 			})
 
@@ -531,7 +534,7 @@ export default {
 					end: '+=500%',
 					// end: container.clientWidth - window.innerWidth,
 					scrub: true,
-					pin: '.AIML',
+					pin: '.AIML .Animation',
 					// markers: true,
 				},
 
@@ -619,13 +622,6 @@ export default {
 				y: '100%'
 			}, '> -0.5')
 
-			// tl.to(container, {
-			// 	x: '-=10vw',
-			// 	onComplete: () => {
-			// 		console.log('refreshed')
-			// 	}
-			// })
-
 			tl.to('.DottedCircle svg', {
 				// scale: 0.3,
 				opacity: 1,
@@ -653,20 +649,20 @@ export default {
 			}, '<')
 
 			/* Animating lines */
-			// const lines = document.querySelectorAll(".Line")
+			const lines = document.querySelectorAll(".Line")
 
-			// lines.forEach((el, index) => {
-			// 	console.dir(el)
-			// 	gsap.to(el, {
-			// 		scrollTrigger: {
-			// 			trigger: lines,
-			// 			start: "center 60%",
-			// 			// end: "center top",
-			// 			scrub: true,
-			// 			// markers: true,
-			// 		}, y: - el.parentElement.clientHeight / 2, ease: "none"
-			// 	})
-			// })
+			lines.forEach((el, index) => {
+				console.dir(el)
+				gsap.to(el, {
+					scrollTrigger: {
+						trigger: lines,
+						start: "center 60%",
+						// end: "center top",
+						scrub: true,
+						// markers: true,
+					}, y: - el.parentElement.clientHeight / 2, ease: "none"
+				})
+			})
 		},
 
 		animateTestimonies() {
@@ -699,9 +695,9 @@ export default {
 
 		setTimeout(() => {
 			this.animateAbout()
+			this.animateAi()
 			this.animateSolutions()
 			this.animateInsights()
-			this.animateAi()
 			this.animateTestimonies()
 		}, 500)
 	}
@@ -780,70 +776,72 @@ export default {
 	.AIML {
 		@apply pt-[31.80vw] overflow-x-hidden relative;
 
+		.Animation {
 
-		.DottedCircle {
-			@apply w-full translate-y-[10vw];
+			.DottedCircle {
+				@apply w-full translate-y-[10vw];
 
-			svg {
-				@apply w-[29.44vw] scale-[0.3] opacity-0
+				svg {
+					@apply w-[29.44vw] scale-[0.3] opacity-0
+				}
 			}
-		}
 
-		.Container {
-			@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
+			.Container {
+				@apply flex justify-start items-start flex-nowrap space-x-[60vw] w-fit;
 
-			.AI,
-			.ML {
-				.Top {
-					/* @apply */
+				.AI,
+				.ML {
+					.Top {
+						/* @apply */
 
-					h2 {
-						@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center h-[21.38vw];
+						h2 {
+							@apply text-[17.78vw] font-semibold text-black tracking-[-0.025em] leading-[12.5vw] whitespace-nowrap inline-flex items-center h-[21.38vw];
 
-						>span {
-							@apply flex items-center justify-center w-[30.55vw] h-[21.38vw] overflow-hidden mx-[2.78vw] relative;
+							>span {
+								@apply flex items-center justify-center w-[30.55vw] h-[21.38vw] overflow-hidden mx-[2.78vw] relative;
 
-							img {
-								@apply w-full h-full object-cover
-							}
+								img {
+									@apply w-full h-full object-cover
+								}
 
-							span {
-								@apply absolute text-[12.22vw] font-semibold block text-white scale-[0.8] opacity-0;
-								/* left: 50%;
+								span {
+									@apply absolute text-[12.22vw] font-semibold block text-white scale-[0.8] opacity-0;
+									/* left: 50%;
 								top: 50%;
 								transform: translate(-50%, -50%) */
+								}
 							}
 						}
 					}
 				}
-			}
 
-			.AI {
-				@apply ml-[30vw]
-			}
-		}
-
-		.AITexts {
-			@apply mt-[2.08vw] ml-[10vw] space-x-[19.51vw] overflow-hidden flex items-start;
-
-			.OverflowDecoy {
-				@apply translate-y-[12vw] overflow-hidden;
-
-				.WholeText {
-					@apply translate-y-full space-x-[1.38vw];
-
-					span {
-						@apply block w-fit
-					}
+				.AI {
+					@apply ml-[30vw]
 				}
 			}
 
-			p, span {
-				@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] w-[54.16vw];
-			}
+			.AITexts {
+				@apply mt-[2.08vw] ml-[10vw] space-x-[19.51vw] overflow-hidden flex items-start;
 
-			p {
-				@apply opacity-0 translate-y-1/2
+				.OverflowDecoy {
+					@apply translate-y-[12vw] overflow-hidden;
+
+					.WholeText {
+						@apply translate-y-full space-x-[1.38vw];
+
+						span {
+							@apply block w-fit
+						}
+					}
+				}
+
+				p, span {
+					@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] w-[54.16vw];
+				}
+
+				p {
+					@apply opacity-0 translate-y-1/2
+				}
 			}
 		}
 
@@ -878,12 +876,12 @@ export default {
 				}
 			}
 
-		}
-
-		.LinesFiller {
-			@apply h-[44.44vw] bg-[#121212] absolute w-full bottom-0
+			.LinesFiller {
+				@apply h-[44.44vw] bg-[#121212] absolute w-full bottom-0
+			}
 		}
 	}
+
 
 	.Solutions {
 		@apply bg-[#121212] text-white overflow-hidden relative z-20 -mt-[20vw];
