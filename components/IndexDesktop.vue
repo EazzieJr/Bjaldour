@@ -884,7 +884,7 @@ export default {
 
 
 	.Solutions {
-		@apply bg-[#121212] text-white overflow-hidden relative z-20 -mt-[20vw];
+		@apply bg-[#121212] text-white overflow-hidden relative z-20 -mt-[20vw] pt-[2.78vw];
 
 		.Container {
 			.Top {
