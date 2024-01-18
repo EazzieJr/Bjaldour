@@ -7,7 +7,9 @@
 				</h1>
 
 				<p>
-					At Bjaldour, we specialize in crafting content that explores the potential and applications of artificial intelligence and machine learning. Explore our range of content projects below and discover how we have collaborated with esteemed clients.
+					At Bjaldour, we specialize in crafting content that explores the potential and applications of artificial
+					intelligence and machine learning. Explore our range of content projects below and discover how we have
+					collaborated with esteemed clients.
 				</p>
 			</div>
 		</section>
@@ -16,7 +18,8 @@
 			<div class="Container">
 				<div class="Top between">
 					<div class="Tabs start">
-						<button v-for="display in displays" :key="display" class="Display" :class="{'active': display === currentDisplay}" @click="changeDisplay(display)">
+						<button v-for="display in displays" :key="display" class="Display"
+							:class="{ 'active': display === currentDisplay }" @click="changeDisplay(display)">
 							{{ display }}
 						</button>
 					</div>
@@ -32,7 +35,7 @@
 						<div class="Image">
 							<img class="w-full h-full" :src="`/images/projects/${index}.png`" alt="">
 						</div>
-						
+
 						<div class="Text overflow-hidden">
 							<p>
 								{{ project.deat }}
@@ -51,17 +54,19 @@
 
 				<div class="Clients">
 					<div class="top start">
-						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
+						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`"
+							:alt="`A small sized logo of ${client}`">
 					</div>
 
 					<div class="bottom start">
-						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`" :alt="`A small sized logo of ${client}`">
+						<img v-for="(client, index) in clients" :key="index" :src="`/images/clients/${client}.png`"
+							:alt="`A small sized logo of ${client}`">
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<ProjectModal v-if="projectOpened" :data="modal" @close="closeProject"/>
+		<ProjectModal v-if="projectOpened" :data="modal" @close="closeProject" />
 	</div>
 </template>
 
@@ -155,7 +160,7 @@ export default {
 				h1.appendChild(span)
 
 				gsap.set(span, { overflow: "hidden", display: "block" })
-				gsap.set(".word", {y: "100%"})
+				gsap.set(".word", { y: "100%" })
 			})
 
 			splittedHerotext[0].lines.forEach(line => {
@@ -208,7 +213,7 @@ export default {
 				deat: this.projects[index].deat,
 				smallImage: selectedImage,
 				bigImage,
-				index		
+				index
 			}
 
 			gsap.to(selectedProjectText, {
@@ -316,7 +321,7 @@ export default {
 					toggleActions: "play none none reset"
 				}
 			})
-			
+
 			tl.fromTo(".AfterHero .Texts span, .AfterHero .Texts p", { yPercent: 100 }, {
 				yPercent: 0, duration: 1, ease: "power3.out"
 			})
@@ -332,131 +337,130 @@ export default {
 					trigger: ".Challenges .Images",
 					start: "bottom bottom",
 					// end: "bottom",
-					markers: true,
-					scroller: "#OverlayProject",
-					scrub: true
-				}, defaults: {ease: "none"}
+				scroller: "#OverlayProject",
+				scrub: true
+			}, defaults: { ease: "none" }
 			})
-			
-			gsap.fromTo(".Challenges .Texts span, .Challenges .Texts p", { opacity: 0 }, {
-				scrollTrigger: {
-					trigger: ".Challenges .Texts",
-					start: "top 70%",
-					end: "bottom",
-					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
-				},
-				opacity: 1, duration: 1, ease: "power3.in", stagger: "0.2"
-			})
+
+		gsap.fromTo(".Challenges .Texts span, .Challenges .Texts p", { opacity: 0 }, {
+			scrollTrigger: {
+				trigger: ".Challenges .Texts",
+				start: "top 70%",
+				end: "bottom",
+				// markers: true,
+				scroller: "#OverlayProject",
+				toggleActions: "play none none reset"
+			},
+			opacity: 1, duration: 1, ease: "power3.in", stagger: "0.2"
+		})
 
 			tl.to(".Challenges .Images .Sml", {
-				yPercent: -100
-			})
+			yPercent: -100
+		})
 
 			tl.to(".Challenges .Images .Mid", {
-				yPercent: 10
-			}, 0)
+			yPercent: 10
+		}, 0)
 
 			tl.to(".Challenges .Images .Big", {
-				yPercent: -10
-			}, 0)
-		},
-
-		animateModalObjectives() {
-			gsap.fromTo(".Objectives .Texts span", { opacity: 0 }, {
-				scrollTrigger: {
-					trigger: ".Objectives .Texts",
-					start: "top 70%",
-					end: "bottom",
-					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
-				},
-				opacity: 1, duration: 1.5, ease: "power3.out"
-			})
-
-			gsap.fromTo(".Objectives .Texts ul li", { opacity: 0 }, {
-				scrollTrigger: {
-					trigger: ".Objectives .Texts ul",
-					start: "top 70%",
-					end: "bottom",
-					// markers: true,
-					scroller: "#OverlayProject",
-					toggleActions: "play none none reset"
-				},
-				opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.2
-			})
-		},
-
-		animateModalEngine() {
-			gsap.to(".Engine img", {
-				scrollTrigger: {
-					trigger: ".Engine",
-					start: "center center",
-					end: "+=200%",
-					scrub: true,
-					scroller: "#OverlayProject",
-					pin: true
-				}, clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)", ease: "none"
-			})
-		},
-
-		changeDisplay(display) {
-			if (this.displayAnimating || this.currentDisplay === display) return
-			this.displayAnimating = true
-			this.currentDisplay = display
-
-			// const anchor = document.querySelector(".Anchor")
-			// const projects = document.querySelectorAll(".Project")
-			const projectsContainer = document.querySelector(".AllProjects .Bottom")
-			const state = Flip.getState(".AllProjects .Bottom, .AllProjects .Project")
-
-			// projectsContainer.classList.remove(projectsContainer.classList[1])
-			console.log(projectsContainer.classList)
-			projectsContainer.classList.value = `Bottom ${display}`
-
-			Flip.from(state, {
-				duration: 1.25,
-				ease: "power4.inOut",
-				stagger: 0.05,
-				// absolute: true,
-				onComplete: () => {
-					projectsContainer.classList.value = `Bottom ${display}`
-					this.displayAnimating = false
-				},
-			})
-		},
-
-		initLenis() {
-			const wrapper = document.querySelector("#OverlayProject")
-			this.lenis = new Lenis({ duration: 2, wrapper, lerp: 1 })
-			console.log(this.lenis)
-
-			this.lenis.on('scroll', (e) => {
-				// console.log(e)
-			})
-
-			const raf = (time) => {
-				this.lenis.raf(time)
-				requestAnimationFrame(raf)
-			}
-
-			requestAnimationFrame(raf)
-		},
+			yPercent: -10
+		}, 0)
 	},
 
-	mounted() {
-		this.animateHero()
-		// console.log(this.$nuxt.$root.$children[2].lenis)
-		// this.openProject()
-	}
+	animateModalObjectives() {
+		gsap.fromTo(".Objectives .Texts span", { opacity: 0 }, {
+			scrollTrigger: {
+				trigger: ".Objectives .Texts",
+				start: "top 70%",
+				end: "bottom",
+				// markers: true,
+				scroller: "#OverlayProject",
+				toggleActions: "play none none reset"
+			},
+			opacity: 1, duration: 1.5, ease: "power3.out"
+		})
+
+		gsap.fromTo(".Objectives .Texts ul li", { opacity: 0 }, {
+			scrollTrigger: {
+				trigger: ".Objectives .Texts ul",
+				start: "top 70%",
+				end: "bottom",
+				// markers: true,
+				scroller: "#OverlayProject",
+				toggleActions: "play none none reset"
+			},
+			opacity: 1, duration: 1.5, ease: "power3.out", stagger: 0.2
+		})
+	},
+
+	animateModalEngine() {
+		gsap.to(".Engine img", {
+			scrollTrigger: {
+				trigger: ".Engine",
+				start: "center center",
+				end: "+=200%",
+				scrub: true,
+				scroller: "#OverlayProject",
+				pin: true
+			}, clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)", ease: "none"
+		})
+	},
+
+	changeDisplay(display) {
+		if (this.displayAnimating || this.currentDisplay === display) return
+		this.displayAnimating = true
+		this.currentDisplay = display
+
+		// const anchor = document.querySelector(".Anchor")
+		// const projects = document.querySelectorAll(".Project")
+		const projectsContainer = document.querySelector(".AllProjects .Bottom")
+		const state = Flip.getState(".AllProjects .Bottom, .AllProjects .Project")
+
+		// projectsContainer.classList.remove(projectsContainer.classList[1])
+		console.log(projectsContainer.classList)
+		projectsContainer.classList.value = `Bottom ${display}`
+
+		Flip.from(state, {
+			duration: 1.25,
+			ease: "power4.inOut",
+			stagger: 0.05,
+			// absolute: true,
+			onComplete: () => {
+				projectsContainer.classList.value = `Bottom ${display}`
+				this.displayAnimating = false
+			},
+		})
+	},
+
+	initLenis() {
+		const wrapper = document.querySelector("#OverlayProject")
+		this.lenis = new Lenis({ duration: 2, wrapper, lerp: 1 })
+		console.log(this.lenis)
+
+		this.lenis.on('scroll', (e) => {
+			// console.log(e)
+		})
+
+		const raf = (time) => {
+			this.lenis.raf(time)
+			requestAnimationFrame(raf)
+		}
+
+		requestAnimationFrame(raf)
+	},
+},
+
+mounted() {
+	this.animateHero()
+	// console.log(this.$nuxt.$root.$children[2].lenis)
+	// this.openProject()
+}
 }
 </script>
 
 <style lang="postcss" scoped>
 .ProjectsDesktop {
-	> .Hero {
+	>.Hero {
 		@apply pt-[22.56vw] px-5 lg:px-[2.78vw];
 
 		.Container {
@@ -477,7 +481,7 @@ export default {
 
 		.Container {
 			@apply space-y-[3.82vw];
-			
+
 			.Top {
 				.Tabs {
 					@apply space-x-5 lg:space-x-[2.78vw];
@@ -567,7 +571,7 @@ export default {
 
 						&:nth-child(3) {
 							@apply top-[32.91vw] left-[5.83vw] w-[25.97vw];
-							
+
 							.Image {
 								@apply w-full h-[36.11vw]
 							}
@@ -609,8 +613,8 @@ export default {
 
 				&.Stack {
 					@apply h-[134.93vw];
-					
-					> div {
+
+					>div {
 						@apply absolute top-0 left-0
 					}
 				}
@@ -623,11 +627,11 @@ export default {
 
 		.Container {
 			@apply space-y-[12.36vw];
-			
+
 			h2 {
 				@apply text-[6.67vw] !leading-[100%] tracking-[-0.025em] font-semibold max-w-[64.65vw] mx-auto text-center;
 			}
-			
+
 			.Clients {
 				@apply space-y-[3.95vw];
 
@@ -645,5 +649,4 @@ export default {
 
 .OverflowAssist {
 	@apply overflow-hidden
-}
-</style>
+}</style>

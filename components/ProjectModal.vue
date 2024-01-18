@@ -15,73 +15,76 @@
 				</div>
 			</div>
 		</nav>
-		
+
 		<div class="">
 			<Section class="Hero center">
 				<div class="BigImage">
 					<img :src="data.bigImage" alt="">
 				</div>
-	
+
 				<div class="SmallImage">
 					<!-- <img src="/images/opt-hero-small.png" alt=""> -->
 				</div>
-	
+
 				<div class="Overlay">
 					<h1 class="ModalHeroText">
 						{{ data.deat }}
 					</h1>
-	
+
 					<div class="TextAnim">
 						<span class="LastWord">{{ lastWord }}</span>
 					</div>
 				</div>
 			</Section>
-	
+
 			<div class="AfterHero">
 				<div class="Container">
 					<div class="Texts">
 						<div class="OverflowAssist">
 							<span>
-								Partnering with TransTech, a forward-thinking transportation and logistics company, we created content that
+								Partnering with TransTech, a forward-thinking transportation and logistics company, we created content
+								that
 								explored the integration of machine learning in the transportation industry.
 							</span>
 						</div>
-	
+
 						<p>
 							Partnering with TransTech, a forward-thinking transportation and logistics company, we created content that
 							explored the integration of machine learning in the transportation industry.
 						</p>
 					</div>
-	
+
 					<div class="Image">
 						<img src="/images/transtech-afterhero.png" alt="">
 					</div>
 				</div>
 			</div>
-	
+
 			<section class="Challenges">
 				<div class="Container">
 					<Tag text="Challenge" />
-	
+
 					<div class="Content">
 						<div class="Texts">
 							<div class="OverflowAssist">
 								<span>
 									TransTech, a leading transportation and logistics company, faced challenges in optimizing their
-									operations, improving route efficiency, and reducing maintenance costs. They sought a solution that could
+									operations, improving route efficiency, and reducing maintenance costs. They sought a solution that
+									could
 									leverage the power of machine learning to streamline their logistics processes and enhance overall
 									operational efficiency.
 								</span>
 							</div>
-	
+
 							<p>
 								Welcome to Bjaldour, where cutting-edge AI technology meets innovative SaaS products and tech hardware
 								solutions. We're revolutionizing industries by harnessing the power of artificial intelligence, machine
-								learning, and deep learning to create products that drive meaningful change. Explore our website and unlock
+								learning, and deep learning to create products that drive meaningful change. Explore our website and
+								unlock
 								a world of possibilities for your business.
 							</p>
 						</div>
-	
+
 						<div class="Images">
 							<img class="Big" src="/images/tt-challenge-img-1.png" alt="">
 							<img class="Mid" src="/images/tt-challenge-img-2.png" alt="">
@@ -90,23 +93,24 @@
 					</div>
 				</div>
 			</section>
-	
+
 			<section class="Objectives">
 				<div class="Container">
 					<Tag text="Objectives" />
-	
+
 					<div class="Content">
 						<div class="Texts">
 							<span>
 								The objectives were to improve route optimization, enable real-time fleet management, and implement
-								predictive maintenance. By harnessing the power of data and machine learning algorithms, we aimed to enhance
+								predictive maintenance. By harnessing the power of data and machine learning algorithms, we aimed to
+								enhance
 								efficiency, reduce costs, and elevate overall performance in the transportation industry.
 							</span>
-	
+
 							<ul>
 								<li v-for="(obj, index) in objectives" :key="index">
 									<img src="/svg/tiny-star.svg" alt="">
-	
+
 									<p>
 										{{ obj }}
 									</p>
@@ -116,45 +120,47 @@
 					</div>
 				</div>
 			</section>
-	
+
 			<div class="Engine center">
 				<img src="/images/luna-image.png" alt="">
-	
+
 				<div class="Overlay col-center h-fit">
 					<span>
 						Built on
 					</span>
-	
+
 					<h2>
 						luna.ai
 					</h2>
-	
+
 					<span class="FindOut">
 						find out more
 					</span>
 				</div>
 			</div>
-	
+
 			<section class="Approach">
 				<div class="Container">
 					<Tag text="Approach" />
-	
+
 					<div class="Content">
 						<div class="TextAnim">
 							<span>
-								Our approach involved analyzing historical data to identify patterns and developing a machine learning model
-								for optimized route planning, fuel consumption estimation, and predictive maintenance. Real-time monitoring
+								Our approach involved analyzing historical data to identify patterns and developing a machine learning
+								model
+								for optimized route planning, fuel consumption estimation, and predictive maintenance. Real-time
+								monitoring
 								and integration were implemented to leverage live data sources.
 							</span>
 						</div>
-	
+
 						<div class="Approaches">
 							<div class="Left">
 								<div v-for="approach in approaches.slice(0, 2)" :key="approach.title" class="App">
 									<span>
 										{{ approach.title }}
 									</span>
-	
+
 									<div class="p">
 										<p v-for="(deat, index) in approach.deat" :key="index">
 											{{ deat }}
@@ -162,13 +168,13 @@
 									</div>
 								</div>
 							</div>
-	
+
 							<div class="Right">
 								<div v-for="approach in approaches.slice(2, 4)" :key="approach.title" class="App">
 									<span>
 										{{ approach.title }}
 									</span>
-	
+
 									<div class="p">
 										<p v-for="(deat, index) in approach.deat" :key="index">
 											{{ deat }}
@@ -180,61 +186,61 @@
 					</div>
 				</div>
 			</section>
-	
+
 			<div class="Thingy">
 				<h3>
 					<span>
 						TransTech
 					</span>
-	
+
 					<svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<rect width="150" height="150" rx="75" fill="#DFE0E2" />
 						<path d="M75 24C75 64.8 41 75 24 75C64.8 75 75 109 75 126C75 85.2 109 75 126 75C85.2 75 75 41 75 24Z"
 							fill="black" />
 					</svg>
-	
+
 					<span>
 						Bjaldour
 					</span>
 				</h3>
 			</div>
-	
+
 			<section class="Solution">
 				<div class="Container">
 					<Tag text="Solution" white />
-	
+
 					<div class="Content">
 						<div class="TextAnim">
 							<h4>
 								Revolutionize Your Business with Our AI Solutions
 							</h4>
 						</div>
-	
+
 						<div class="Top">
 							<div class="Texts">
 								<span>
 									Through the integration of machine learning into their transportation operations, TransTech successfully
 									optimized their logistics processes, improved route efficiency, and reduced maintenance costs.
 								</span>
-	
+
 								<p>
 									The implementation of real-time fleet management and predictive maintenance capabilities enabled them to
 									make data-driven decisions, enhance vehicle performance, and deliver exceptional customer service.
 								</p>
 							</div>
-	
+
 							<div class="Solutions">
 								<div class="Left">
 									<img src="/images/solution-1.png" alt="">
 									<img src="/images/solution-3.png" alt="">
 								</div>
-	
+
 								<div class="Container">
 									<div class="Sol" v-for="(solution, index) in solutions" :key="index">
 										<span>
 											{{ solution.title }}
 										</span>
-	
+
 										<ul>
 											<li v-for="(li, index) in solution.solutions" :key="index">
 												{{ li }}
@@ -242,35 +248,36 @@
 										</ul>
 									</div>
 								</div>
-	
+
 								<div class="Right">
 									<img src="/images/solution-2.png" alt="">
 								</div>
 							</div>
 						</div>
-	
+
 						<div class="Bottom">
 							<h5>
 								<span class="top between">
 									<span>
 										In
 									</span>
-	
+
 									<svg width="285" height="10" viewBox="0 0 285 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<line y1="5" x2="285" y2="5" stroke="white" stroke-width="10" />
 									</svg>
 								</span>
-	
+
 								<span class="bottom">
 									Conclusion
 								</span>
 							</h5>
-	
+
 							<span>
-								By embracing machine learning, TransTech transformed their operations, ensuring timely deliveries, reducing
+								By embracing machine learning, TransTech transformed their operations, ensuring timely deliveries,
+								reducing
 								fuel consumption, and maximizing the lifespan of their fleet.
 							</span>
-	
+
 							<p>
 								This project stands as a testament to the power of machine learning in revolutionizing the transportation
 								and logistics industry, and TransTech's commitment to innovation and excellence.
@@ -295,7 +302,7 @@ export default {
 	props: {
 		data: Object,
 	},
-	
+
 	data() {
 		return {
 			objectives: [
@@ -377,7 +384,7 @@ export default {
 			return lastWord
 		}
 	},
-	
+
 	methods: {
 		initLenis() {
 			const wrapper = document.querySelector("#OverlayProject")
@@ -401,7 +408,7 @@ export default {
 						if (arguments.length) {
 							lenis.scrollTo(0, value);
 						}
-						
+
 						return lenis.animatedScroll;
 					},
 				});
@@ -470,7 +477,7 @@ export default {
 					trigger: ".Challenges .Images",
 					start: "bottom bottom",
 					// end: "bottom",
-					markers: true,
+					// markers: true,
 					// scroller: "#OverlayProject",
 					scrub: true
 				}, defaults: { ease: "none" }
@@ -540,16 +547,16 @@ export default {
 			})
 		},
 
-		animateApproach() { 
+		animateApproach() {
 			const approaches = document.querySelectorAll(".Approaches .App")
-			
+
 			gsap.fromTo(".Approach .Content > .TextAnim span", {
 				y: "100%"
 			}, {
 				scrollTrigger: {
 					trigger: ".Approach .Content",
 					start: "top 70%",
-					markers: true
+					// markers: true
 				}, y: 0, duration: 1, ease: "power3.inOut"
 			})
 
@@ -559,7 +566,7 @@ export default {
 					scrollTrigger: {
 						trigger: el,
 						start: "top 80%"
-					},					
+					},
 					opacity: 1,
 					ease: "power3.in",
 					duration: 1,
@@ -574,9 +581,9 @@ export default {
 					start: "top bottom",
 					end: "bottom top",
 					scrub: true,
-					markers: true
+
 				},
-				
+
 				x: "-40vw", ease: "none"
 			})
 		},
@@ -703,15 +710,15 @@ export default {
 			}, 1000)
 		}
 	},
-	
+
 	mounted() {
 		this.initLenis()
 
 		setTimeout(() => {
-		// 	ScrollTrigger.defaults({
-		// 		// scroller: "#OverlayProject",
-		// 		toggleActions: "play none none reset"
-		// 	})
+			// 	ScrollTrigger.defaults({
+			// 		// scroller: "#OverlayProject",
+			// 		toggleActions: "play none none reset"
+			// 	})
 
 			this.animateHero()
 			this.animateModalAfterHero()
@@ -726,378 +733,381 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-	.Modal {
-		@apply fixed top-0 left-0 bottom-0 right-0 z-[1000] overflow-auto;
+.Modal {
+	@apply fixed top-0 left-0 bottom-0 right-0 z-[1000] overflow-auto;
+	/* overscroll-behavior: contain; */
+	/* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+
+
+	&::-webkit-scrollbar {
+		@apply opacity-0 hidden
+	}
+
+	>div {
 		/* overscroll-behavior: contain; */
-		/* clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); */
+	}
 
-		
-		&::-webkit-scrollbar {
-			@apply opacity-0 hidden
-		}
+	nav {
+		@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-[1001] mix-blend-exclusion invert;
 
-		> div {
-			/* overscroll-behavior: contain; */
-		}
+		.NavContainer {
+			@apply grid grid-cols-3 md:grid-cols-3;
 
-		nav {
-			@apply p-5 md:p-[2.78vw] fixed top-0 left-0 right-0 z-[1001] mix-blend-exclusion invert;
-
-			.NavContainer {
-				@apply grid grid-cols-3 md:grid-cols-3;
-
-				button {
-					@apply w-fit place-self-center
-				}
-
-				.Back, .Home {
-					@apply md:text-[1.67vw] font-bold tracking-[-0.025em] text-black;
-				}
-			}
-		}
-
-		.Hero {
-			@apply w-full h-[100svh] overflow-hidden relative;
-
-			.BigImage {
-				@apply w-full h-full absolute z-[-1];
-				clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-
-				img {
-					@apply w-full h-full object-cover object-center !m-0;
-				}
+			button {
+				@apply w-fit place-self-center
 			}
 
-			.SmallImage {
-				@apply absolute z-[-1] !w-[30.27vw] !h-[37.98vw];
-
-				img {
-					@apply !min-w-full 
-				}
-				/* clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%) */
-			}
-
-			.Overlay {
-				@apply w-full h-full flex items-center px-[2.78vw] text-white overflow-hidden;
-
-				h1 {
-					@apply font-semibold text-[8.88vw] leading-[110%] tracking-[-0.025em] opacity-0 w-full max-w-[90vw]
-				}
-
-				> div {
-					@apply absolute right-[2.78vw] bottom-[2.78vw];
-
-					span {
-						@apply block lg:text-[1.66vw] !leading-[100%] font-semibold translate-y-full
-					}
-				}
+			.Back, .Home {
+				@apply md:text-[1.67vw] font-bold tracking-[-0.025em] text-black;
 			}
 		}
+	}
 
-		.AfterHero {
-			@apply pt-[11.11vw] bg-white;
+	.Hero {
+		@apply w-full h-[100svh] overflow-hidden relative;
 
-			.Container {
-				@apply space-y-[7.08vw] w-[58.75vw] ml-[11.11vw];
-
-				.Texts {
-					@apply space-y-[2.78vw] overflow-hidden;
-
-					span {
-						@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
-					}
-
-					p {
-						@apply block lg:text-[1.66vw] !leading-[140%]
-					}
-				}
-
-				.Image {
-					@apply w-full;
-					clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-
-					img {
-						@apply w-full
-					}
-				}
-			}
-		}
-
-		.Challenges {
-			@apply pt-[11.11vw] px-[2.78vw] bg-white;
-
-			.Container {
-				@apply flex justify-between items-start w-[86.45vw];
-
-				.Content {
-					@apply space-y-[8.33vw] w-[54.51vw];
-
-					.Texts {
-						@apply space-y-[2vw];
-
-						span {
-							@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
-						}
-
-						p {
-							@apply block lg:text-[1.66vw] !leading-[140%]
-						}
-					}
-
-					.Images {
-						@apply flex items-end;
-						
-						img:nth-child(1) {
-							@apply w-[20.83vw] shrink-0 h-auto
-						}
-						img:nth-child(2) {
-							@apply w-[18.54vw] shrink-0 h-auto ml-[4.16vw]
-						}
-						img:nth-child(3) {
-							@apply w-[8.33vw] shrink-0 h-auto -ml-[1.5vw] -mb-[6.25vw]
-						}
-					}
-				}
-			}
-		}
-
-		.Objectives {
-			@apply py-[17.63vw] px-[2.78vw] bg-white;
-
-			.Container {
-				@apply flex justify-start items-start space-x-[10.69vw] w-[86.45vw];
-
-				.Content {
-					@apply space-y-[2.78vw] w-[51.25vw];
-
-					.Texts {
-						@apply space-y-[2.78vw];
-
-						> span {
-							@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
-						}
-
-						ul {
-							@apply mt-[2.78vw];
-
-							li {
-								@apply flex justify-start items-start space-x-[1.73vw] py-[2.78vw] border-t border-[#CCCCCC];
-
-								img {
-									@apply w-[1.11vw] mt-1;
-								}
-
-								p {
-									@apply block lg:text-[1.66vw] !leading-[140%]
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-
-		.Engine {
-			@apply mx-[2.78vw] relative h-[100svh] overflow-hidden bg-white;
+		.BigImage {
+			@apply w-full h-full absolute z-[-1];
+			clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 
 			img {
-				@apply w-full h-full object-cover object-center;
-				clip-path: polygon(15% 85%, 85% 85%, 85% 15%, 15% 15%);
+				@apply w-full h-full object-cover object-center !m-0;
+			}
+		}
+
+		.SmallImage {
+			@apply absolute z-[-1] !w-[30.27vw] !h-[37.98vw];
+
+			img {
+				@apply !min-w-full
 			}
 
-			.Overlay {
-				@apply absolute w-full h-full text-white;
+			/* clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%) */
+		}
+
+		.Overlay {
+			@apply w-full h-full flex items-center px-[2.78vw] text-white overflow-hidden;
+
+			h1 {
+				@apply font-semibold text-[8.88vw] leading-[110%] tracking-[-0.025em] opacity-0 w-full max-w-[90vw]
+			}
+
+			>div {
+				@apply absolute right-[2.78vw] bottom-[2.78vw];
 
 				span {
-					@apply text-[2.22vw] leading-[140%] tracking-[0.025em];
-
-					&.FindOut {
-						@apply absolute bottom-[2.78vw] right-[2.78vw] underline underline-offset-4
-					}
-				}
-
-				h2 {
-					@apply font-semibold text-[12.15vw] tracking-[0.025vw] leading-[100%]
+					@apply block lg:text-[1.66vw] !leading-[100%] font-semibold translate-y-full
 				}
 			}
 		}
+	}
 
-		.Approach {
-			@apply pt-[11.11vw] px-[2.78vw] bg-white;
+	.AfterHero {
+		@apply pt-[11.11vw] bg-white;
 
-			.Container {
-				@apply space-x-[7.78vw] flex justify-start items-start;
+		.Container {
+			@apply space-y-[7.08vw] w-[58.75vw] ml-[11.11vw];
 
-				.Content {
-					@apply w-[70.48vw];
+			.Texts {
+				@apply space-y-[2.78vw] overflow-hidden;
 
-					.TextAnim span {
-						@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
-					}
+				span {
+					@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+				}
 
-					.Approaches {
-						@apply mt-[11.11vw] flex items-start justify-start space-x-[9.37vw] space-y-[11.80vw];
+				p {
+					@apply block lg:text-[1.66vw] !leading-[140%]
+				}
+			}
 
-						.Left, .Right {
-							@apply space-y-[5.55vw] w-[30.55vw];
+			.Image {
+				@apply w-full;
+				clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
 
-							> div {
-								@apply space-y-[2vw];
-
-								span {
-									@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium opacity-0			
-								}
-
-								> div {
-									@apply opacity-0;
-									
-									p {
-										@apply text-[1.67vw] leading-[140%]
-									}
-								}
-							}
-						}
-					}
+				img {
+					@apply w-full
 				}
 			}
 		}
+	}
 
-		.Thingy {
-			@apply py-[16.67vw] overflow-hidden bg-white;
+	.Challenges {
+		@apply pt-[11.11vw] px-[2.78vw] bg-white;
 
-			h3 {
-				@apply text-[15.55vw] font-semibold leading-[100%] tracking-[-0.025em] whitespace-nowrap inline-flex items-center;
-
-				svg {
-					@apply w-[10.41vw] mx-[5.13vw]
-				}
-			}
-		}
-
-		.Solution {
-			@apply bg-[#121212] pt-[4.16vw] px-[2.78vw];
+		.Container {
+			@apply flex justify-between items-start w-[86.45vw];
 
 			.Content {
-				@apply mt-[14.02vw] text-white;
+				@apply space-y-[8.33vw] w-[54.51vw];
 
-				h4 {
-					@apply text-[6.66vw] font-semibold tracking-[-0.025em] leading-[100%] ml-[7.77vw] max-w-[59.72vw] mx-auto;
-				}
+				.Texts {
+					@apply space-y-[2vw];
 
-				.Top {
-					@apply mt-[8.33vw];
-
-					.Texts {
-						@apply space-y-[2vw] ml-[32.5vw] max-w-[54.16vw];
-
-						span {
-							@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] opacity-0;
-						}
-
-						p {
-							@apply block lg:text-[1.66vw] !leading-[140%] opacity-0
-						}
-					}
-
-					.Solutions {
-						@apply mt-[11.11vw] flex items-start justify-start space-x-[10.55vw];
-
-						.Left {
-							@apply space-y-[57.63vw] -mt-[21.52vw];
-
-							img {
-								&:nth-child(2) {
-									@apply w-[20.83vw];
-								}
-
-								&:nth-child(2) {
-									@apply w-[14.30vw] ml-[7.63vw];
-								}
-							}
-						}
-
-						.Container {
-							@apply space-y-[11.11vw] w-[30.56vw];
-							
-							> div {
-								@apply space-y-[2vw];
-
-								span {
-									@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium;
-								}
-
-								ul {
-									@apply pl-[2vw];
-
-									li {
-										@apply text-[1.67vw] leading-[140%] list-disc
-									}
-								}
-							}
-						}
-
-						.Right {
-							img {
-								@apply mt-[25.34vw] w-[20.83vw]
-							}
-						}
-					}
-				}
-
-				.Bottom {
-					@apply mt-[24.86vw] pb-[24.86vw] w-[42.46vw] mx-auto;
-
-					h5 {
-						@apply font-semibold text-[8.88vw] leading-[100%] tracking-[-0.025em] text-white;
-
-						.top {
-							svg {
-								@apply w-[19.79vw]
-							}
-						}
-						
-						.bottom {
-							@apply block;
-						}
-					}
-
-					> span {
+					span {
 						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
 					}
 
 					p {
 						@apply block lg:text-[1.66vw] !leading-[140%]
 					}
-			}
+				}
+
+				.Images {
+					@apply flex items-end;
+
+					img:nth-child(1) {
+						@apply w-[20.83vw] shrink-0 h-auto
+					}
+
+					img:nth-child(2) {
+						@apply w-[18.54vw] shrink-0 h-auto ml-[4.16vw]
+					}
+
+					img:nth-child(3) {
+						@apply w-[8.33vw] shrink-0 h-auto -ml-[1.5vw] -mb-[6.25vw]
+					}
+				}
 			}
 		}
 	}
 
-	.TextAnim {
-		@apply overflow-hidden;
+	.Objectives {
+		@apply py-[17.63vw] px-[2.78vw] bg-white;
+
+		.Container {
+			@apply flex justify-start items-start space-x-[10.69vw] w-[86.45vw];
+
+			.Content {
+				@apply space-y-[2.78vw] w-[51.25vw];
+
+				.Texts {
+					@apply space-y-[2.78vw];
+
+					>span {
+						@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+					}
+
+					ul {
+						@apply mt-[2.78vw];
+
+						li {
+							@apply flex justify-start items-start space-x-[1.73vw] py-[2.78vw] border-t border-[#CCCCCC];
+
+							img {
+								@apply w-[1.11vw] mt-1;
+							}
+
+							p {
+								@apply block lg:text-[1.66vw] !leading-[140%]
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
-	.Modal.lenis {
-		height: auto;
+	.Engine {
+		@apply mx-[2.78vw] relative h-[100svh] overflow-hidden bg-white;
+
+		img {
+			@apply w-full h-full object-cover object-center;
+			clip-path: polygon(15% 85%, 85% 85%, 85% 15%, 15% 15%);
+		}
+
+		.Overlay {
+			@apply absolute w-full h-full text-white;
+
+			span {
+				@apply text-[2.22vw] leading-[140%] tracking-[0.025em];
+
+				&.FindOut {
+					@apply absolute bottom-[2.78vw] right-[2.78vw] underline underline-offset-4
+				}
+			}
+
+			h2 {
+				@apply font-semibold text-[12.15vw] tracking-[0.025vw] leading-[100%]
+			}
+		}
 	}
 
-	.lenis.lenis-smooth {
-		scroll-behavior: auto;
+	.Approach {
+		@apply pt-[11.11vw] px-[2.78vw] bg-white;
+
+		.Container {
+			@apply space-x-[7.78vw] flex justify-start items-start;
+
+			.Content {
+				@apply w-[70.48vw];
+
+				.TextAnim span {
+					@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+				}
+
+				.Approaches {
+					@apply mt-[11.11vw] flex items-start justify-start space-x-[9.37vw] space-y-[11.80vw];
+
+					.Left,
+					.Right {
+						@apply space-y-[5.55vw] w-[30.55vw];
+
+						>div {
+							@apply space-y-[2vw];
+
+							span {
+								@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium opacity-0
+							}
+
+							>div {
+								@apply opacity-0;
+
+								p {
+									@apply text-[1.67vw] leading-[140%]
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
-	.lenis.lenis-smooth [data-lenis-prevent] {
-		overscroll-behavior: contain;
+	.Thingy {
+		@apply py-[16.67vw] overflow-hidden bg-white;
+
+		h3 {
+			@apply text-[15.55vw] font-semibold leading-[100%] tracking-[-0.025em] whitespace-nowrap inline-flex items-center;
+
+			svg {
+				@apply w-[10.41vw] mx-[5.13vw]
+			}
+		}
 	}
 
-	.lenis.lenis-stopped {
-		overflow: hidden;
-	}
+	.Solution {
+		@apply bg-[#121212] pt-[4.16vw] px-[2.78vw];
 
-	.lenis.lenis-scrolling iframe {
-		pointer-events: none;
+		.Content {
+			@apply mt-[14.02vw] text-white;
+
+			h4 {
+				@apply text-[6.66vw] font-semibold tracking-[-0.025em] leading-[100%] ml-[7.77vw] max-w-[59.72vw] mx-auto;
+			}
+
+			.Top {
+				@apply mt-[8.33vw];
+
+				.Texts {
+					@apply space-y-[2vw] ml-[32.5vw] max-w-[54.16vw];
+
+					span {
+						@apply block text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em] opacity-0;
+					}
+
+					p {
+						@apply block lg:text-[1.66vw] !leading-[140%] opacity-0
+					}
+				}
+
+				.Solutions {
+					@apply mt-[11.11vw] flex items-start justify-start space-x-[10.55vw];
+
+					.Left {
+						@apply space-y-[57.63vw] -mt-[21.52vw];
+
+						img {
+							&:nth-child(2) {
+								@apply w-[20.83vw];
+							}
+
+							&:nth-child(2) {
+								@apply w-[14.30vw] ml-[7.63vw];
+							}
+						}
+					}
+
+					.Container {
+						@apply space-y-[11.11vw] w-[30.56vw];
+
+						>div {
+							@apply space-y-[2vw];
+
+							span {
+								@apply text-[3.88vw] leading-[120%] tracking-[-0.025em] font-medium;
+							}
+
+							ul {
+								@apply pl-[2vw];
+
+								li {
+									@apply text-[1.67vw] leading-[140%] list-disc
+								}
+							}
+						}
+					}
+
+					.Right {
+						img {
+							@apply mt-[25.34vw] w-[20.83vw]
+						}
+					}
+				}
+			}
+
+			.Bottom {
+				@apply mt-[24.86vw] pb-[24.86vw] w-[42.46vw] mx-auto;
+
+				h5 {
+					@apply font-semibold text-[8.88vw] leading-[100%] tracking-[-0.025em] text-white;
+
+					.top {
+						svg {
+							@apply w-[19.79vw]
+						}
+					}
+
+					.bottom {
+						@apply block;
+					}
+				}
+
+				>span {
+					@apply text-2xl lg:text-[2.5vw] !leading-[140%] tracking-[-0.025em];
+				}
+
+				p {
+					@apply block lg:text-[1.66vw] !leading-[140%]
+				}
+			}
+		}
 	}
+}
+
+.TextAnim {
+	@apply overflow-hidden;
+}
+
+.Modal.lenis {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
 
 .lenis.lenis-stopped {
-  overflow: hidden;
+	overflow: hidden;
 }
-</style>
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}</style>
